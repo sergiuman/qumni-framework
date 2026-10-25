@@ -1,0 +1,21 @@
+{
+  "name": "QUMNI Momentum — Human Action Operating System",
+  "short_name": "Momentum",
+  "start_url": "./app.php",
+  "display": "standalone",
+  "background_color": "#F8F5F0",
+  "theme_color": "#F8F5F0",
+  "description": "Science-grounded daily voice reflection, WSO agency diagnostics, goal gap scanners, and habit tracking.",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

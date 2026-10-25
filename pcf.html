@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PCF — Perceptual Control Framework | QUMNI</title>
+<meta name="description" content="The Perceptual Control Framework: your mind runs on models — simplifications of reality. Truth is the model that produces optimal action. Recalibrate your filters. See clearly. Act precisely.">
+<link rel="canonical" href="https://qumni.com/pcf.html">
+
+<!-- Open Graph / Social -->
+<meta property="og:title" content="PCF — Perceptual Control Framework | QUMNI">
+<meta property="og:description" content="You don't see reality — you see a model of it. Truth is the model that produces optimal action. Learn to recalibrate your perceptual filters.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://qumni.com/pcf.html">
+<meta property="og:image" content="https://qumni.com/og-pcf.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PCF — Perceptual Control Framework | QUMNI">
+<meta name="twitter:description" content="You don't see reality — you see a model of it. Recalibrate your filters.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='5' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='%23C8960C'>Q</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --P:#9B59B6;--A:#E67E22;--R:#1ABC9C;
+  --bg:#F2EDE6;--dark:#0C0C0C;--ink:#1A1A1A;
+  --muted:#888;--border:#D8D3CC;--surface:#EBEBE5;
+  --gold:#C8960C;--cream:#FAF7F2;
+  --serif:'Instrument Serif',serif;
+  --sans:'Syne',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:.9rem 3rem;background:rgba(242,237,230,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--sans);font-weight:800;font-size:1.1rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.logo sup{font-size:.55rem;letter-spacing:.12em;vertical-align:super;color:var(--muted);text-transform:uppercase}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-center a:hover{color:var(--ink)}
+.nav-cta{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:.55rem 1.2rem;border:none;cursor:pointer;text-decoration:none}
+
+/* ── HERO ── */
+.hero{min-height:100vh;padding:7rem 3rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;overflow:hidden;background:var(--cream)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(155,89,182,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--muted)}
+h1.main{font-family:var(--serif);font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.02;font-style:italic;letter-spacing:-.01em;margin-bottom:1.5rem}
+h1.main .accent{font-style:normal;font-weight:600}
+.hero-desc{font-family:var(--serif);font-size:1.2rem;color:#555;line-height:1.7;max-width:480px;margin-bottom:2.5rem}
+.hero-desc strong{color:var(--ink)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.8rem;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-dark{background:var(--ink);color:var(--bg)}
+.btn-dark:hover{background:#333}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.hero-pills{display:flex;gap:.7rem;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:2px}
+.pill-p{background:rgba(155,89,182,.1);color:var(--P);border:1px solid rgba(155,89,182,.2)}
+.pill-a{background:rgba(230,126,34,.1);color:var(--A);border:1px solid rgba(230,126,34,.2)}
+.pill-r{background:rgba(26,188,156,.1);color:var(--R);border:1px solid rgba(26,188,156,.2)}
+.hero-right{display:flex;align-items:center;justify-content:center}
+
+/* ── PRISM SVG ── */
+.prism-hero{width:min(420px,100%);aspect-ratio:1}
+.prism-hero svg{width:100%;height:100%;overflow:visible}
+
+/* ── SECTION WRAPPER ── */
+.wrap{max-width:1380px;margin:0 auto;padding:0 3rem}
+.sec{padding:6rem 0}
+.sec-tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.sec-tag::before{content:'';width:2rem;height:1px;background:currentColor}
+h2.sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);line-height:1.05;font-style:italic;margin-bottom:1.2rem;letter-spacing:-.01em}
+.sec-sub{font-family:var(--serif);font-size:1.1rem;color:#666;line-height:1.7;max-width:640px;margin-bottom:2.5rem}
+.div{width:100%;height:1px;background:var(--border)}
+
+/* ── TICKER ── */
+.ticker-outer{overflow:hidden;background:var(--dark);padding:.9rem 0;border-top:1px solid #222;border-bottom:1px solid #222}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:tick 40s linear infinite}
+.ticker-inner2{animation-direction:reverse;animation-duration:35s}
+.t-item{display:inline-flex;align-items:center;gap:1.2rem;padding:.2rem 2.5rem;font-family:var(--sans);font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.t-p{color:rgba(155,89,182,.6)}
+.t-a{color:rgba(230,126,34,.6)}
+.t-r{color:rgba(26,188,156,.6)}
+.t-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── THESIS GRID ── */
+.thesis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.thesis-cell{background:var(--cream);padding:2.5rem;position:relative;overflow:hidden;transition:background .25s}
+.thesis-cell:hover{background:#fff}
+.thesis-num{font-family:var(--mono);font-size:2rem;font-weight:300;color:rgba(0,0,0,.06);position:absolute;top:.8rem;right:1.2rem}
+.thesis-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.thesis-cell h4{font-family:var(--sans);font-weight:700;font-size:1rem;margin-bottom:.5rem;line-height:1.2}
+.thesis-cell p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+
+/* ── SCIENCE SCAN ── */
+.scan-bg{background:var(--dark)}
+.scan-bg .sec-tag{color:rgba(255,255,255,.3)}
+.scan-bg .sec-tag::before{background:rgba(255,255,255,.3)}
+.scan-bg h2.sec-h{color:#F2EDE6}
+.scan-bg .sec-sub{color:rgba(242,237,230,.5)}
+.scan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;margin-top:3rem}
+.scan-cell{background:var(--dark);padding:2rem;position:relative;overflow:hidden;border-top:2px solid transparent;transition:background .25s}
+.scan-cell:hover{background:#111}
+.scan-p{border-top-color:var(--P)}
+.scan-a{border-top-color:var(--A)}
+.scan-r{border-top-color:var(--R)}
+.scan-all{border-top-color:var(--gold)}
+.scan-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.5rem}
+.scan-cell h4{font-family:var(--sans);font-weight:700;font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:.5rem;line-height:1.25}
+.scan-cell p{font-family:var(--serif);font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.6}
+.scan-cite{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.2);margin-top:.8rem;letter-spacing:.05em}
+
+/* ── MPC FRAMEWORK ── */
+.mpc-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.mpc-text p{font-family:var(--serif);font-size:1rem;color:#555;line-height:1.8;margin-bottom:1.2rem}
+.mpc-text p strong{color:var(--ink)}
+
+/* ── LOOP DIAGRAM ── */
+.loop-wrap{background:var(--dark);padding:3rem;margin-top:3rem;position:relative}
+.loop-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#1a1a1a}
+.loop-step{background:var(--dark);padding:1.8rem;text-align:center;position:relative}
+.loop-step::after{content:'→';position:absolute;right:-.6rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:rgba(255,255,255,.15);z-index:2}
+.loop-step:last-child::after{display:none}
+.loop-n{font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:.5rem}
+.loop-step h4{font-family:var(--sans);font-weight:700;font-size:.85rem;color:rgba(255,255,255,.85);margin-bottom:.4rem;line-height:1.25}
+.loop-step p{font-family:var(--serif);font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.5}
+.loop-return{text-align:center;padding:1rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.loop-return::before{content:'↻ '}
+
+/* ── FILTER SLIDERS ── */
+.filter-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.filter-col{background:var(--cream);padding:2.5rem;border-top:3px solid transparent}
+.fc-p{border-top-color:var(--P)}.fc-a{border-top-color:var(--A)}.fc-r{border-top-color:var(--R)}
+.filter-col-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.fc-p .filter-col-label{color:var(--P)}.fc-a .filter-col-label{color:var(--A)}.fc-r .filter-col-label{color:var(--R)}
+.filter-col h3{font-family:var(--sans);font-weight:800;font-size:1.3rem;margin-bottom:.3rem}
+.filter-col em{font-family:var(--serif);font-style:italic;font-size:.9rem;color:#888;display:block;margin-bottom:1rem}
+.filter-item{margin-bottom:1.2rem}
+.filter-item-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.filter-item p{font-family:var(--serif);font-size:.85rem;color:#666;line-height:1.5}
+
+/* ── DOMAIN TABS ── */
+.domain-tabs{display:flex;gap:0;border:1px solid var(--border);margin:2rem 0 0;overflow-x:auto}
+.d-tab{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.5rem;border:none;background:transparent;cursor:pointer;color:var(--muted);border-right:1px solid var(--border);white-space:nowrap;transition:all .2s;flex-shrink:0}
+.d-tab:last-child{border-right:none}
+.d-tab.active,.d-tab:hover{background:var(--ink);color:var(--bg)}
+.domain-content{display:none;border:1px solid var(--border);border-top:none}
+.domain-content.active{display:grid;grid-template-columns:repeat(3,1fr)}
+.d-panel{padding:2rem;border-right:1px solid var(--border)}
+.d-panel:last-child{border-right:none}
+.d-panel-head{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem}
+.d-p{color:var(--P)}.d-a{color:var(--A)}.d-r{color:var(--R)}
+.d-panel h4{font-family:var(--sans);font-weight:700;margin-bottom:.5rem}
+.d-panel p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+.d-panel ul{list-style:none;margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem}
+.d-panel li{font-family:var(--serif);font-size:.83rem;color:#888;padding-left:1rem;position:relative}
+.d-panel li::before{content:'·';position:absolute;left:0;color:var(--muted)}
+
+/* ── SCANNER TOOL ── */
+.scanner-tool{background:var(--dark);padding:4rem;margin-top:3rem}
+.scanner-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.scanner-head{font-family:var(--serif);font-size:2rem;font-style:italic;color:#F2EDE6;margin-bottom:.5rem}
+.scanner-sub{font-family:var(--serif);font-size:.95rem;color:rgba(242,237,230,.4);margin-bottom:2rem;line-height:1.6}
+.scanner-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1px;background:#222}
+.scanner-field{background:var(--dark);padding:1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.s-field-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.s-slider{width:100%;-webkit-appearance:none;appearance:none;height:3px;background:#333;outline:none;cursor:pointer}
+.s-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer}
+.s-slider-p::-webkit-slider-thumb{background:var(--P)}
+.s-slider-a::-webkit-slider-thumb{background:var(--A)}
+.s-slider-r::-webkit-slider-thumb{background:var(--R)}
+.s-val{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:#F2EDE6}
+.scanner-btn{background:var(--gold);color:#000;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:none;padding:0 2rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.scanner-btn:hover{background:#E0A80E}
+.scanner-result{margin-top:1px;background:#0f0f0f;padding:2rem;display:none}
+.scanner-result.show{display:block}
+.sr-archetype{font-family:var(--serif);font-size:1.8rem;font-style:italic;margin-bottom:.5rem}
+.sr-insight{font-family:var(--serif);font-size:.95rem;color:rgba(242,237,230,.5);line-height:1.7;margin-bottom:1.2rem}
+.sr-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.sr-action-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid #333;color:rgba(255,255,255,.5);background:transparent;cursor:pointer;transition:all .2s}
+.sr-action-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── DEBATES ── */
+.debates-layout{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.debate-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:1px;background:var(--border)}
+.debate-topic{background:var(--cream);padding:2rem;display:flex;flex-direction:column;justify-content:center}
+.debate-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.debate-topic h4{font-family:var(--sans);font-weight:700;font-size:.95rem;line-height:1.25}
+.debate-side{background:var(--bg);padding:2rem}
+.debate-side-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.pro .debate-side-label{color:var(--R)}
+.con .debate-side-label{color:var(--A)}
+.debate-side p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+
+/* ── BRIDGE TO WSO ── */
+.bridge-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.bridge-cell{background:var(--cream);padding:2.5rem}
+.bridge-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.bridge-cell h3{font-family:var(--sans);font-weight:700;margin-bottom:.5rem;font-size:1rem}
+.bridge-cell p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+.bridge-pills{display:flex;gap:.4rem;margin-top:.8rem;flex-wrap:wrap}
+.bridge-pills .pill{font-size:.55rem}
+
+/* ── PROTOCOL SECTION ── */
+.protocols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.protocol{background:var(--cream);padding:2.5rem;border-top:3px solid transparent;transition:box-shadow .4s, transform .4s}
+.protocol.highlight-target{box-shadow:0 0 0 3px var(--gold), 0 12px 30px rgba(200,150,12,0.25);transform:translateY(-4px);background:#fff}
+.pp{border-top-color:var(--P)}.pa{border-top-color:var(--A)}.pr{border-top-color:var(--R)}
+.protocol-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.pp .protocol-lbl{color:var(--P)}.pa .protocol-lbl{color:var(--A)}.pr .protocol-lbl{color:var(--R)}
+.protocol h3{font-family:var(--sans);font-weight:800;font-size:1.3rem;margin-bottom:.3rem}
+.protocol em{font-family:var(--serif);font-style:italic;font-size:.9rem;color:#888;display:block;margin-bottom:1rem}
+.protocol-week{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:.9rem 0 .4rem}
+.protocol ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.protocol li{font-family:var(--serif);font-size:.85rem;color:#666;padding-left:1.2rem;position:relative;line-height:1.5}
+.protocol li::before{content:'→';position:absolute;left:0;color:inherit;opacity:.6}
+
+/* ── CTA ── */
+.cta-bar{background:var(--ink);padding:5rem 2rem;text-align:center}
+.cta-bar h2{color:var(--bg);font-size:clamp(2rem,5vw,3.5rem);margin-bottom:.8rem;font-family:var(--serif);font-style:italic;line-height:1.05}
+.cta-bar p{font-family:var(--serif);font-size:1.05rem;color:rgba(248,245,240,.4);max-width:480px;margin:0 auto 2rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:#fff;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 2rem;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 2rem;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-l{font-family:var(--sans);font-weight:800;font-size:.9rem;letter-spacing:.08em}
+.footer-r{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.r.v{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:6rem 2rem 3rem}
+  .hero-right{display:none}
+  .scan-grid{grid-template-columns:repeat(2,1fr)}
+  .filter-matrix,.protocols{grid-template-columns:1fr}
+  .mpc-intro{grid-template-columns:1fr;gap:2rem}
+  .loop-grid{grid-template-columns:repeat(3,1fr)}
+  .loop-step:nth-child(3)::after{display:none}
+  .scanner-form{grid-template-columns:1fr 1fr 1fr}
+  .scanner-btn{grid-column:1/-1;padding:1rem}
+  .domain-content.active{grid-template-columns:1fr}
+  .d-panel{border-right:none;border-bottom:1px solid var(--border)}
+  .d-panel:last-child{border-bottom:none}
+  .bridge-grid{grid-template-columns:1fr}
+  .debate-row{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:.8rem 1.2rem;gap:8px}
+  .nav-center{display:none}
+  .nav-cta{padding:.5rem .8rem;font-size:.6rem}
+  .wrap{padding:0 1.5rem}
+  .sec{padding:4rem 0}
+  .thesis-grid{grid-template-columns:1fr}
+  .scan-grid{grid-template-columns:1fr}
+  .loop-grid{grid-template-columns:1fr}
+  .loop-step::after{display:none}
+  .scanner-form{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}
+  .footer-nav{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">QUMNI<sup>frameworks</sup></a>
+  <div class="nav-center">
+    <a href="#thesis">Thesis</a>
+    <a href="#science">Science</a>
+    <a href="#framework">Framework</a>
+    <a href="#scanner">Scanner</a>
+    <a href="#protocols">Protocols</a>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <a href="wso.html" class="nav-cta" style="background:transparent;color:var(--gold);border:1px solid var(--gold);padding:.55rem 1rem">WSO Framework →</a>
+    <a href="app.php" id="pcfNavApp" class="nav-cta">WSO App →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow r">QUMNI Framework 02</div>
+    <h1 class="main r">The Perceptual<br>Control<br><span class="accent">Framework</span></h1>
+    <p class="hero-desc r">
+      You don't see reality. You see a <strong>model of reality</strong> — a simplification filtered by goals, beliefs, and prior experience. Truth isn't what's most accurate. <strong>Truth is the model that produces optimal action.</strong> This framework teaches you to recalibrate your filters.
+    </p>
+    <div class="hero-btns r">
+      <a href="#framework" class="btn btn-dark">The MPC Loop →</a>
+      <a href="#scanner" class="btn btn-outline">Calibration Scanner</a>
+    </div>
+    <div class="hero-pills r">
+      <span class="pill pill-p">Perceive</span>
+      <span class="pill pill-a">Appraise</span>
+      <span class="pill pill-r">Recalibrate</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="prism-hero">
+      <svg viewBox="0 0 400 400">
+        <!-- Reality field -->
+        <defs>
+          <linearGradient id="gP" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9B59B6" stop-opacity="0.15"/><stop offset="100%" stop-color="#9B59B6" stop-opacity="0.03"/></linearGradient>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E67E22" stop-opacity="0.15"/><stop offset="100%" stop-color="#E67E22" stop-opacity="0.03"/></linearGradient>
+          <linearGradient id="gR" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#1ABC9C" stop-opacity="0.15"/><stop offset="100%" stop-color="#1ABC9C" stop-opacity="0.03"/></linearGradient>
+        </defs>
+        <!-- Outer reality circle -->
+        <circle cx="200" cy="200" r="180" fill="none" stroke="#D8D3CC" stroke-width="1" stroke-dasharray="4,6"/>
+        <text x="200" y="30" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="3" fill="#aaa" text-transform="uppercase">REALITY · INFINITE COMPLEXITY</text>
+        <!-- Prism triangle -->
+        <polygon points="200,80 320,300 80,300" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+        <text x="200" y="70" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" letter-spacing="2" fill="#888">YOUR PERCEPTUAL FILTERS</text>
+        <!-- Three filter zones -->
+        <circle class="fz" cx="200" cy="160" r="55" fill="url(#gP)" stroke="#9B59B6" stroke-width="1" opacity=".8"/>
+        <circle class="fz" cx="150" cy="260" r="55" fill="url(#gA)" stroke="#E67E22" stroke-width="1" opacity=".8"/>
+        <circle class="fz" cx="250" cy="260" r="55" fill="url(#gR)" stroke="#1ABC9C" stroke-width="1" opacity=".8"/>
+        <!-- Labels -->
+        <text x="200" y="155" text-anchor="middle" font-family="Syne" font-weight="700" font-size="11" fill="#9B59B6">PERCEIVE</text>
+        <text x="200" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#9B59B6" opacity=".6">what you notice</text>
+        <text x="150" y="255" text-anchor="middle" font-family="Syne" font-weight="700" font-size="11" fill="#E67E22">APPRAISE</text>
+        <text x="150" y="268" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#E67E22" opacity=".6">how you judge it</text>
+        <text x="250" y="255" text-anchor="middle" font-family="Syne" font-weight="700" font-size="11" fill="#1ABC9C">RECALIBRATE</text>
+        <text x="250" y="268" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#1ABC9C" opacity=".6">how you adjust</text>
+        <!-- Center -->
+        <circle cx="200" cy="225" r="18" fill="#C8960C" opacity=".12" stroke="#C8960C" stroke-width="1"/>
+        <text x="200" y="222" text-anchor="middle" font-family="Syne" font-weight="800" font-size="7" fill="#C8960C">OPTIMAL</text>
+        <text x="200" y="232" text-anchor="middle" font-family="Syne" font-weight="800" font-size="7" fill="#C8960C">ACTION</text>
+        <!-- Output arrow -->
+        <line x1="200" y1="310" x2="200" y2="370" stroke="#C8960C" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <polygon points="194,370 200,382 206,370" fill="#C8960C"/>
+        <text x="200" y="395" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" letter-spacing="2" fill="#C8960C">ACTION IN THE WORLD</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker-outer">
+  <div class="ticker-inner">
+    <div class="t-item t-p"><span class="t-dot"></span>PERCEPTION</div><div class="t-item t-p"><span class="t-dot"></span>FILTERS</div><div class="t-item t-p"><span class="t-dot"></span>MODELS</div><div class="t-item t-p"><span class="t-dot"></span>SIMPLIFICATION</div>
+    <div class="t-item t-a"><span class="t-dot"></span>APPRAISAL</div><div class="t-item t-a"><span class="t-dot"></span>JUDGMENT</div><div class="t-item t-a"><span class="t-dot"></span>FRAMING</div><div class="t-item t-a"><span class="t-dot"></span>MEANING</div>
+    <div class="t-item t-r"><span class="t-dot"></span>RECALIBRATION</div><div class="t-item t-r"><span class="t-dot"></span>ADAPTATION</div><div class="t-item t-r"><span class="t-dot"></span>FEEDBACK</div><div class="t-item t-r"><span class="t-dot"></span>CORRECTION</div>
+    <div class="t-item t-p"><span class="t-dot"></span>PERCEPTION</div><div class="t-item t-p"><span class="t-dot"></span>FILTERS</div><div class="t-item t-p"><span class="t-dot"></span>MODELS</div><div class="t-item t-p"><span class="t-dot"></span>SIMPLIFICATION</div>
+    <div class="t-item t-a"><span class="t-dot"></span>APPRAISAL</div><div class="t-item t-a"><span class="t-dot"></span>JUDGMENT</div><div class="t-item t-a"><span class="t-dot"></span>FRAMING</div><div class="t-item t-a"><span class="t-dot"></span>MEANING</div>
+    <div class="t-item t-r"><span class="t-dot"></span>RECALIBRATION</div><div class="t-item t-r"><span class="t-dot"></span>ADAPTATION</div><div class="t-item t-r"><span class="t-dot"></span>FEEDBACK</div><div class="t-item t-r"><span class="t-dot"></span>CORRECTION</div>
+  </div>
+</div>
+<div class="ticker-outer" style="border-top:none">
+  <div class="ticker-inner ticker-inner2">
+    <div class="t-item"><span class="t-dot"></span>PERCEPTUAL CONTROL FRAMEWORK</div><div class="t-item"><span class="t-dot"></span>ALL MODELS ARE WRONG · SOME ARE USEFUL</div><div class="t-item"><span class="t-dot"></span>THE MAP IS NOT THE TERRITORY</div><div class="t-item"><span class="t-dot"></span>PETERSON · ROBINSON · JAMES · KORZYBSKI · GIBSON</div>
+    <div class="t-item"><span class="t-dot"></span>PERCEPTUAL CONTROL FRAMEWORK</div><div class="t-item"><span class="t-dot"></span>ALL MODELS ARE WRONG · SOME ARE USEFUL</div><div class="t-item"><span class="t-dot"></span>THE MAP IS NOT THE TERRITORY</div><div class="t-item"><span class="t-dot"></span>PETERSON · ROBINSON · JAMES · KORZYBSKI · GIBSON</div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ═══ THESIS ═══ -->
+<section id="thesis">
+<div class="wrap sec">
+  <div class="sec-tag r">01 — The Core Thesis</div>
+  <h2 class="sec-h r">We don't see reality.<br>We see what's useful.</h2>
+  <p class="sec-sub r">Five converging intellectual traditions — from 19th-century pragmatism to 21st-century neuroscience — arrive at the same conclusion: human perception is not a camera. It is a goal-directed filter. And the quality of your life depends on the quality of your filters.</p>
+
+  <div class="thesis-grid r">
+    <div class="thesis-cell">
+      <div class="thesis-num">01</div>
+      <div class="thesis-label" style="color:var(--P)">Premise</div>
+      <h4>All Models Are Wrong</h4>
+      <p>George Box (1976): every model is a simplification. The question is never "is this model correct?" — it is "is this model useful enough to act on?" Korzybski's parallel: the map is not the territory. We navigate by maps that are always wrong, sometimes useful, and occasionally dangerous.</p>
+    </div>
+    <div class="thesis-cell">
+      <div class="thesis-num">02</div>
+      <div class="thesis-label" style="color:var(--A)">Mechanism</div>
+      <h4>Perception Is Goal-Directed</h4>
+      <p>Peterson's MAP schema: we perceive not what is there, but what is relevant to our current motivational state. Gibson's affordances: we see what actions the environment permits — not objects as they "truly" are. Perception simplifies the world without sacrificing functional grip.</p>
+    </div>
+    <div class="thesis-cell">
+      <div class="thesis-num">03</div>
+      <div class="thesis-label" style="color:var(--R)">Implication</div>
+      <h4>Truth = The Most Useful Model</h4>
+      <p>William James: the truth of an idea is not a stagnant property — truth <em>happens</em> to an idea through verification in action. Nietzsche's perspectivism: there are no facts, only interpretations — and some interpretations produce better lives. The accurate model and the useful model are not the same. Optimize for usefulness.</p>
+    </div>
+    <div class="thesis-cell">
+      <div class="thesis-num">04</div>
+      <div class="thesis-label" style="color:var(--gold)">Extension</div>
+      <h4>Filters Can Be Recalibrated</h4>
+      <p>Cognitive reappraisal research: changing how you frame a situation changes your emotional and behavioral response. Robinson: creativity is the capacity to see multiple possible interpretations — divergent thinking as perceptual flexibility. Your filters are not fixed. They are weights you can adjust.</p>
+    </div>
+    <div class="thesis-cell">
+      <div class="thesis-num">05</div>
+      <div class="thesis-label" style="color:var(--P)">Synthesis</div>
+      <h4>The MPC Analogy</h4>
+      <p>A Model Predictive Controller continuously compares its internal model to incoming reality, adjusts its parameters, and re-optimizes its trajectory. Your mind does the same thing — or should. The PCF framework makes this process deliberate: perceive, appraise, recalibrate, act, measure, repeat.</p>
+    </div>
+    <div class="thesis-cell">
+      <div class="thesis-num">06</div>
+      <div class="thesis-label" style="color:var(--A)">Warning</div>
+      <h4>Uncalibrated Filters Kill Action</h4>
+      <p>When your perceptual model is miscalibrated — seeing threats where there are opportunities, seeing impossibility where there is access — you act on bad data. The WSO framework diagnoses what's missing. The PCF framework diagnoses why you can't see what's there.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SCIENCE SCAN ═══ -->
+<section id="science" class="scan-bg">
+<div class="wrap sec">
+  <div class="sec-tag r">02 — The Scientific Foundation</div>
+  <h2 class="sec-h r">Five traditions.<br>One convergence.</h2>
+  <p class="sec-sub r">These aren't speculations. Each tradition represents decades of peer-reviewed research arriving independently at the same insight: perception is constructed, purposeful, and adjustable.</p>
+
+  <div class="scan-grid r">
+    <div class="scan-cell scan-p">
+      <div class="scan-label">Tradition 1 — Philosophy</div>
+      <h4>Pragmatism: James, Peirce, Dewey</h4>
+      <p>Truth is not a mirror of reality — it is what works. James argued that ideas become true through verification in practice. Peirce's pragmatic maxim: the meaning of a concept is the sum of its practical consequences. Truth is measured by its cash value in experiential terms — not by abstract correspondence to an unknowable "real."</p>
+      <div class="scan-cite">James 1907 · Peirce 1878 · Dewey 1938 · The pragmatist tradition</div>
+    </div>
+    <div class="scan-cell scan-a">
+      <div class="scan-label">Tradition 2 — Psychology</div>
+      <h4>Peterson's MAP Schemas</h4>
+      <p>Motivation, Action, and Perception form an inseparable triad. What you want determines what you see. Perception simplifies the world by tuning itself to goal-relevant features and rendering everything else invisible. The perceived object is a low-resolution image of the thing-in-itself. When goals change, the entire perceptual world reorganizes.</p>
+      <div class="scan-cite">Peterson 1999, 2002 · Sokolov 1963 · Gibson 1979 · Simons & Rensink 2005</div>
+    </div>
+    <div class="scan-cell scan-r">
+      <div class="scan-label">Tradition 3 — Education</div>
+      <h4>Robinson's Divergent Thinking</h4>
+      <p>Creativity is the ability to see lots of possible answers to a question — divergent thinking. Children score near genius on divergent thinking tests; education systematically degrades this capacity. Robinson showed that the ability to view the same situation through multiple perceptual frames is not a talent — it is a trainable skill being destroyed by standardized thinking.</p>
+      <div class="scan-cite">Robinson 2006, 2009 · Land & Jarman 1992 · Guilford 1967</div>
+    </div>
+    <div class="scan-cell scan-all">
+      <div class="scan-label">Tradition 4 — Neuroscience</div>
+      <h4>Cognitive Reappraisal & Stress Mindsets</h4>
+      <p>The brain's appraisal of a stimulus determines its emotional and physiological response. Reappraisal — deliberately reframing the interpretation — changes affect, cortisol levels, cardiovascular response, and performance. Stress mindset research shows that believing stress is enhancing (versus debilitating) produces measurably different biological outcomes from the same stressor.</p>
+      <div class="scan-cite">Lazarus & Folkman 1984 · Crum et al. 2013 · Gross 2002 · BPS model</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ THE MPC FRAMEWORK ═══ -->
+<section id="framework" style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">03 — The MPC Loop</div>
+  <h2 class="sec-h r">Model Predictive Control<br>for the human mind</h2>
+  <p class="sec-sub r">In engineering, a Model Predictive Controller continuously updates its internal model based on real-time feedback to optimize control actions. Your mind does this naturally — but badly, because it's running unconscious, inherited, and often broken filters. The PCF makes it deliberate.</p>
+
+  <div class="mpc-intro r">
+    <div class="mpc-text">
+      <p><strong>The core insight:</strong> You are not a passive camera. You are a prediction machine running an internal model of the world. That model determines what you perceive, how you appraise it, and what you do about it. When the model is well-calibrated, you act effectively. When it isn't, you mistake the map for the territory.</p>
+      <p><strong>The engineering parallel:</strong> In an MPC system, there are three operations happening continuously: the controller <em>predicts</em> the future state based on its model, <em>compares</em> the prediction to the actual measurement, and <em>adjusts</em> its parameters to minimize the error between prediction and reality.</p>
+      <p><strong>The human parallel:</strong> Your mind <em>perceives</em> the world through its filters (prediction), <em>appraises</em> the situation by comparing perception to goals (measurement), and — if you're doing this well — <em>recalibrates</em> its filters based on the mismatch between expected and actual outcomes. Most people skip the third step. They run on autopilot, using yesterday's filters on today's reality.</p>
+      <p><strong>The framework:</strong> PCF formalizes this loop into three adjustable filter banks — Perception, Appraisal, Recalibration — each with specific weights you can tune. Like an MPC, you're optimizing over a finite horizon: what set of filter weights produces the best predicted outcome for the next action?</p>
+    </div>
+    <div>
+      <div class="loop-wrap">
+        <div class="loop-grid">
+          <div class="loop-step">
+            <div class="loop-n" style="color:var(--P)">Step 1</div>
+            <h4>Perceive</h4>
+            <p>What am I actually seeing? What am I filtering out? What resolution am I operating at?</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-n" style="color:var(--P)">Step 2</div>
+            <h4>Predict</h4>
+            <p>Given my current model, what do I expect to happen if I act on this perception?</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-n" style="color:var(--A)">Step 3</div>
+            <h4>Act</h4>
+            <p>Execute the action the model prescribes. Commit fully. Half-action produces no signal.</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-n" style="color:var(--A)">Step 4</div>
+            <h4>Measure</h4>
+            <p>Compare actual outcome to predicted outcome. The gap is the calibration error.</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-n" style="color:var(--R)">Step 5</div>
+            <h4>Recalibrate</h4>
+            <p>Update filter weights. Change what you attend to. Change how you appraise. Loop again.</p>
+          </div>
+        </div>
+        <div class="loop-return">Continuous Loop · Recalibrate → Perceive → Predict → Act → Measure → Recalibrate</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ THE THREE FILTER BANKS ═══ -->
+<section>
+<div class="wrap sec">
+  <div class="sec-tag r">04 — The Three Filter Banks</div>
+  <h2 class="sec-h r">What you can actually adjust</h2>
+  <p class="sec-sub r">Each filter bank contains specific cognitive parameters — weights — that shape how reality appears to you. Miscalibrated weights produce distorted perception, distorted appraisal, and failed action. Here's what's adjustable.</p>
+
+  <div class="filter-matrix r">
+    <div class="filter-col fc-p">
+      <div class="filter-col-label">Filter Bank 01</div>
+      <h3>Perception Weights</h3>
+      <em>"What do you let in?"</em>
+      <div class="filter-item">
+        <div class="filter-item-label">Resolution Level</div>
+        <p>Are you operating at too high a zoom (seeing individual pixels, missing the picture) or too low (seeing the forest, missing the fire)? Peterson: the perceiver learns what resolution-level is relevant by interacting pragmatically with patterns.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Attention Allocation</div>
+        <p>Your working memory holds fewer than 7 objects. What are you spending those slots on? Threat? Opportunity? Past? Future? The allocation determines the reality you inhabit.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Affordance Detection</div>
+        <p>Gibson: we see what actions the environment permits. Are you seeing the opportunities for action, or just the properties of objects? A door isn't rectangular — a door is "walk-through-able."</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Novelty Sensitivity</div>
+        <p>Sokolov's orienting reflex: the brain responds to differences that make a difference. Are you tuned to notice changes, or has habituation flattened your world?</p>
+      </div>
+    </div>
+    <div class="filter-col fc-a">
+      <div class="filter-col-label">Filter Bank 02</div>
+      <h3>Appraisal Weights</h3>
+      <em>"What meaning do you assign?"</em>
+      <div class="filter-item">
+        <div class="filter-item-label">Threat vs. Challenge</div>
+        <p>The BPS model: the same stressor is appraised as challenge (high resources, low demands) or threat (low resources, high demands). The appraisal determines your cardiovascular profile, cortisol response, and cognitive flexibility.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Locus of Control</div>
+        <p>Do you frame outcomes as caused by your action or by external forces? This isn't about accuracy — it's about which frame produces better subsequent action. Internal locus correlates with persistence.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Temporal Frame</div>
+        <p>Are you appraising this moment against a 5-minute horizon or a 5-year horizon? The same event looks radically different at different temporal zoom levels. A failure today is a data point at 5 years.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Identity Weighting</div>
+        <p>How heavily does this situation weigh on your sense of who you are? Over-weighting identity makes every setback existential. Under-weighting it removes motivation. The weight matters more than the event.</p>
+      </div>
+    </div>
+    <div class="filter-col fc-r">
+      <div class="filter-col-label">Filter Bank 03</div>
+      <h3>Recalibration Weights</h3>
+      <em>"How fast do you update?"</em>
+      <div class="filter-item">
+        <div class="filter-item-label">Learning Rate</div>
+        <p>How much does new evidence shift your model? Too high and you're volatile — every setback destroys your framework. Too low and you're rigid — you keep using the Kansas map in California.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Feedback Integration</div>
+        <p>Which feedback channels are you attending to? Internal feelings? External results? Social signals? Each channel has different noise levels. Over-reliance on any one produces systematic drift.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Divergent Capacity</div>
+        <p>Robinson's key insight: can you generate multiple interpretations of the same situation? The ability to see three meanings where others see one is the difference between creative response and rigid reaction.</p>
+      </div>
+      <div class="filter-item">
+        <div class="filter-item-label">Model Confidence</div>
+        <p>How much do you trust your current filter configuration? Too much confidence and you stop updating (confirmation bias). Too little and you never commit to action. The right confidence is provisional: act on the model, but remain ready to revise it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SCANNER TOOL ═══ -->
+<section id="scanner" style="background:var(--surface)">
+<div class="wrap sec">
+  <div class="sec-tag r">05 — Filter Calibration Scanner</div>
+  <h2 class="sec-h r">Diagnose your current<br>filter settings</h2>
+  <p class="sec-sub r">Rate your current filter calibration on each dimension. The scanner identifies your dominant distortion pattern and prescribes the specific recalibration protocol.</p>
+
+  <div class="scanner-tool r">
+    <div class="scanner-label">PCF Calibration Scanner</div>
+    <div class="scanner-head">Where are your filters miscalibrated?</div>
+    <div class="scanner-sub">Rate each filter bank from 1 (severely miscalibrated) to 10 (precisely tuned). Most people are surprised by how low they score.</div>
+    <div class="scanner-form">
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:var(--P)">Perception Clarity</span>
+        <span class="s-val" id="pVal">5</span>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-p" id="pSlider" oninput="document.getElementById('pVal').textContent=this.value">
+      </div>
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:var(--A)">Appraisal Accuracy</span>
+        <span class="s-val" id="aVal">5</span>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-a" id="aSlider" oninput="document.getElementById('aVal').textContent=this.value">
+      </div>
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:var(--R)">Recalibration Speed</span>
+        <span class="s-val" id="rVal">5</span>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-r" id="rSlider" oninput="document.getElementById('rVal').textContent=this.value">
+      </div>
+      <button class="scanner-btn" onclick="runScan()">Diagnose →</button>
+    </div>
+    <div class="scanner-result" id="scanResult">
+      <div class="scanner-label" id="scanLabel"></div>
+      <div class="sr-archetype" id="scanArchetype"></div>
+      <div class="sr-insight" id="scanInsight"></div>
+      <div class="sr-actions" id="scanActions"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ DOMAIN APPLICATIONS ═══ -->
+<section>
+<div class="wrap sec">
+  <div class="sec-tag r">06 — Domain Applications</div>
+  <h2 class="sec-h r">Recalibrating filters<br>across life domains</h2>
+  <p class="sec-sub r">The same filter miscalibration produces different symptoms depending on the domain. A perception problem in career looks different from a perception problem in relationships — but the underlying mechanism is identical.</p>
+
+  <div class="domain-tabs r">
+    <button class="d-tab active" onclick="switchDomain(0)">Career</button>
+    <button class="d-tab" onclick="switchDomain(1)">Relationships</button>
+    <button class="d-tab" onclick="switchDomain(2)">Health</button>
+    <button class="d-tab" onclick="switchDomain(3)">Creativity</button>
+    <button class="d-tab" onclick="switchDomain(4)">Learning</button>
+  </div>
+
+  <div class="domain-content active" id="dom0">
+    <div class="d-panel"><div class="d-panel-head d-p">Perception Distortion</div><h4>Seeing Glass Ceilings That Don't Exist</h4><p>When career perception is miscalibrated, you mistake structural barriers for personal limitations — or vice versa. You might see only threats in a changing industry when the same changes contain massive opportunity. Peterson's insight: your motivational state determines whether you see the promotion or the politics.</p><ul><li>Tunnel vision on current role, blind to adjacent possibilities</li><li>Seeing competitors where there are collaborators</li><li>Over-indexing on credentials, under-indexing on capability</li><li>Missing affordances: what actions does this environment actually permit?</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-a">Appraisal Distortion</div><h4>Catastrophizing Feedback</h4><p>A single piece of critical feedback appraised through a threat lens activates fight-or-flight and shuts down learning. The same feedback appraised through a challenge lens activates approach motivation and accelerates growth. The feedback hasn't changed — your appraisal weights have.</p><ul><li>Identity over-weighting: "this critique means I'm a fraud"</li><li>Temporal compression: "this quarter's failure is permanent"</li><li>External locus: "the system is broken" (when you haven't tested it)</li><li>Binary appraisal: success/failure with no spectrum between</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-r">Recalibration Failure</div><h4>Running Yesterday's Strategy Today</h4><p>The market shifted. The technology changed. The organization restructured. But your internal model is still optimized for last year's conditions. Low recalibration speed means you're always acting on stale data — responding to a reality that no longer exists.</p><ul><li>Using the Kansas map in California (Korzybski's warning)</li><li>Skill investments in declining domains</li><li>Relationship strategies that worked at 25 but fail at 40</li><li>Refusing to update after three consecutive failed predictions</li></ul></div>
+  </div>
+
+  <div class="domain-content" id="dom1">
+    <div class="d-panel"><div class="d-panel-head d-p">Perception Distortion</div><h4>Seeing What You Want to See</h4><p>Relational perception is the most motivated — and therefore the most distorted. You project your needs onto partners, mistake chemistry for compatibility, and filter out red flags that don't match your desired narrative. The map of who they are becomes more real than the territory.</p><ul><li>Projection: mapping your ideals onto actual behavior</li><li>Selective attention: noticing confirming signals, discarding disconfirming ones</li><li>Resolution mismatch: zooming into moments of connection, blurring patterns of disconnection</li><li>Affordance blindness: unable to see what this relationship actually offers</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-a">Appraisal Distortion</div><h4>Interpreting Silence as Rejection</h4><p>The appraisal of relational events is deeply shaped by attachment history. A secure base produces generous appraisals; an anxious base produces threat-heavy appraisals of identical behavior. They didn't text back — is this disinterest, or are they driving?</p><ul><li>Threat appraisal of neutral behavior</li><li>Over-weighting early signals, under-weighting sustained patterns</li><li>Temporal myopia: this argument = this relationship is failing</li><li>Identity fusion: their behavior defines my worth</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-r">Recalibration Failure</div><h4>Replaying the Same Pattern</h4><p>The learning rate in relationships is notoriously low. People repeat the same relational pattern across partners, decades, and even generations. The filter weights were set in childhood — and without deliberate recalibration, they persist unchanged.</p><ul><li>Same partner archetype, different face</li><li>Ignoring feedback from repeated outcomes</li><li>Model rigidity: "all men/women are like this"</li><li>Zero divergent capacity: only one interpretation of their behavior</li></ul></div>
+  </div>
+
+  <div class="domain-content" id="dom2">
+    <div class="d-panel"><div class="d-panel-head d-p">Perception Distortion</div><h4>Body Blindness</h4><p>Health perception distortions range from hypochondria (resolution too high — noticing every sensation) to somatic ignorance (resolution too low — not noticing until it becomes a crisis). The right perception weight notices the signal without amplifying the noise.</p><ul><li>Over-attending to symptoms (anxiety-driven body scanning)</li><li>Under-attending to signals (ignoring chronic low energy)</li><li>Social comparison filters distorting body image</li><li>Missing affordances: what can this body actually do?</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-a">Appraisal Distortion</div><h4>Moralizing Health</h4><p>Appraising health behaviors through a moral lens (good/bad, discipline/weakness) rather than an engineering lens (calibration, optimization, feedback) produces shame, which is the single most effective action-killer. Reframe: not "I failed my diet" but "my current protocol needs parameter adjustment."</p><ul><li>Moral framing produces shame, which inhibits corrective action</li><li>All-or-nothing appraisal: one deviation = total failure</li><li>Identity over-weighting: "I'm an unhealthy person"</li><li>External locus: "my genetics make this impossible"</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-r">Recalibration Failure</div><h4>Not Tracking the Right Variables</h4><p>Most people have no feedback loop. They don't track, don't measure, don't compare predicted outcomes to actual outcomes. Without measurement, recalibration is impossible. You're flying with instruments you never read.</p><ul><li>Subjective "feeling" without objective data</li><li>Tracking vanity metrics (weight) instead of functional metrics (energy, sleep, capacity)</li><li>Learning rate too high: yo-yo between protocols</li><li>Learning rate too low: doing the same ineffective program for years</li></ul></div>
+  </div>
+
+  <div class="domain-content" id="dom3">
+    <div class="d-panel"><div class="d-panel-head d-p">Perception Distortion</div><h4>Seeing Only the "Normal" Answer</h4><p>Robinson's central finding: education trains convergent perception — one right answer. Creative perception requires divergent filters: seeing many possible answers, connections, and interpretations simultaneously. The creative filter bank is wide, not deep.</p><ul><li>Convergent lock: only one interpretation per stimulus</li><li>Category rigidity: objects belong to fixed categories</li><li>Domain silos: solutions can only come from "relevant" fields</li><li>Missing lateral affordances: what else could this be used for?</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-a">Appraisal Distortion</div><h4>Judging Ideas Before Testing Them</h4><p>The creative process requires separating generation from evaluation. When the appraisal filter is active during perception, it kills ideas before they form. The critical voice that says "that's stupid" is an appraisal weight set too high, too early in the loop.</p><ul><li>Premature evaluation: judging during brainstorming</li><li>Perfectionism: impossibly high appraisal threshold</li><li>Social appraisal: filtering ideas by "what will others think"</li><li>Risk appraisal: overweighting failure probability</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-r">Recalibration Failure</div><h4>Not Learning from Creative Experiments</h4><p>Every creative act is an experiment. The output contains information about your creative model's accuracy. But most people don't close the loop — they create, receive feedback, and continue without updating their creative model. The most creative people have the fastest recalibration speed.</p><ul><li>No iteration cycle: create once, declare "done"</li><li>Feedback avoidance: not showing work to others</li><li>Attribution error: success = talent, failure = conditions</li><li>Unchanging creative process despite changing results</li></ul></div>
+  </div>
+
+  <div class="domain-content" id="dom4">
+    <div class="d-panel"><div class="d-panel-head d-p">Perception Distortion</div><h4>Mistaking Familiarity for Understanding</h4><p>The fluency illusion: when information feels familiar, you perceive yourself as understanding it. Re-reading highlights feels productive because the perception filter registers "I've seen this" and mistakes it for "I know this." True learning requires testing, not recognizing.</p><ul><li>Fluency illusion: ease of processing ≠ depth of understanding</li><li>Information overload: consuming without processing</li><li>Resolution mismatch: seeing surface patterns, missing deep structure</li><li>Affordance blindness: not seeing what this knowledge enables you to do</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-a">Appraisal Distortion</div><h4>Confusing Difficulty with Inability</h4><p>When learning feels hard, the default appraisal is "I can't do this." Dweck's growth mindset research is, at its core, a reappraisal intervention: reframing difficulty from a signal of inability to a signal of growth. Same sensation, radically different appraisal, entirely different outcome.</p><ul><li>Fixed mindset appraisal: struggle = inadequacy</li><li>Comparison appraisal: "others find this easy, so I'm deficient"</li><li>Sunk cost appraisal: "I've invested too much to change approach"</li><li>Expertise blindness: appraising your novice output against expert standards</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-r">Recalibration Failure</div><h4>Studying More Instead of Studying Differently</h4><p>When performance doesn't improve, the default response is to increase volume rather than change method. This is a recalibration failure: the model says "more = better," the data says otherwise, and no update occurs. Effective learners update their learning strategy, not just their effort level.</p><ul><li>Volume bias: more hours, same failed method</li><li>Single-channel feedback: only grades, not process metrics</li><li>No spaced repetition: ignoring the most validated learning technique</li><li>Learning rate zero: same study approach from age 15 to 45</li></ul></div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ DEBATES ═══ -->
+<section id="debates" style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">07 — The Serious Debates</div>
+  <h2 class="sec-h r">Where rigorous thinkers<br>push back</h2>
+  <p class="sec-sub r">The PCF framework is powerful. It is not unchallenged. These are the most intellectually serious objections — and the best responses.</p>
+
+  <div class="debates-layout r">
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">01</div><h4>Isn't "truth is what's useful" just relativism?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Pragmatic realism</div><p>James didn't say anything goes. He said truth is verified through consequences — the same standard as science. A model is true if acting on it reliably produces predicted outcomes across time. Nietzsche's perspectivism doesn't deny reality — it denies that any single perspective captures all of it. The framework doesn't abandon truth; it operationalizes it.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">The Harris objection</div><p>Sam Harris argued against Peterson: some facts are true independent of survival value. Water is H₂O whether that helps you or not. If "useful" becomes the criterion, you risk endorsing comforting delusions. The accurate model and the useful model sometimes diverge — and accuracy should win when they do, even if it's painful.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">02</div><h4>Can filters really be deliberately adjusted?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Evidence says yes</div><p>Cognitive reappraisal is one of the most validated interventions in psychology. Brief stress reappraisal interventions measurably change cardiovascular response, cortisol profiles, and performance under pressure. Mindfulness meditation trains attention allocation — a direct filter weight adjustment. The evidence for deliberate perceptual recalibration is extensive.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Limits of conscious control</div><p>Much of perception operates below conscious access. Pre-attentive processing, implicit bias, and embodied cognition all shape what you see before you can choose to see differently. The framework may overestimate conscious control and underestimate the degree to which filters are neurologically hardwired or culturally installed. Deliberate recalibration has limits.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">03</div><h4>Is this just positive thinking repackaged?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Emphatically no</div><p>Positive thinking says "see the bright side." PCF says "see accurately by adjusting your filter weights based on measured outcomes." It might prescribe seeing more threat when you're under-weighting risk. It might prescribe seeing less opportunity when you're over-indexing on optimism. The framework is calibration-neutral — it optimizes for accuracy relative to goals, not for positivity.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">In practice, it often looks similar</div><p>When most people's filters are biased toward threat and negativity — which the negativity bias literature confirms — the most common calibration adjustment will be toward seeing more possibility, which looks a lot like positive thinking in practice. The theoretical distinction matters, but the applied version may struggle to differentiate itself.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">04</div><h4>Does optimizing for action ignore contemplation?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Action includes inner action</div><p>The framework defines "optimal action" broadly — it includes the action of pausing, reflecting, and not-doing when that's what the situation requires. Meditation is an action. Grief is an action. Doing nothing deliberately is different from doing nothing by default. The MPC loop accommodates contemplation as a valid output.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Knowledge for its own sake</div><p>Some truth is worth knowing regardless of its practical utility. Understanding the cosmos, appreciating art, exploring philosophy for the sake of understanding — these are not instrumental activities and resist being captured by a framework that evaluates everything through the lens of "does this produce optimal action." Not all good thinking is goal-directed.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ BRIDGE TO WSO ═══ -->
+<section>
+<div class="wrap sec">
+  <div class="sec-tag r">08 — PCF × WSO Integration</div>
+  <h2 class="sec-h r">Two frameworks.<br>One operating system.</h2>
+  <p class="sec-sub r">WSO diagnoses <strong>what</strong> is missing — Will, Skill, or Opportunity. PCF diagnoses <strong>why you can't see</strong> what's missing — because your perceptual filters are miscalibrated. Together, they form a complete diagnostic for human action failure.</p>
+
+  <div class="bridge-grid r">
+    <div class="bridge-cell">
+      <div class="bridge-tag">Integration 01</div>
+      <h3>Can't Find Your Will? → Check Your Perception Filters</h3>
+      <p>Sometimes Will isn't missing — it's filtered out. You can't see what you want because you've been trained to want what others expect. The PCF reveals that "lacking motivation" is often a perception problem: you're scanning for the wrong goals at the wrong resolution level.</p>
+      <div class="bridge-pills">
+        <span class="pill pill-p">Perception</span>
+        <span class="pill" style="background:rgba(232,50,26,.08);color:#E8321A;border:1px solid rgba(232,50,26,.15)">Will</span>
+      </div>
+    </div>
+    <div class="bridge-cell">
+      <div class="bridge-tag">Integration 02</div>
+      <h3>Can't Build Skill? → Check Your Appraisal Weights</h3>
+      <p>Skill acquisition stalls when your appraisal filter turns difficulty into impossibility. The fixed mindset is an appraisal miscalibration — struggle appraised as signal of inadequacy rather than signal of growth. Recalibrate the appraisal weight, and the skill gap becomes navigable.</p>
+      <div class="bridge-pills">
+        <span class="pill pill-a">Appraisal</span>
+        <span class="pill" style="background:rgba(0,102,255,.08);color:#0066FF;border:1px solid rgba(0,102,255,.15)">Skill</span>
+      </div>
+    </div>
+    <div class="bridge-cell">
+      <div class="bridge-tag">Integration 03</div>
+      <h3>Can't See Opportunity? → Check Your Recalibration Rate</h3>
+      <p>Opportunity exists but goes unseen when your model is stale. You're running on a map drawn five years ago. The world moved, but your filters didn't. Increasing recalibration speed — deliberately scanning for what's changed — reveals Opportunities that were invisible under the old model.</p>
+      <div class="bridge-pills">
+        <span class="pill pill-r">Recalibrate</span>
+        <span class="pill" style="background:rgba(0,198,94,.08);color:#00C65E;border:1px solid rgba(0,198,94,.15)">Opportunity</span>
+      </div>
+    </div>
+    <div class="bridge-cell">
+      <div class="bridge-tag">Integration 04</div>
+      <h3>The Full Stack: PCF → WSO → Action</h3>
+      <p>The complete diagnostic sequence: first, run the PCF to ensure your filters are calibrated — that you're actually seeing reality with reasonable accuracy. Then, run the WSO to diagnose which action pillar needs strengthening. Finally, act. Without PCF, WSO diagnoses a distorted picture. Without WSO, PCF calibrates filters with no action framework to use them.</p>
+      <div class="bridge-pills">
+        <span class="pill pill-p">Perceive</span>
+        <span class="pill pill-a">Appraise</span>
+        <span class="pill pill-r">Recalibrate</span>
+        <span class="pill" style="background:rgba(200,150,12,.08);color:#C8960C;border:1px solid rgba(200,150,12,.15)">→ WSO → Action</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ PROTOCOLS ═══ -->
+<section id="protocols">
+<div class="wrap sec">
+  <div class="sec-tag r">09 — Recalibration Protocols</div>
+  <h2 class="sec-h r">Your 30-day protocol<br>based on your weakest filter</h2>
+
+  <div class="protocols r">
+    <div class="protocol pp">
+      <div class="protocol-lbl">Weak Perception</div>
+      <h3>The Lens Cleaning Protocol</h3>
+      <em>"I'm acting on a world I'm not actually seeing"</em>
+      <div class="protocol-week">Week 1 — Awareness</div>
+      <ul>
+        <li>For 3 days, write down every assumption you made that turned out wrong</li>
+        <li>Ask someone who disagrees with you what they see in a situation you've already judged</li>
+        <li>Spend 1 hour in a context you normally avoid — sit with the unfamiliar</li>
+      </ul>
+      <div class="protocol-week">Week 2 — Resolution Training</div>
+      <ul>
+        <li>Practice zooming in: examine one small aspect of your domain in 10× detail</li>
+        <li>Practice zooming out: describe your current situation to a stranger in one sentence</li>
+        <li>Gibson exercise: walk through your workspace and list 10 affordances you've never used</li>
+      </ul>
+      <div class="protocol-week">Week 3–4 — Divergent Perception</div>
+      <ul>
+        <li>For every situation, generate three interpretations before acting on any</li>
+        <li>Robinson's paper clip test: daily, pick one ordinary object and generate 20 uses</li>
+        <li>Cross-domain exposure: attend an event in a field completely unrelated to yours</li>
+        <li>Journal: "What did I fail to notice this week that turned out to matter?"</li>
+      </ul>
+    </div>
+    <div class="protocol pa">
+      <div class="protocol-lbl">Weak Appraisal</div>
+      <h3>The Reappraisal Protocol</h3>
+      <em>"I'm seeing the right things but judging them wrong"</em>
+      <div class="protocol-week">Week 1 — Appraisal Audit</div>
+      <ul>
+        <li>Track your stress responses for 3 days: what triggers threat vs. challenge appraisal?</li>
+        <li>For each stressor, explicitly rate: resources (1–10) vs. demands (1–10)</li>
+        <li>Identity separation: distinguish "this happened" from "this is who I am"</li>
+      </ul>
+      <div class="protocol-week">Week 2 — Temporal Reframing</div>
+      <ul>
+        <li>For every negative event, ask: "Will this matter in 5 years?" If no, reduce weight</li>
+        <li>Practice locus shifts: rewrite a setback story from an internal-locus perspective, then external</li>
+        <li>Talk to someone who went through what you fear and emerged — update your appraisal priors</li>
+      </ul>
+      <div class="protocol-week">Week 3–4 — Systematic Reappraisal</div>
+      <ul>
+        <li>Before every difficult conversation, write down: threat appraisal, then challenge appraisal</li>
+        <li>Implement the "experiment" frame: every action is data, not verdict</li>
+        <li>Weekly review: which appraisals were accurate? Which were distorted? What pattern emerges?</li>
+        <li>Deliberately seek disconfirming evidence for your three strongest beliefs about your situation</li>
+      </ul>
+    </div>
+    <div class="protocol pr">
+      <div class="protocol-lbl">Weak Recalibration</div>
+      <h3>The Update Protocol</h3>
+      <em>"I'm seeing and judging correctly but not adapting"</em>
+      <div class="protocol-week">Week 1 — Feedback Loop Installation</div>
+      <ul>
+        <li>Choose one metric in each life domain and start tracking it daily</li>
+        <li>Make three predictions about outcomes this week — write them down, check them Friday</li>
+        <li>Ask three people for honest feedback on one thing you believe about yourself</li>
+      </ul>
+      <div class="protocol-week">Week 2 — Model Updating</div>
+      <ul>
+        <li>List your five core assumptions about your career, relationships, and health</li>
+        <li>For each: when was this assumption last tested? What would disprove it?</li>
+        <li>Update one assumption based on data from the past 6 months</li>
+      </ul>
+      <div class="protocol-week">Week 3–4 — Adaptive Architecture</div>
+      <ul>
+        <li>Build a weekly review ritual: predicted outcomes vs. actual outcomes</li>
+        <li>Implement a 90-day model review: are my filters still calibrated for current reality?</li>
+        <li>Create an "update trigger" list: events that should force a filter review</li>
+        <li>Practice fast pivoting: when data contradicts model, change model within 24 hours</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-bar">
+  <h2 class="r">See clearly.<br>Judge accurately.<br>Adapt constantly.</h2>
+  <p class="r">The Perceptual Control Framework. A companion to WSO. Two frameworks, one operating system for human action.</p>
+  <div class="cta-actions r">
+    <a href="wso.html" class="btn-gold">Explore WSO Framework →</a>
+    <a href="index.html" class="btn-ghost">Back to QUMNI</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-l"><a href="index.html" style="color:inherit;text-decoration:none">QUMNI</a></div>
+  <ul class="footer-nav" style="display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap;padding:0;margin:0">
+    <li><a href="index.html" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none">Home</a></li>
+    <li><a href="wso.html" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none">WSO Framework</a></li>
+    <li><a href="pcf.html" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:600">PCF Framework</a></li>
+    <li><a href="login.html" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none">Sign In</a></li>
+    <li><a href="app.php" style="font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none">WSO App</a></li>
+  </ul>
+  <div class="footer-r">Frameworks for Human Action · © 2026</div>
+</footer>
+
+<script>
+// ── REVEAL ──
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');io.unobserve(x.target);}});},{threshold:.06});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+// ── DOMAIN TABS ──
+function switchDomain(i){
+  document.querySelectorAll('.d-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.domain-content').forEach((c,j)=>c.classList.toggle('active',j===i));
+}
+
+// ── SCANNER ──
+const ARCHETYPES={
+  P:{name:'The Blind Operator',color:'#9B59B6',insight:'Your primary distortion is perceptual. You are acting on a world you are not actually seeing clearly. Your appraisal and recalibration mechanisms are functional, but they are processing distorted inputs. Garbage in, garbage out. The fix is upstream: clean the lens before adjusting the focus.',actions:['Run the Lens Cleaning Protocol','Practice divergent perception daily','Cross-domain exposure: enter unfamiliar contexts','Gibson exercise: scan for affordances you are missing']},
+  A:{name:'The Harsh Judge',color:'#E67E22',insight:'Your primary distortion is in appraisal. You are seeing the world with reasonable accuracy, but systematically misinterpreting what you see — usually by over-weighting threat, over-attaching to identity, and compressing your temporal horizon. Same reality, wrong meaning assigned.',actions:['Run the Reappraisal Protocol','Practice challenge vs. threat reframing','Separate identity from event appraisal','Extend your temporal evaluation horizon']},
+  R:{name:'The Rigid Navigator',color:'#1ABC9C',insight:'Your primary distortion is in recalibration speed. You see accurately and appraise reasonably — but you are not updating your model fast enough. You are navigating with a map that was drawn in conditions that no longer exist. The world changed. Your filters did not.',actions:['Run the Update Protocol','Install weekly feedback loops','Make and track explicit predictions','90-day model review: are your filters still current?']},
+  ALL:{name:'The Awakening Observer',color:'#C8960C',insight:'No single filter bank is dramatically weaker than the others — but none is strong either. You are operating at moderate calibration across all three. The intervention is broad: systematic improvement across perception, appraisal, and recalibration simultaneously, with emphasis on whichever feels most friction-heavy.',actions:['Start all three protocols simultaneously at half-intensity','Choose one domain to focus PCF calibration on first','Weekly tracking across all three filter dimensions','Combine with WSO diagnostic for full action picture']}
+};
+
+function runScan(){
+  const p=parseInt(document.getElementById('pSlider').value);
+  const a=parseInt(document.getElementById('aSlider').value);
+  const r=parseInt(document.getElementById('rSlider').value);
+  let key;
+  if(p<=a&&p<=r)key='P';
+  else if(a<=p&&a<=r)key='A';
+  else if(r<=p&&r<=a)key='R';
+  else key='ALL';
+  const range=Math.max(p,a,r)-Math.min(p,a,r);
+  if(range<2)key='ALL';
+  const arch=ARCHETYPES[key];
+  const el=document.getElementById('scanResult');
+  el.classList.add('show');
+  document.getElementById('scanLabel').textContent=`Filter Scores: Perception ${p}/10 · Appraisal ${a}/10 · Recalibration ${r}/10`;
+  document.getElementById('scanArchetype').style.color=arch.color;
+  document.getElementById('scanArchetype').textContent=arch.name;
+  document.getElementById('scanInsight').textContent=arch.insight;
+  document.getElementById('scanActions').innerHTML=arch.actions.map(x=>`<button class="sr-action-btn" onclick="jumpToProtocol('${key}')">${x} →</button>`).join('');
+  el.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function jumpToProtocol(key){
+  const elProtocols = document.getElementById('protocols');
+  if(!elProtocols) return;
+  elProtocols.scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.protocol').forEach(p => p.classList.remove('highlight-target'));
+  setTimeout(() => {
+    if(key === 'P') {
+      const p = document.querySelector('.protocol.pp');
+      if(p) p.classList.add('highlight-target');
+    } else if(key === 'A') {
+      const a = document.querySelector('.protocol.pa');
+      if(a) a.classList.add('highlight-target');
+    } else if(key === 'R') {
+      const r = document.querySelector('.protocol.pr');
+      if(r) r.classList.add('highlight-target');
+    } else {
+      document.querySelectorAll('.protocol').forEach(p => p.classList.add('highlight-target'));
+    }
+  }, 400);
+}
+
+// Check auth state to customize nav button text
+fetch('api.php?action=me')
+  .then(r => r.json())
+  .then(d => {
+    if (d.authenticated) {
+      const navApp = document.getElementById('pcfNavApp');
+      if (navApp) {
+        navApp.textContent = 'Dashboard →';
+        navApp.style.background = 'var(--gold)';
+        navApp.style.color = '#000';
+      }
+    }
+  })
+  .catch(() => {});
+
+// ── PRISM PULSE ──
+const fzs=document.querySelectorAll('.fz');
+let t=0;
+(function pulse(){t+=0.015;fzs.forEach((c,i)=>{const ph=(i/3)*Math.PI*2;c.style.fillOpacity=(0.12+Math.sin(t+ph)*0.05).toFixed(3);});requestAnimationFrame(pulse);})();
+</script>
+</body>
+</html>

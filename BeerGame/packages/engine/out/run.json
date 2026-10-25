@@ -1,0 +1,2343 @@
+{
+  "scenario": {
+    "id": "classic",
+    "name": "Classic — Sterman 1989",
+    "echelons": 4,
+    "weeks": 36,
+    "revealEndWeek": false,
+    "initialInventory": 12,
+    "initialBacklog": 0,
+    "initialPipelineUnits": 4,
+    "initialIncomingOrder": 4,
+    "orderDelay": 1,
+    "shippingDelay": 2,
+    "productionLeadTime": 2,
+    "holdCostCents": 50,
+    "backCostCents": 100,
+    "demand": {
+      "kind": "step",
+      "before": 4,
+      "after": 8,
+      "changeWeek": 5
+    },
+    "factoryCapacity": null,
+    "minOrderQty": 1,
+    "lostSales": false,
+    "informationSharing": false,
+    "showSupplyLine": true,
+    "orderWarnThreshold": 50,
+    "maxOrder": 9999,
+    "_presets": {
+      "classic-short": {
+        "weeks": 20
+      },
+      "information-sharing": {
+        "informationSharing": true,
+        "label": "Experiment 2 — shared POS demand"
+      },
+      "lean": {
+        "orderDelay": 0,
+        "shippingDelay": 1,
+        "productionLeadTime": 1
+      },
+      "disruption": {
+        "factoryCapacity": 10,
+        "_note": "plus a scripted demand spike at week 20"
+      }
+    },
+    "_benchmarkBaseStock": [
+      28,
+      28,
+      28,
+      20
+    ]
+  },
+  "metrics": {
+    "totalCents": 157200,
+    "byEchelon": [
+      {
+        "echelon": 0,
+        "totalCents": 41000,
+        "holdCents": 3000,
+        "backCents": 38000,
+        "bullwhipRatio": 31.710937499999986,
+        "stageAmplification": 31.710937499999986,
+        "inventoryVarianceRatio": 9.773437500000007,
+        "peakToTrough": 12,
+        "serviceLevel": 0.2777777777777778,
+        "fillRate": 0.4025157232704403
+      },
+      {
+        "echelon": 1,
+        "totalCents": 42800,
+        "holdCents": 7600,
+        "backCents": 35200,
+        "bullwhipRatio": 55.093749999999964,
+        "stageAmplification": 1.788032454361055,
+        "inventoryVarianceRatio": 24.156249999999986,
+        "peakToTrough": 24,
+        "serviceLevel": 0.4166666666666667,
+        "fillRate": 0.42483660130718953
+      },
+      {
+        "echelon": 2,
+        "totalCents": 35800,
+        "holdCents": 8200,
+        "backCents": 27600,
+        "bullwhipRatio": 70.52343749999996,
+        "stageAmplification": 1.4859259259259257,
+        "inventoryVarianceRatio": 16.398437500000004,
+        "peakToTrough": 12,
+        "serviceLevel": 0.5277777777777778,
+        "fillRate": 0.49264705882352944
+      },
+      {
+        "echelon": 3,
+        "totalCents": 37600,
+        "holdCents": 11600,
+        "backCents": 26000,
+        "bullwhipRatio": 55.46874999999998,
+        "stageAmplification": 1,
+        "inventoryVarianceRatio": 24.343749999999986,
+        "peakToTrough": 20,
+        "serviceLevel": 0.6666666666666666,
+        "fillRate": 0.4881889763779528
+      }
+    ],
+    "amplificationFactor": 4
+  },
+  "recordsByWeek": [
+    [
+      {
+        "week": 1,
+        "echelon": 0,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 600
+      },
+      {
+        "week": 1,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 600
+      },
+      {
+        "week": 1,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 600
+      },
+      {
+        "week": 1,
+        "echelon": 3,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 600
+      }
+    ],
+    [
+      {
+        "week": 2,
+        "echelon": 0,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1200
+      },
+      {
+        "week": 2,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1200
+      },
+      {
+        "week": 2,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1200
+      },
+      {
+        "week": 2,
+        "echelon": 3,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          0
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1200
+      }
+    ],
+    [
+      {
+        "week": 3,
+        "echelon": 0,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1800
+      },
+      {
+        "week": 3,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1800
+      },
+      {
+        "week": 3,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 1800
+      },
+      {
+        "week": 3,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 1600
+      }
+    ],
+    [
+      {
+        "week": 4,
+        "echelon": 0,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 2400
+      },
+      {
+        "week": 4,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 2400
+      },
+      {
+        "week": 4,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 2400
+      },
+      {
+        "week": 4,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 2000
+      }
+    ],
+    [
+      {
+        "week": 5,
+        "echelon": 0,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 2800
+      },
+      {
+        "week": 5,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 3000
+      },
+      {
+        "week": 5,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 3000
+      },
+      {
+        "week": 5,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 2400
+      }
+    ],
+    [
+      {
+        "week": 6,
+        "echelon": 0,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 3000
+      },
+      {
+        "week": 6,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 3600
+      },
+      {
+        "week": 6,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 3600
+      },
+      {
+        "week": 6,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 2800
+      }
+    ],
+    [
+      {
+        "week": 7,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 3000
+      },
+      {
+        "week": 7,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 4200
+      },
+      {
+        "week": 7,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 4200
+      },
+      {
+        "week": 7,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 3200
+      }
+    ],
+    [
+      {
+        "week": 8,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 12,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 3400
+      },
+      {
+        "week": 8,
+        "echelon": 1,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 4600
+      },
+      {
+        "week": 8,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 4800
+      },
+      {
+        "week": 8,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 3600
+      }
+    ],
+    [
+      {
+        "week": 9,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 4200
+      },
+      {
+        "week": 9,
+        "echelon": 1,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 4800
+      },
+      {
+        "week": 9,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 5400
+      },
+      {
+        "week": 9,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 4000
+      }
+    ],
+    [
+      {
+        "week": 10,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 12,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 5000
+      },
+      {
+        "week": 10,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 12,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 5200
+      },
+      {
+        "week": 10,
+        "echelon": 2,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 6000
+      },
+      {
+        "week": 10,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 4400
+      }
+    ],
+    [
+      {
+        "week": 11,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 5800
+      },
+      {
+        "week": 11,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 6000
+      },
+      {
+        "week": 11,
+        "echelon": 2,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 6400
+      },
+      {
+        "week": 11,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 4800
+      }
+    ],
+    [
+      {
+        "week": 12,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 12,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 6600
+      },
+      {
+        "week": 12,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 12,
+        "shipped": 4,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 7600
+      },
+      {
+        "week": 12,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 6600
+      },
+      {
+        "week": 12,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 5200
+      }
+    ],
+    [
+      {
+        "week": 13,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 7800
+      },
+      {
+        "week": 13,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 4,
+        "shipped": 8,
+        "orderPlaced": 20,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 8800
+      },
+      {
+        "week": 13,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 16,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 7400
+      },
+      {
+        "week": 13,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 5600
+      }
+    ],
+    [
+      {
+        "week": 14,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 9400
+      },
+      {
+        "week": 14,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 12,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 10400
+      },
+      {
+        "week": 14,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 20,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 8600
+      },
+      {
+        "week": 14,
+        "echelon": 3,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 5800
+      }
+    ],
+    [
+      {
+        "week": 15,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 11000
+      },
+      {
+        "week": 15,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 20,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 11200
+      },
+      {
+        "week": 15,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 20,
+        "shipped": 4,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 11400
+      },
+      {
+        "week": 15,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 5800
+      }
+    ],
+    [
+      {
+        "week": 16,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 20,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 12600
+      },
+      {
+        "week": 16,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 16,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 13200
+      },
+      {
+        "week": 16,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 32,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 13400
+      },
+      {
+        "week": 16,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 20,
+        "shipped": 4,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 7400
+      }
+    ],
+    [
+      {
+        "week": 17,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 14200
+      },
+      {
+        "week": 17,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 0,
+        "shipped": 4,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 14800
+      },
+      {
+        "week": 17,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 32,
+        "incomingOrder": 20,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 3200,
+        "cumCostCents": 16600
+      },
+      {
+        "week": 17,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 20,
+        "pipeline": [
+          20,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 9000
+      }
+    ],
+    [
+      {
+        "week": 18,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 20,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 16200
+      },
+      {
+        "week": 18,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 20,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 17600
+      },
+      {
+        "week": 18,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 0,
+        "shipped": 4,
+        "orderPlaced": 32,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 19400
+      },
+      {
+        "week": 18,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 40,
+        "incomingOrder": 32,
+        "shipped": 8,
+        "orderPlaced": 8,
+        "pipeline": [
+          8,
+          20
+        ],
+        "weekCostCents": 4000,
+        "cumCostCents": 13000
+      }
+    ],
+    [
+      {
+        "week": 19,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 18600
+      },
+      {
+        "week": 19,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 19600
+      },
+      {
+        "week": 19,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 36,
+        "incomingOrder": 16,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          20,
+          8
+        ],
+        "weekCostCents": 3600,
+        "cumCostCents": 23000
+      },
+      {
+        "week": 19,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 0,
+        "shipped": 20,
+        "orderPlaced": 32,
+        "pipeline": [
+          32,
+          8
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 15000
+      }
+    ],
+    [
+      {
+        "week": 20,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 16,
+        "pipeline": [
+          4,
+          8
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 21000
+      },
+      {
+        "week": 20,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 36,
+        "incomingOrder": 20,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 3600,
+        "cumCostCents": 23200
+      },
+      {
+        "week": 20,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          20
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 25800
+      },
+      {
+        "week": 20,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 44,
+        "incomingOrder": 32,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          32
+        ],
+        "weekCostCents": 4400,
+        "cumCostCents": 19400
+      }
+    ],
+    [
+      {
+        "week": 21,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          4
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 23400
+      },
+      {
+        "week": 21,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 20,
+        "pipeline": [
+          20,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 26000
+      },
+      {
+        "week": 21,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 16,
+        "shipped": 20,
+        "orderPlaced": 0,
+        "pipeline": [
+          32,
+          8
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 28200
+      },
+      {
+        "week": 21,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 0,
+        "shipped": 32,
+        "orderPlaced": 32,
+        "pipeline": [
+          32,
+          0
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 20600
+      }
+    ],
+    [
+      {
+        "week": 22,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 8,
+        "shipped": 4,
+        "orderPlaced": 12,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 26200
+      },
+      {
+        "week": 22,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 36,
+        "incomingOrder": 16,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          20
+        ],
+        "weekCostCents": 3600,
+        "cumCostCents": 29600
+      },
+      {
+        "week": 22,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          32
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 29800
+      },
+      {
+        "week": 22,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 16,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          32
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 23400
+      }
+    ],
+    [
+      {
+        "week": 23,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          20,
+          8
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 29000
+      },
+      {
+        "week": 23,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 0,
+        "shipped": 20,
+        "orderPlaced": 20,
+        "pipeline": [
+          32,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 31200
+      },
+      {
+        "week": 23,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 20,
+        "shipped": 32,
+        "orderPlaced": 0,
+        "pipeline": [
+          28,
+          0
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 30200
+      },
+      {
+        "week": 23,
+        "echelon": 3,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 28,
+        "orderPlaced": 16,
+        "pipeline": [
+          16,
+          0
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 23600
+      }
+    ],
+    [
+      {
+        "week": 24,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 28,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 12,
+        "pipeline": [
+          8,
+          20
+        ],
+        "weekCostCents": 2800,
+        "cumCostCents": 31800
+      },
+      {
+        "week": 24,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 20,
+        "incomingOrder": 12,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          32
+        ],
+        "weekCostCents": 2000,
+        "cumCostCents": 33200
+      },
+      {
+        "week": 24,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 4,
+        "pipeline": [
+          0,
+          28
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 30600
+      },
+      {
+        "week": 24,
+        "echelon": 3,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          16
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 23800
+      }
+    ],
+    [
+      {
+        "week": 25,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 20,
+        "orderPlaced": 0,
+        "pipeline": [
+          20,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 33400
+      },
+      {
+        "week": 25,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 20,
+        "orderPlaced": 12,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 33800
+      },
+      {
+        "week": 25,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 20,
+        "shipped": 24,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 30800
+      },
+      {
+        "week": 25,
+        "echelon": 3,
+        "inventory": 20,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 1000,
+        "cumCostCents": 24800
+      }
+    ],
+    [
+      {
+        "week": 26,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 16,
+        "pipeline": [
+          12,
+          20
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 35000
+      },
+      {
+        "week": 26,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 12,
+        "shipped": 12,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 33800
+      },
+      {
+        "week": 26,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 24,
+        "pipeline": [
+          4,
+          0
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 31000
+      },
+      {
+        "week": 26,
+        "echelon": 3,
+        "inventory": 16,
+        "backlog": 0,
+        "incomingOrder": 4,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 25600
+      }
+    ],
+    [
+      {
+        "week": 27,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 8,
+        "shipped": 20,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          12
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 35400
+      },
+      {
+        "week": 27,
+        "echelon": 1,
+        "inventory": 24,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          0
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 35000
+      },
+      {
+        "week": 27,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 12,
+        "shipped": 4,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 31800
+      },
+      {
+        "week": 27,
+        "echelon": 3,
+        "inventory": 16,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 4,
+        "pipeline": [
+          4,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 26400
+      }
+    ],
+    [
+      {
+        "week": 28,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 12,
+        "orderPlaced": 20,
+        "pipeline": [
+          16,
+          0
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 35400
+      },
+      {
+        "week": 28,
+        "echelon": 1,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 16,
+        "shipped": 16,
+        "orderPlaced": 0,
+        "pipeline": [
+          4,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 35400
+      },
+      {
+        "week": 28,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 0,
+        "shipped": 4,
+        "orderPlaced": 32,
+        "pipeline": [
+          16,
+          0
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 32200
+      },
+      {
+        "week": 28,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 24,
+        "shipped": 16,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          4
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 27200
+      }
+    ],
+    [
+      {
+        "week": 29,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          16
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 36200
+      },
+      {
+        "week": 29,
+        "echelon": 1,
+        "inventory": 12,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 8,
+        "pipeline": [
+          0,
+          4
+        ],
+        "weekCostCents": 600,
+        "cumCostCents": 36000
+      },
+      {
+        "week": 29,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 4,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          4,
+          16
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 33000
+      },
+      {
+        "week": 29,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 0,
+        "shipped": 4,
+        "orderPlaced": 24,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 27600
+      }
+    ],
+    [
+      {
+        "week": 30,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 16,
+        "orderPlaced": 20,
+        "pipeline": [
+          16,
+          0
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 36200
+      },
+      {
+        "week": 30,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 20,
+        "shipped": 16,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          0
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 36400
+      },
+      {
+        "week": 30,
+        "echelon": 2,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 12,
+        "pipeline": [
+          0,
+          4
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 33400
+      },
+      {
+        "week": 30,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 36,
+        "incomingOrder": 32,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 3600,
+        "cumCostCents": 31200
+      }
+    ],
+    [
+      {
+        "week": 31,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          16
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 37000
+      },
+      {
+        "week": 31,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 4,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 24,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 36800
+      },
+      {
+        "week": 31,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 33600
+      },
+      {
+        "week": 31,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 0,
+        "shipped": 24,
+        "orderPlaced": 32,
+        "pipeline": [
+          32,
+          0
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 32400
+      }
+    ],
+    [
+      {
+        "week": 32,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 8,
+        "shipped": 16,
+        "orderPlaced": 16,
+        "pipeline": [
+          8,
+          0
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 37000
+      },
+      {
+        "week": 32,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 20,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          8
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 38400
+      },
+      {
+        "week": 32,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 33800
+      },
+      {
+        "week": 32,
+        "echelon": 3,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 12,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          32
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 34800
+      }
+    ],
+    [
+      {
+        "week": 33,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          8,
+          8
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 37800
+      },
+      {
+        "week": 33,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 0,
+        "shipped": 8,
+        "orderPlaced": 36,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 39200
+      },
+      {
+        "week": 33,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 24,
+        "shipped": 24,
+        "orderPlaced": 0,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 34000
+      },
+      {
+        "week": 33,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 24,
+        "orderPlaced": 12,
+        "pipeline": [
+          12,
+          0
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 35200
+      }
+    ],
+    [
+      {
+        "week": 34,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 12,
+        "pipeline": [
+          0,
+          8
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 38600
+      },
+      {
+        "week": 34,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 24,
+        "incomingOrder": 16,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 2400,
+        "cumCostCents": 41600
+      },
+      {
+        "week": 34,
+        "echelon": 2,
+        "inventory": 4,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 200,
+        "cumCostCents": 34200
+      },
+      {
+        "week": 34,
+        "echelon": 3,
+        "inventory": 8,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          12
+        ],
+        "weekCostCents": 400,
+        "cumCostCents": 35600
+      }
+    ],
+    [
+      {
+        "week": 35,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 8,
+        "shipped": 8,
+        "orderPlaced": 0,
+        "pipeline": [
+          24,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 39400
+      },
+      {
+        "week": 35,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 24,
+        "orderPlaced": 28,
+        "pipeline": [
+          28,
+          0
+        ],
+        "weekCostCents": 0,
+        "cumCostCents": 41600
+      },
+      {
+        "week": 35,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 36,
+        "shipped": 28,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 35000
+      },
+      {
+        "week": 35,
+        "echelon": 3,
+        "inventory": 20,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 1000,
+        "cumCostCents": 36600
+      }
+    ],
+    [
+      {
+        "week": 36,
+        "echelon": 0,
+        "inventory": 0,
+        "backlog": 16,
+        "incomingOrder": 8,
+        "shipped": 0,
+        "orderPlaced": 12,
+        "pipeline": [
+          0,
+          24
+        ],
+        "weekCostCents": 1600,
+        "cumCostCents": 41000
+      },
+      {
+        "week": 36,
+        "echelon": 1,
+        "inventory": 0,
+        "backlog": 12,
+        "incomingOrder": 12,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          28
+        ],
+        "weekCostCents": 1200,
+        "cumCostCents": 42800
+      },
+      {
+        "week": 36,
+        "echelon": 2,
+        "inventory": 0,
+        "backlog": 8,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 36,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 800,
+        "cumCostCents": 35800
+      },
+      {
+        "week": 36,
+        "echelon": 3,
+        "inventory": 20,
+        "backlog": 0,
+        "incomingOrder": 0,
+        "shipped": 0,
+        "orderPlaced": 0,
+        "pipeline": [
+          0,
+          0
+        ],
+        "weekCostCents": 1000,
+        "cumCostCents": 37600
+      }
+    ]
+  ]
+}

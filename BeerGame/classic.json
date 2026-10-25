@@ -1,0 +1,37 @@
+{
+  "id": "classic",
+  "name": "Classic — Sterman 1989",
+  "echelons": 4,
+  "weeks": 36,
+  "revealEndWeek": false,
+
+  "initialInventory": 12,
+  "initialBacklog": 0,
+  "initialPipelineUnits": 4,
+  "initialIncomingOrder": 4,
+
+  "orderDelay": 1,
+  "shippingDelay": 2,
+  "productionLeadTime": 2,
+
+  "holdCostCents": 50,
+  "backCostCents": 100,
+
+  "demand": { "kind": "step", "before": 4, "after": 8, "changeWeek": 5 },
+
+  "factoryCapacity": null,
+  "minOrderQty": 1,
+  "lostSales": false,
+  "informationSharing": false,
+  "showSupplyLine": true,
+  "orderWarnThreshold": 50,
+  "maxOrder": 9999,
+
+  "_presets": {
+    "classic-short": { "weeks": 20 },
+    "information-sharing": { "informationSharing": true, "label": "Experiment 2 — shared POS demand" },
+    "lean": { "orderDelay": 0, "shippingDelay": 1, "productionLeadTime": 1 },
+    "disruption": { "factoryCapacity": 10, "_note": "plus a scripted demand spike at week 20" }
+  },
+  "_benchmarkBaseStock": [28, 28, 28, 20]
+}

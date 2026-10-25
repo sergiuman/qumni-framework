@@ -1,0 +1,16 @@
+{
+  "name": "qumni-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Qumni Lab - Learning Organization platform & Beer Distribution Game",
+  "scripts": {
+    "test": "pnpm --filter @lab/engine test",
+    "test:all": "pnpm -r run test",
+    "build": "pnpm -r run build",
+    "sim": "pnpm --filter @lab/engine sim"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

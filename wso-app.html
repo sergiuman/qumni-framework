@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WSO Dashboard — QUMNI</title>
+<meta name="description" content="The WSO Interactive Dashboard. Diagnose your Will, Skill, Opportunity profile. Scan any goal. Track your agency over time.">
+<link rel="canonical" href="https://qumni.com/wso-app.html">
+
+<!-- Open Graph / Social -->
+<meta property="og:title" content="WSO Dashboard — Interactive Diagnostic | QUMNI">
+<meta property="og:description" content="Diagnose your Will, Skill, Opportunity profile. Find your archetype. Scan any goal. Track your agency over time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://qumni.com/wso-app.html">
+<meta property="og:image" content="https://qumni.com/og-wso.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WSO Dashboard | QUMNI">
+<meta name="twitter:description" content="Diagnose your Will, Skill, Opportunity profile. Find your archetype.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='5' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='%23C8960C'>Q</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F8F5F0;--ink:#0C0C0C;--muted:#888;--border:#E0DCD5;--gold:#C8960C;--W:#E8321A;--S:#0066FF;--O:#00C65E;--cream:#FFFDF8;--sans:'Syne',sans-serif;--serif:'Instrument Serif',serif;--mono:'IBM Plex Mono',monospace}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(248,245,240,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:.7rem 1.5rem}
+.logo{font-weight:800;font-size:1rem;letter-spacing:.06em;text-decoration:none;color:var(--ink)}
+.logo span{color:var(--gold);font-size:.7rem;margin-left:4px;font-weight:600}
+.tabs{display:flex;gap:2px;flex-wrap:wrap}
+.tab{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;color:var(--muted);padding:6px 12px;cursor:pointer;transition:all .15s;border-bottom:2px solid transparent}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* LAYOUT */
+.view{display:none;max-width:800px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.view.active{display:block}
+.tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-style:italic;line-height:1.1;margin-bottom:.5rem;letter-spacing:-.01em}
+.sub{font-family:var(--serif);font-size:.95rem;color:#666;line-height:1.65;margin-bottom:2rem}
+.card{background:#fff;border:1px solid var(--border);padding:1.5rem;margin-bottom:1px}
+.btn{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.8rem;border:none;cursor:pointer;transition:all .15s;display:inline-block;text-decoration:none}
+.btn-dark{background:var(--ink);color:var(--bg)}.btn-dark:hover{background:#333}
+.btn-outline{background:none;color:var(--ink);border:1.5px solid var(--ink)}.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:#A07A08}
+.btn-full{width:100%;text-align:center}
+.mt1{margin-top:8px}.mt2{margin-top:16px}.mt3{margin-top:24px}.mb2{margin-bottom:16px}
+
+/* QUIZ */
+.q-bar{height:3px;background:#eee;margin-bottom:2rem}.q-fill{height:100%;background:var(--gold);transition:width .4s}
+.q-text{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;margin-bottom:1.5rem;min-height:50px}
+.q-opt{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;margin-bottom:6px;text-align:left;width:100%;font-family:var(--serif);font-size:.92rem;color:#555}
+.q-opt:hover{border-color:#bbb;color:var(--ink)}
+.q-opt.sel{border-color:var(--gold);background:rgba(200,150,12,.04);color:var(--ink)}
+.q-opt-key{font-family:var(--mono);font-size:.6rem;color:var(--muted);min-width:16px;margin-top:2px;flex-shrink:0}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+
+/* RESULT BARS */
+.r-bars{display:flex;gap:20px;justify-content:center;margin:2rem 0}
+.r-col{text-align:center;width:90px}
+.r-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.r-track{width:60px;height:110px;background:#eee;margin:0 auto;position:relative;overflow:hidden}
+.r-fill{position:absolute;bottom:0;width:100%;transition:height 1s ease}
+.r-pct{font-family:var(--sans);font-size:1.3rem;font-weight:800;margin-top:6px}
+
+/* SCANNER */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--border)}
+.domain-btn{background:#fff;padding:1.2rem;cursor:pointer;transition:background .15s;border:none;text-align:left;font-family:var(--sans)}
+.domain-btn:hover{background:var(--cream)}
+.domain-icon{font-size:1.5rem;margin-bottom:.5rem;display:block}
+.domain-name{font-weight:700;font-size:.85rem;margin-bottom:.2rem}
+.domain-ex{font-family:var(--serif);font-size:.75rem;color:var(--muted)}
+.slider-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.slider-cell{background:#fff;padding:1.2rem;text-align:center}
+.slider-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.slider-val{font-family:var(--sans);font-size:1.8rem;font-weight:800}
+.slider-cell input[type=range]{width:85%;margin-top:8px}
+
+/* JOURNAL */
+.j-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.j-date{color:var(--muted);font-family:var(--mono);font-size:.7rem}
+
+/* DASHBOARD */
+.spark-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border)}
+.spark-day{flex:1;background:#fff;padding:10px 6px;text-align:center}
+.spark-day-label{font-family:var(--mono);font-size:.55rem;color:var(--muted);margin-bottom:6px}
+.spark-bar{width:16px;margin:2px auto;border-radius:1px}
+
+/* GOAL LIST */
+.goal-item{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.goal-check{width:18px;height:18px;border:2px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;transition:all .15s}
+.goal-check.done{border-color:var(--O);color:var(--O)}
+.goal-text{font-family:var(--serif);font-size:.9rem}
+.goal-text.done{color:var(--muted);text-decoration:line-through}
+.goal-input{display:flex;gap:6px;margin-top:12px}
+.goal-input input{flex:1;padding:10px 12px;border:1px solid var(--border);font-family:var(--sans);font-size:.85rem;background:var(--bg);outline:none}
+
+/* SHARE CARD */
+.share-card{background:var(--ink);color:var(--bg);padding:2rem;text-align:center;margin-top:1.5rem}
+.share-card .sc-brand{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:8px}
+.share-card .sc-emoji{font-size:2.5rem;margin-bottom:4px}
+.share-card .sc-name{font-family:var(--sans);font-size:1.3rem;font-weight:800;margin-bottom:2px}
+.share-card .sc-missing{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+.share-card .sc-bars{display:flex;gap:16px;justify-content:center}
+.share-card .sc-bar-col{text-align:center}
+.share-card .sc-bar-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em}
+.share-card .sc-bar-val{font-family:var(--sans);font-size:1.3rem;font-weight:800}
+.share-card .sc-footer{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-top:16px}
+
+@media(max-width:600px){.slider-row{grid-template-columns:1fr}.domain-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">QUMNI<span>WSO</span></a>
+  <div class="tabs" id="tabs"></div>
+</nav>
+
+<div class="view active" id="v-home"></div>
+<div class="view" id="v-quiz"></div>
+<div class="view" id="v-result"></div>
+<div class="view" id="v-scanner"></div>
+<div class="view" id="v-dashboard"></div>
+<div class="view" id="v-journal"></div>
+
+<script>
+// ═══ UTILS ═══
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');}
+
+// ═══ DATA ═══
+const W_C='#E8321A',S_C='#0066FF',O_C='#00C65E',G_C='#C8960C';
+
+const QS=[
+  {q:"When you think about your biggest unfinished goal — what's the most honest reason you haven't acted?",opts:["I've lost motivation or it stopped mattering","I don't know how to do what it requires","I genuinely lack access, time, or resources","I want it but fear stops me"],dims:["w","s","o","w"]},
+  {q:"A free Saturday opens unexpectedly. What do you gravitate toward?",opts:["Activities linked to your goal — you feel alive","Learning new skills, courses, practice","Meeting people and exploring openings","Scrolling, avoiding, drifting"],dims:["w","s","o","w"]},
+  {q:"How would you honestly rate your competence in the area you most want to grow?",opts:["High — among the best I know","Moderate — solid foundation with gaps","Low — genuinely a beginner","Unknown — never properly tested"],dims:["s","s","s","s"]},
+  {q:"If every barrier was magically removed right now, what would happen?",opts:["I'd act immediately — I know exactly what to do","I'd hesitate — tools aren't ready yet","I'd charge in and learn on the fly","I'm not sure I'd want it anymore"],dims:["o","s","o","w"]},
+  {q:"Last time you didn't follow through on something important — what really happened?",opts:["Lost interest or got distracted","Got stuck — didn't know the next step","Something external blocked me","A tangled mix of everything"],dims:["w","s","o","w"]},
+  {q:"How often do you say 'I would, but I can't because...'?",opts:["Rarely — I find ways through","Often — real barriers stop me","Sometimes — usually about not knowing how","More like: 'I could, but I won't'"],dims:["o","o","s","w"]},
+  {q:"Five years from now, not having reached your goal — the most likely story?",opts:["I gave up and chased easier things","Skill gaps I never closed","Structural obstacles kept blocking me","I tried but never believed I could"],dims:["w","s","o","w"]},
+  {q:"When you hit a difficult skill requirement, what typically happens?",opts:["I dive in — difficulty is exciting","I work through it but sometimes stall","I can't access the resources to learn","I stop — the gap feels too large"],dims:["w","s","o","s"]},
+  {q:"How connected are you to the 'why' behind your biggest goal?",opts:["Deeply — it's who I am","Moderately — I understand but it's faint","Weakly — important but I don't feel it","I've lost the thread entirely"],dims:["w","w","w","w"]},
+  {q:"Ruthlessly honest — which statement fits you most?",opts:["I burn with desire but walls block me","I have access + motivation but lack skill","I have skill + access but can't find drive","All three feel roughly stuck"],dims:["o","s","w","w"]}
+];
+
+const ARCH={
+  w:{name:"The Capable Bystander",emoji:"😶",color:O_C,missing:"Will",tag:"Everything's in place. Except the fire.",desc:"Your Skill and Opportunity scores are solid. This isn't laziness — it's a signal that something is misaligned between the goal and who you actually are.",rx:["Run a values audit: what would you pursue if success was guaranteed?","Separate burnout (temporary → rest) from misalignment (permanent → pivot)","Find the smallest version that still feels meaningful — start there only","Spend 1 hour with someone genuinely alive in this domain"]},
+  s:{name:"The Dreaming Sprinter",emoji:"🚀",color:S_C,missing:"Skill",tag:"The fire burns. The door is open. Tools missing.",desc:"Will + Opportunity is the optimal learning environment. You're in the best possible position to acquire what's missing — motivation + access = maximum learning velocity.",rx:["Name the exact skill gap with surgical precision","Set up 24-hour feedback loops: learn something testable tomorrow","Find one mentor with the exact skill. Do a 30-min skill autopsy.","Practice at the edge of current competence: not too easy, not impossible"]},
+  o:{name:"The Competent Prisoner",emoji:"⚡",color:W_C,missing:"Opportunity",tag:"Want it. Can do it. The door is locked.",desc:"Nothing internal is broken. The constraint is structural — financial, geographic, social, legal, or temporal. The intervention must be external.",rx:["Map the exact barrier type: financial, social, geographic, legal, temporal?","Study 3 people who broke through this exact barrier","Find the smallest accessible version and act on it today","Build one key relationship in the blocked domain. Access is social."]},
+  all:{name:"The Developing Agent",emoji:"✦",color:G_C,missing:"Balance",tag:"No catastrophic gap. Broad development needed.",desc:"All three pillars are emerging but none is fully activated. Invest in all three simultaneously and let the weakest reveal itself over time.",rx:["Score yourself 1-10 on W, S, O every Sunday","Apply the weakest pillar's 30-day protocol","Build one accountability structure across all three","Retake this assessment in 90 days"]}
+};
+
+const DOMAINS=[
+  {id:"career",icon:"💼",name:"Career",ex:"Get promoted, change careers, start a business"},
+  {id:"health",icon:"🏃",name:"Health",ex:"Lose weight, run a marathon, sleep better"},
+  {id:"creative",icon:"🎨",name:"Creative",ex:"Write a book, make music, build something"},
+  {id:"relationship",icon:"💬",name:"Relationships",ex:"Fix a relationship, find love, set boundaries"},
+  {id:"learning",icon:"📚",name:"Learning",ex:"Learn a language, skill, instrument"},
+  {id:"financial",icon:"💰",name:"Financial",ex:"Save, invest, eliminate debt"},
+  {id:"impact",icon:"🌍",name:"Social Impact",ex:"Volunteer, build a movement, change policy"},
+  {id:"science",icon:"🔬",name:"Science",ex:"Solve a problem, publish, discover"}
+];
+
+// ═══ STATE ═══
+let currentView='home',qi=0,answers=[],profile=null,history=[],goals=[],journal=[];
+let scanDomain=null,scanW=5,scanS=5,scanO=5,scanResult=null;
+
+// ═══ PERSISTENCE ═══
+function load(k,d){try{const v=localStorage.getItem('qumni-'+k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem('qumni-'+k,JSON.stringify(v));}catch(e){}}
+profile=load('profile',null);history=load('history',[]);goals=load('goals',[]);journal=load('journal',[]);
+
+// ═══ NAVIGATION ═══
+const VIEWS=['home','quiz','result','scanner','dashboard','journal'];
+const TAB_LABELS={home:'Home',quiz:'Diagnostic',scanner:'Scanner',dashboard:'Dashboard',journal:'Journal'};
+
+function showView(v,pushState=true){
+  currentView=v;
+  VIEWS.forEach(id=>{document.getElementById('v-'+id).classList.toggle('active',id===v);});
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===v||(v==='result'&&t.dataset.view==='quiz')));
+  if(pushState)window.history.pushState({v},'','#'+v);
+  render();
+  window.scrollTo(0,0);
+}
+window.addEventListener('popstate',e=>{
+  const v=(e.state&&e.state.v)||'home';
+  showView(v,false);
+});
+
+function buildTabs(){
+  const el=document.getElementById('tabs');
+  el.innerHTML='';
+  Object.entries(TAB_LABELS).forEach(([id,label])=>{
+    const b=document.createElement('button');
+    b.className='tab'+(currentView===id?' active':'');
+    b.dataset.view=id;
+    b.textContent=label;
+    b.onclick=()=>{if(id==='quiz'){qi=0;answers=[];}showView(id);};
+    el.appendChild(b);
+  });
+}
+
+// ═══ COMPUTE ═══
+function compute(){
+  let sc={w:0,s:0,o:0};
+  QS.forEach((q,i)=>{if(answers[i]!==undefined)sc[q.dims[answers[i]]]+=3;});
+  const tot=sc.w+sc.s+sc.o||1;
+  const pcts={w:Math.round(sc.w/tot*100),s:Math.round(sc.s/tot*100),o:Math.round(sc.o/tot*100)};
+  const vals=Object.entries(sc);
+  const minK=vals.sort((a,b)=>a[1]-b[1])[0][0];
+  const range=Math.max(sc.w,sc.s,sc.o)-Math.min(sc.w,sc.s,sc.o);
+  const archKey=range<3?'all':minK;
+  profile={...ARCH[archKey],pcts,archKey,date:new Date().toISOString()};
+  save('profile',profile);
+  history=[...history,{pcts,archKey,date:profile.date}].slice(-20);
+  save('history',history);
+  showView('result');
+}
+
+function getArchetype(w,s,o){
+  const range=Math.max(w,s,o)-Math.min(w,s,o);
+  if(range<2)return'all';
+  if(w<=s&&w<=o)return'w';
+  if(s<=w&&s<=o)return's';
+  return'o';
+}
+
+// ═══ RENDER ═══
+function render(){
+  renderHome();renderQuiz();renderResult();renderScanner();renderDashboard();renderJournal();
+}
+
+function renderHome(){
+  const el=document.getElementById('v-home');
+  const hasProfile=!!profile;
+  el.innerHTML=`
+    <div style="text-align:center;padding:3rem 0 2rem">
+      <div style="display:flex;justify-content:center;gap:6px;margin-bottom:1.5rem">
+        ${[{c:W_C,l:'Will'},{c:S_C,l:'Skill'},{c:O_C,l:'Opportunity'}].map(p=>`<span style="font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:${p.c};padding:3px 12px;border:1.5px solid ${p.c}22;background:${p.c}08;border-radius:2px">${p.l}</span>`).join('')}
+      </div>
+      <h2 style="font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:.8rem">You need <em style="color:var(--gold)">two</em> out of three<br>to do anything.</h2>
+      <p class="sub" style="max-width:480px;margin:0 auto 2rem">The WSO Framework. Backed by Deci & Ryan, Bandura, Giddens. Applied across every domain of life.</p>
+      <div>
+        <button class="btn btn-dark" onclick="qi=0;answers=[];showView('quiz')">Take the Diagnostic →</button>
+        <button class="btn btn-outline" style="margin-left:8px" onclick="showView('scanner')">WSO Scanner</button>
+      </div>
+    </div>
+    ${hasProfile?`
+    <div style="display:flex;gap:1px;background:var(--border);margin-top:2rem;border:1px solid var(--border)">
+      <div class="card" style="flex:1;text-align:center;border:none">
+        <div style="font-size:.7rem;font-weight:700;color:${profile.color}">${profile.name}</div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:2px">Current archetype</div>
+      </div>
+      <div class="card" style="flex:1;text-align:center;border:none">
+        <div style="font-size:1.2rem;font-weight:800">${history.length}</div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:2px">Assessments</div>
+      </div>
+      <div class="card" style="flex:1;text-align:center;border:none">
+        <div style="font-size:1.2rem;font-weight:800">${journal.length}</div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:2px">Check-ins</div>
+      </div>
+    </div>`:''}
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);margin-top:${hasProfile?'1px':'2rem'}">
+      ${[
+        {icon:'🎯',title:'Diagnostic Quiz',desc:'Find your archetype in 3 minutes',action:"qi=0;answers=[];showView('quiz')"},
+        {icon:'🔍',title:'Domain Scanner',desc:'Apply WSO to any specific goal',action:"showView('scanner')"},
+        {icon:'📊',title:'Dashboard',desc:'Track your scores over time',action:"showView('dashboard')"},
+        {icon:'📓',title:'Daily Journal',desc:'Rate your W, S, O daily',action:"showView('journal')"}
+      ].map(f=>`<div class="card" style="cursor:pointer;border:none;transition:background .15s" onclick="${f.action}" onmouseover="this.style.background='#FAFAF5'" onmouseout="this.style.background='#fff'"><div style="font-size:1.5rem;margin-bottom:8px">${f.icon}</div><div style="font-weight:700;font-size:.85rem;margin-bottom:4px">${f.title}</div><div style="font-family:var(--serif);font-size:.78rem;color:var(--muted)">${f.desc}</div></div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="wso.html" class="btn btn-outline" style="font-size:.6rem">Read the Full WSO Framework →</a>
+    </div>
+  `;
+}
+
+function renderQuiz(){
+  const el=document.getElementById('v-quiz');
+  if(currentView!=='quiz')return;
+  const q=QS[qi];
+  el.innerHTML=`
+    <div class="tag">Question ${qi+1} of ${QS.length}</div>
+    <div class="q-bar"><div class="q-fill" style="width:${(qi/QS.length)*100}%"></div></div>
+    <div class="q-text">${q.q}</div>
+    <div>
+      ${q.opts.map((o,i)=>`<button class="q-opt${answers[qi]===i?' sel':''}" onclick="answers[${qi}]=${i};render()"><span class="q-opt-key">${'ABCD'[i]}</span>${o}</button>`).join('')}
+    </div>
+    <div class="q-nav">
+      <button class="btn btn-outline" style="font-size:.6rem;padding:8px 16px;opacity:${qi===0?.3:1}" onclick="if(qi>0){qi--;render()}" ${qi===0?'disabled':''}>← Back</button>
+      <span style="font-family:var(--mono);font-size:.55rem;color:var(--muted)">${answers[qi]!==undefined?'':'Select an answer'}</span>
+      <button class="btn btn-dark" style="font-size:.6rem;padding:8px 16px;opacity:${answers[qi]===undefined?.4:1}" onclick="if(answers[${qi}]===undefined)return;${qi===QS.length-1?'compute()':'qi++;render()'}" ${answers[qi]===undefined?'disabled':''}>${qi===QS.length-1?'See Results →':'Next →'}</button>
+    </div>
+  `;
+}
+
+function renderResult(){
+  const el=document.getElementById('v-result');
+  if(!profile||currentView!=='result')return;
+  const p=profile;
+  el.innerHTML=`
+    <div style="text-align:center">
+      <div class="tag">Your WSO Profile</div>
+      <div style="font-size:3rem;margin:.5rem 0">${p.emoji}</div>
+      <h2 style="color:${p.color};font-size:1.8rem">${p.name}</h2>
+      <div style="font-family:var(--mono);font-size:.65rem;color:var(--muted);margin:.3rem 0">Missing: ${p.missing}</div>
+      <div style="font-family:var(--serif);font-style:italic;color:#666;margin-bottom:1.5rem">${p.tag}</div>
+    </div>
+    <div class="r-bars">
+      ${[{l:'WILL',v:p.pcts.w,c:W_C},{l:'SKILL',v:p.pcts.s,c:S_C},{l:'OPP.',v:p.pcts.o,c:O_C}].map(b=>`<div class="r-col"><div class="r-label" style="color:${b.c}">${b.l}</div><div class="r-track"><div class="r-fill" style="height:${b.v}%;background:${b.c}"></div></div><div class="r-pct" style="color:${b.c}">${b.v}%</div></div>`).join('')}
+    </div>
+    <div class="card"><p style="font-family:var(--serif);font-size:.92rem;color:#555;line-height:1.65">${p.desc}</p></div>
+    <div class="card" style="border-top:3px solid ${p.color}">
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:${p.color};margin-bottom:10px">Your Precision Protocol</div>
+      ${p.rx.map(r=>`<div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0;font-weight:700">→</span><span style="font-family:var(--serif);font-size:.88rem;color:#555;line-height:1.55">${r}</span></div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <button class="btn btn-dark" onclick="document.getElementById('shareCard').style.display=document.getElementById('shareCard').style.display==='none'?'block':'none'">📤 Share Card</button>
+      <button class="btn btn-outline" style="margin-left:6px" onclick="qi=0;answers=[];showView('quiz')">↻ Retake</button>
+      <button class="btn btn-outline" style="margin-left:6px" onclick="showView('dashboard')">📊 Dashboard</button>
+    </div>
+    <div class="share-card" id="shareCard" style="display:none">
+      <div class="sc-brand">qumni.com</div>
+      <div class="sc-emoji">${p.emoji}</div>
+      <div class="sc-name" style="color:${p.color}">${p.name}</div>
+      <div class="sc-missing">Missing pillar: ${p.missing}</div>
+      <div class="sc-bars">
+        ${[{l:'W',v:p.pcts.w,c:W_C},{l:'S',v:p.pcts.s,c:S_C},{l:'O',v:p.pcts.o,c:O_C}].map(b=>`<div class="sc-bar-col"><div class="sc-bar-label" style="color:${b.c}">${b.l}</div><div class="sc-bar-val" style="color:${b.c}">${b.v}%</div></div>`).join('')}
+      </div>
+      <div class="sc-footer">Will · Skill · Opportunity — Take the diagnostic at qumni.com</div>
+    </div>
+  `;
+}
+
+function renderScanner(){
+  const el=document.getElementById('v-scanner');
+  if(currentView!=='scanner')return;
+  if(!scanDomain){
+    el.innerHTML=`
+      <div class="tag">WSO Domain Scanner</div>
+      <h2>Scan any goal</h2>
+      <p class="sub">Pick a life domain. Rate your Will, Skill, Opportunity. Get a precision diagnosis.</p>
+      <div class="domain-grid">${DOMAINS.map(d=>`<button class="domain-btn" onclick="scanDomain='${d.id}';scanResult=null;render()"><span class="domain-icon">${d.icon}</span><div class="domain-name">${d.name}</div><div class="domain-ex">${d.ex}</div></button>`).join('')}</div>
+    `;
+  } else {
+    const dom=DOMAINS.find(d=>d.id===scanDomain);
+    el.innerHTML=`
+      <div class="card" style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center"><span style="font-size:1.3rem">${dom.icon}</span><span style="font-weight:700">${dom.name}</span></div>
+        <button class="tab" onclick="scanDomain=null;scanResult=null;render()">← Change</button>
+      </div>
+      <div class="slider-row mt1">
+        <div class="slider-cell"><div class="slider-lbl" style="color:${W_C}">Will</div><div class="slider-val" id="swV" style="color:${W_C}">${scanW}</div><input type="range" min="1" max="10" value="${scanW}" style="accent-color:${W_C}" oninput="scanW=+this.value;document.getElementById('swV').textContent=scanW"></div>
+        <div class="slider-cell"><div class="slider-lbl" style="color:${S_C}">Skill</div><div class="slider-val" id="ssV" style="color:${S_C}">${scanS}</div><input type="range" min="1" max="10" value="${scanS}" style="accent-color:${S_C}" oninput="scanS=+this.value;document.getElementById('ssV').textContent=scanS"></div>
+        <div class="slider-cell"><div class="slider-lbl" style="color:${O_C}">Opportunity</div><div class="slider-val" id="soV" style="color:${O_C}">${scanO}</div><input type="range" min="1" max="10" value="${scanO}" style="accent-color:${O_C}" oninput="scanO=+this.value;document.getElementById('soV').textContent=scanO"></div>
+      </div>
+      <button class="btn btn-dark btn-full mt1" onclick="scanResult=ARCH[getArchetype(scanW,scanS,scanO)];render()">Scan →</button>
+      ${scanResult?`
+      <div class="card mt2" style="border-top:3px solid ${scanResult.color}">
+        <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:${scanResult.color};margin-bottom:4px">${scanResult.name}</div>
+        <div style="font-family:var(--serif);font-style:italic;color:#666;margin-bottom:8px">${scanResult.tag}</div>
+        <p style="font-family:var(--serif);font-size:.88rem;color:#555;line-height:1.6;margin-bottom:12px">${scanResult.desc}</p>
+        <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Prescription</div>
+        ${scanResult.rx.map(r=>`<div style="display:flex;gap:8px;margin-bottom:6px"><span style="color:var(--gold)">→</span><span style="font-family:var(--serif);font-size:.82rem;color:#555;line-height:1.5">${r}</span></div>`).join('')}
+      </div>`:''}
+    `;
+  }
+}
+
+function renderDashboard(){
+  const el=document.getElementById('v-dashboard');
+  if(currentView!=='dashboard')return;
+  const last7=journal.slice(-7);
+  el.innerHTML=`
+    <div class="tag">WSO Dashboard</div>
+    <h2>Your agency profile</h2>
+    ${profile?`
+    <div class="card mt2" style="border-top:3px solid ${profile.color}">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:.75rem;font-weight:700;color:${profile.color}">${profile.name}</div>
+          <div style="font-size:.65rem;color:var(--muted)">Last: ${new Date(profile.date).toLocaleDateString()}</div>
+        </div>
+        <div style="display:flex;gap:12px">
+          ${[{l:'W',v:profile.pcts.w,c:W_C},{l:'S',v:profile.pcts.s,c:S_C},{l:'O',v:profile.pcts.o,c:O_C}].map(b=>`<div style="text-align:center"><div style="font-family:var(--mono);font-size:.55rem;color:${b.c};letter-spacing:.1em">${b.l}</div><div style="font-weight:800;color:${b.c}">${b.v}%</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    `:`<div class="card mt2" style="text-align:center;padding:3rem"><p style="color:var(--muted)">No assessment yet.</p><button class="btn btn-dark mt2" onclick="qi=0;answers=[];showView('quiz')">Take the Diagnostic →</button></div>`}
+    ${last7.length?`
+    <div class="card mt1">
+      <div class="tag mb2">Last ${last7.length} Check-ins</div>
+      <div class="spark-row">${last7.map(e=>`<div class="spark-day"><div class="spark-day-label">${new Date(e.date).toLocaleDateString(undefined,{weekday:'short'})}</div>${[{v:e.w,c:W_C},{v:e.s,c:S_C},{v:e.o,c:O_C}].map(d=>`<div class="spark-bar" style="height:${Math.max(3,d.v*5)}px;background:${d.c};opacity:${.5+d.v/20}"></div>`).join('')}</div>`).join('')}</div>
+    </div>`:''}
+    <div class="card mt1">
+      <div class="tag mb2">Goals</div>
+      ${goals.map((g,i)=>`<div class="goal-item" onclick="goals[${i}].done=!goals[${i}].done;save('goals',goals);render()"><div class="goal-check${g.done?' done':''}">${g.done?'✓':''}</div><div class="goal-text${g.done?' done':''}">${esc(g.text)}</div></div>`).join('')}
+      <div class="goal-input">
+        <input id="goalIn" placeholder="Add a goal..." onkeydown="if(event.key==='Enter')addGoal()">
+        <button class="btn btn-dark" style="padding:8px 16px;font-size:.6rem" onclick="addGoal()">Add</button>
+      </div>
+    </div>
+    ${history.length?`
+    <div class="card mt1">
+      <div class="tag mb2">History</div>
+      ${history.slice(-5).reverse().map(h=>`<div class="j-row"><span class="j-date">${new Date(h.date).toLocaleDateString()}</span><span style="font-size:.7rem;font-weight:700;color:${(ARCH[h.archKey]||{}).color||'#888'}">${(ARCH[h.archKey]||{}).name||'?'}</span><span style="font-size:.65rem"><span style="color:${W_C}">W:${h.pcts.w}%</span> <span style="color:${S_C}">S:${h.pcts.s}%</span> <span style="color:${O_C}">O:${h.pcts.o}%</span></span></div>`).join('')}
+    </div>`:''}
+  `;
+}
+
+function renderJournal(){
+  const el=document.getElementById('v-journal');
+  if(currentView!=='journal')return;
+  el.innerHTML=`
+    <div class="tag">Daily WSO Check-In</div>
+    <h2>Rate your agency today</h2>
+    <p class="sub">How strong is each pillar <em>right now</em> for your most important goal?</p>
+    <div class="slider-row">
+      <div class="slider-cell"><div class="slider-lbl" style="color:${W_C}">Will</div><div class="slider-val" id="jwV" style="color:${W_C}">5</div><input type="range" min="1" max="10" value="5" style="accent-color:${W_C}" oninput="document.getElementById('jwV').textContent=this.value"></div>
+      <div class="slider-cell"><div class="slider-lbl" style="color:${S_C}">Skill</div><div class="slider-val" id="jsV" style="color:${S_C}">5</div><input type="range" min="1" max="10" value="5" style="accent-color:${S_C}" oninput="document.getElementById('jsV').textContent=this.value"></div>
+      <div class="slider-cell"><div class="slider-lbl" style="color:${O_C}">Opportunity</div><div class="slider-val" id="joV" style="color:${O_C}">5</div><input type="range" min="1" max="10" value="5" style="accent-color:${O_C}" oninput="document.getElementById('joV').textContent=this.value"></div>
+    </div>
+    <button class="btn btn-dark btn-full mt1" onclick="logJournal()">Log Today's Check-In →</button>
+    ${journal.length?`
+    <div class="card mt3">
+      <div class="tag mb2">Recent Entries (${journal.length})</div>
+      <div style="max-height:280px;overflow-y:auto">
+        ${[...journal].reverse().slice(0,14).map(e=>`<div class="j-row"><span class="j-date">${new Date(e.date).toLocaleDateString()}</span><div style="display:flex;gap:10px"><span style="font-size:.78rem;font-weight:700;color:${W_C}">W:${e.w}</span><span style="font-size:.78rem;font-weight:700;color:${S_C}">S:${e.s}</span><span style="font-size:.78rem;font-weight:700;color:${O_C}">O:${e.o}</span></div></div>`).join('')}
+      </div>
+      <button class="btn btn-outline btn-full mt2" style="font-size:.58rem" onclick="if(confirm('Clear all journal entries?')){journal=[];save('journal',journal);render();}">Clear All</button>
+    </div>`:''}
+  `;
+}
+
+function logJournal(){
+  const w=+document.getElementById('jwV').textContent;
+  const s=+document.getElementById('jsV').textContent;
+  const o=+document.getElementById('joV').textContent;
+  journal.push({w,s,o,date:new Date().toISOString()});
+  journal=journal.slice(-90);
+  save('journal',journal);
+  render();
+}
+
+function addGoal(){
+  const inp=document.getElementById('goalIn');
+  if(!inp||!inp.value.trim())return;
+  goals.push({text:inp.value.trim(),done:false,created:new Date().toISOString()});
+  save('goals',goals);
+  render();
+}
+
+// ═══ INIT ═══
+buildTabs();
+(function(){
+  const hash=window.location.hash.replace('#','');
+  const initial=VIEWS.includes(hash)?hash:'home';
+  showView(initial,false);
+})();
+</script>
+</body>
+</html>

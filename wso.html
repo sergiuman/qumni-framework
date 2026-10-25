@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WSO Framework — Will, Skill, Opportunity | QUMNI</title>
+<meta name="description" content="The 2/3 Rule: you only need two out of three — Will, Skill, Opportunity — to act on anything. Draws on Self-Determination Theory, Bandura, and Giddens. Applied to every domain of life.">
+<link rel="canonical" href="https://qumni.com/wso.html">
+
+<!-- Open Graph / Social -->
+<meta property="og:title" content="WSO Framework — Will, Skill, Opportunity | QUMNI">
+<meta property="og:description" content="The 2/3 Rule: you only need two of three to act on anything. Diagnose your missing pillar. Will, Skill, or Opportunity?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://qumni.com/wso.html">
+<meta property="og:image" content="https://qumni.com/og-wso.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WSO — Will, Skill, Opportunity | QUMNI">
+<meta name="twitter:description" content="The 2/3 Rule: you only need two of three to act on anything.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='5' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='%23C8960C'>Q</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --W:#E8321A;--S:#0066FF;--O:#00C65E;
+  --bg:#F2EDE6;--dark:#0C0C0C;--ink:#1A1A1A;
+  --muted:#888;--border:#D8D3CC;--surface:#EBEBE5;
+  --gold:#C8960C;--cream:#FAF7F2;
+  --serif:'Instrument Serif',serif;
+  --sans:'Syne',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
+
+/* ── CURSOR ── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:width .2s,height .2s}
+.cursor.big{width:50px;height:50px;opacity:.15}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:.9rem 3rem;background:rgba(242,237,230,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--sans);font-weight:800;font-size:1.1rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.logo sup{font-size:.55rem;letter-spacing:.12em;vertical-align:super;color:var(--muted);text-transform:uppercase}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-center a:hover{color:var(--ink)}
+.nav-cta{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:.55rem 1.2rem;border:none;cursor:pointer;text-decoration:none}
+
+/* ── HERO ── */
+.hero{min-height:100vh;padding:7rem 3rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;overflow:hidden;background:var(--cream)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(200,150,12,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-left{}
+.hero-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--muted)}
+h1.main{font-family:var(--serif);font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.02;font-style:italic;letter-spacing:-.01em;margin-bottom:1.5rem}
+h1.main .accent{font-style:normal;font-weight:600}
+.hero-desc{font-family:var(--serif);font-size:1.2rem;color:#555;line-height:1.7;max-width:480px;margin-bottom:2.5rem}
+.hero-desc strong{color:var(--ink)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.8rem;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-dark{background:var(--ink);color:var(--bg)}
+.btn-dark:hover{background:#333}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.hero-pills{display:flex;gap:.7rem;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:2px}
+.pill-w{background:rgba(232,50,26,.1);color:var(--W);border:1px solid rgba(232,50,26,.2)}
+.pill-s{background:rgba(0,102,255,.1);color:var(--S);border:1px solid rgba(0,102,255,.2)}
+.pill-o{background:rgba(0,198,94,.1);color:var(--O);border:1px solid rgba(0,198,94,.2)}
+.hero-right{display:flex;align-items:center;justify-content:center}
+.venn-hero{width:min(420px,100%);aspect-ratio:1}
+.venn-hero svg{width:100%;height:100%;overflow:visible}
+
+/* ── SECTION WRAPPER ── */
+.wrap{max-width:1380px;margin:0 auto;padding:0 3rem}
+.sec{padding:6rem 0}
+.sec-tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.sec-tag::before{content:'';width:2rem;height:1px;background:currentColor}
+h2.sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);line-height:1.05;font-style:italic;margin-bottom:1.2rem;letter-spacing:-.01em}
+.sec-sub{font-family:var(--serif);font-size:1.1rem;color:#666;line-height:1.7;max-width:640px;margin-bottom:2.5rem}
+.div{width:100%;height:1px;background:var(--border)}
+
+/* ── TICKER ── */
+.ticker-outer{overflow:hidden;background:var(--dark);padding:.9rem 0;border-top:1px solid #222;border-bottom:1px solid #222}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:tick 40s linear infinite}
+.ticker-inner2{animation-direction:reverse;animation-duration:35s}
+.t-item{display:inline-flex;align-items:center;gap:1.2rem;padding:.2rem 2.5rem;font-family:var(--sans);font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.t-w{color:rgba(232,50,26,.6)}
+.t-s{color:rgba(0,102,255,.6)}
+.t-o{color:rgba(0,198,94,.6)}
+.t-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── OPPORTUNITY ENGINE ── */
+.opp-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.opp-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.opp-cell{background:var(--cream);padding:2rem;transition:background .25s}
+.opp-cell:hover{background:#fff}
+.opp-cell-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+.opp-icon{font-size:1.4rem}
+.opp-wso{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.opp-cell h4{font-family:var(--sans);font-weight:700;font-size:.95rem;margin-bottom:.4rem;line-height:1.2}
+.opp-cell p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.5}
+.opp-wso-w{color:var(--W)}.opp-wso-s{color:var(--S)}.opp-wso-o{color:var(--O)}
+.opp-wso-ws{background:linear-gradient(to right,var(--W),var(--S));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.opp-wso-wo{background:linear-gradient(to right,var(--W),var(--O));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.opp-wso-so{background:linear-gradient(to right,var(--S),var(--O));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.opp-wso-all{background:linear-gradient(to right,var(--W),var(--S),var(--O));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ── SCIENCE SCAN ── */
+.scan-bg{background:var(--dark)}
+.scan-bg .sec-tag{color:rgba(255,255,255,.3)}
+.scan-bg .sec-tag::before{background:rgba(255,255,255,.3)}
+.scan-bg h2.sec-h{color:#F2EDE6}
+.scan-bg .sec-sub{color:rgba(242,237,230,.5)}
+.scan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;margin-top:3rem}
+.scan-cell{background:var(--dark);padding:2rem;position:relative;overflow:hidden;border-top:2px solid transparent;transition:background .25s}
+.scan-cell:hover{background:#111}
+.scan-w{border-top-color:var(--W)}
+.scan-s{border-top-color:var(--S)}
+.scan-o{border-top-color:var(--O)}
+.scan-all{border-top-color:var(--gold)}
+.scan-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.5rem}
+.scan-cell h4{font-family:var(--sans);font-weight:700;font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:.5rem;line-height:1.25}
+.scan-cell p{font-family:var(--serif);font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.6}
+.scan-cite{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.2);margin-top:.8rem;letter-spacing:.05em}
+
+/* ── THREADS (BRAINSTORM) ── */
+.threads-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.thread{background:var(--cream);padding:2.5rem;border-left:3px solid transparent;transition:background .25s}
+.thread:hover{background:#fff}
+.thread-t1{border-left-color:var(--W)}
+.thread-t2{border-left-color:var(--S)}
+.thread-t3{border-left-color:var(--O)}
+.thread-t4{border-left-color:var(--gold)}
+.thread-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.t1 .thread-label{color:var(--W)}.t2 .thread-label{color:var(--S)}.t3 .thread-label{color:var(--O)}.t4 .thread-label{color:var(--gold)}
+.thread h3{font-family:var(--sans);font-weight:700;font-size:1.1rem;margin-bottom:.6rem;line-height:1.2}
+.thread p{font-family:var(--serif);font-size:.9rem;color:#666;line-height:1.6;margin-bottom:.8rem}
+.thread ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.thread li{font-family:var(--serif);font-size:.85rem;color:#888;padding-left:1.2rem;position:relative;line-height:1.5}
+.thread li::before{content:'→';position:absolute;left:0;color:inherit}
+
+/* ── OPPORTUNITY ENGINE (BIG SECTION) ── */
+.opp-engine{background:var(--surface)}
+.domain-tabs{display:flex;gap:0;border:1px solid var(--border);margin:2rem 0 0;overflow-x:auto}
+.d-tab{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.5rem;border:none;background:transparent;cursor:pointer;color:var(--muted);border-right:1px solid var(--border);white-space:nowrap;transition:all .2s;flex-shrink:0}
+.d-tab:last-child{border-right:none}
+.d-tab.active,.d-tab:hover{background:var(--ink);color:var(--bg)}
+.domain-content{display:none;border:1px solid var(--border);border-top:none}
+.domain-content.active{display:grid;grid-template-columns:repeat(3,1fr)}
+.d-panel{padding:2rem;border-right:1px solid var(--border)}
+.d-panel:last-child{border-right:none}
+.d-panel-head{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem}
+.d-w{color:var(--W)}.d-s{color:var(--S)}.d-o{color:var(--O)}
+.d-panel h4{font-family:var(--sans);font-weight:700;margin-bottom:.5rem}
+.d-panel p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+.d-panel ul{list-style:none;margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem}
+.d-panel li{font-family:var(--serif);font-size:.83rem;color:#888;padding-left:1rem;position:relative}
+.d-panel li::before{content:'·';position:absolute;left:0;color:var(--muted)}
+
+/* ── WSO SCANNER TOOL ── */
+.scanner-tool{background:var(--dark);padding:4rem;margin-top:3rem}
+.scanner-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.scanner-head{font-family:var(--serif);font-size:2rem;font-style:italic;color:#F2EDE6;margin-bottom:.5rem}
+.scanner-sub{font-family:var(--serif);font-size:.95rem;color:rgba(242,237,230,.4);margin-bottom:2rem;line-height:1.6}
+.scanner-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1px;background:#222}
+.scanner-field{background:var(--dark);padding:1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.s-field-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.s-slider{width:100%;-webkit-appearance:none;appearance:none;height:3px;background:#333;outline:none;cursor:pointer}
+.s-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer}
+.s-slider-w::-webkit-slider-thumb{background:var(--W)}
+.s-slider-s::-webkit-slider-thumb{background:var(--S)}
+.s-slider-o::-webkit-slider-thumb{background:var(--O)}
+.s-val{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:#F2EDE6}
+.scanner-btn{background:var(--gold);color:#000;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:none;padding:0 2rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.scanner-btn:hover{background:#E0A80E}
+.scanner-result{margin-top:1px;background:#0f0f0f;padding:2rem;display:none}
+.scanner-result.show{display:block}
+.sr-archetype{font-family:var(--serif);font-size:1.8rem;font-style:italic;margin-bottom:.5rem}
+.sr-insight{font-family:var(--serif);font-size:.95rem;color:rgba(242,237,230,.5);line-height:1.7;margin-bottom:1.2rem}
+.sr-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.sr-action-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid #333;color:rgba(255,255,255,.5);background:transparent;cursor:pointer;transition:all .2s}
+.sr-action-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── DEBATES ── */
+.debates-layout{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.debate-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:1px;background:var(--border)}
+.debate-topic{background:var(--cream);padding:2rem;display:flex;flex-direction:column;justify-content:center}
+.debate-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.debate-topic h4{font-family:var(--sans);font-weight:700;font-size:.95rem;line-height:1.25}
+.debate-side{background:var(--bg);padding:2rem}
+.debate-side-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.pro .debate-side-label{color:var(--O)}
+.con .debate-side-label{color:var(--W)}
+.debate-side p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+
+/* ── SCIENCE OPPORTUNITY SCANNER (applications) ── */
+.sci-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.sci-app{background:var(--cream);padding:2rem;position:relative}
+.sci-app-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;margin-bottom:.8rem}
+.badge-solved{background:rgba(0,198,94,.1);color:var(--O);border:1px solid rgba(0,198,94,.2)}
+.badge-unsolved{background:rgba(232,50,26,.1);color:var(--W);border:1px solid rgba(232,50,26,.2)}
+.badge-ripe{background:rgba(200,150,12,.1);color:var(--gold);border:1px solid rgba(200,150,12,.2)}
+.sci-app h4{font-family:var(--sans);font-weight:700;font-size:.95rem;margin-bottom:.4rem;line-height:1.25}
+.sci-app p{font-family:var(--serif);font-size:.85rem;color:#666;line-height:1.6}
+.sci-wso{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border);color:var(--muted);display:flex;gap:.4rem;align-items:center}
+.sci-wso-badge{padding:.1rem .4rem;border-radius:2px;font-size:.55rem}
+.sci-wso-badge.w{background:rgba(232,50,26,.1);color:var(--W)}
+.sci-wso-badge.s{background:rgba(0,102,255,.1);color:var(--S)}
+.sci-wso-badge.o{background:rgba(0,198,94,.1);color:var(--O)}
+
+/* ── REVIEW THREADS ── */
+.reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem}
+.review-card{border:1px solid var(--border);padding:2.5rem;background:var(--cream)}
+.review-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.review-card h3{font-family:var(--sans);font-weight:700;font-size:1.05rem;margin-bottom:.6rem}
+.review-card p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6;margin-bottom:.6rem}
+.review-verdict{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;display:inline-block;margin-top:.5rem}
+.v-strong{background:rgba(0,198,94,.1);color:var(--O);border:1px solid rgba(0,198,94,.2)}
+.v-partial{background:rgba(200,150,12,.1);color:var(--gold);border:1px solid rgba(200,150,12,.2)}
+.v-contested{background:rgba(232,50,26,.1);color:var(--W);border:1px solid rgba(232,50,26,.2)}
+
+/* ── ACTION PLANS ── */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.plan{background:var(--cream);padding:2.5rem;border-top:3px solid transparent}
+.pw{border-top-color:var(--W)}.ps{border-top-color:var(--S)}.po{border-top-color:var(--O)}
+.plan-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.pw .plan-lbl{color:var(--W)}.ps .plan-lbl{color:var(--S)}.po .plan-lbl{color:var(--O)}
+.plan h3{font-family:var(--sans);font-weight:800;font-size:1.3rem;margin-bottom:.3rem}
+.plan em{font-family:var(--serif);font-style:italic;font-size:.9rem;color:#888;display:block;margin-bottom:1rem}
+.plan-week{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:.9rem 0 .4rem}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.plan li{font-family:var(--serif);font-size:.85rem;color:#666;padding-left:1.2rem;position:relative;line-height:1.5}
+.plan li::before{content:'→';position:absolute;left:0;color:inherit;opacity:.6}
+
+/* ── SOCIETAL SCALE ── */
+.society-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.soc-item{background:var(--cream);padding:2.5rem}
+.soc-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.soc-item h3{font-family:var(--sans);font-weight:700;margin-bottom:.5rem;font-size:1rem}
+.soc-item p{font-family:var(--serif);font-size:.88rem;color:#666;line-height:1.6}
+.soc-wso{display:flex;gap:.4rem;margin-top:.8rem;flex-wrap:wrap}
+
+/* ── CONTENT PLAN ── */
+.content-plan{margin-top:3rem}
+.cp-row{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--border)}
+.cp-row:first-child{border-top:1px solid var(--border)}
+.cp-platform{padding:1.4rem;background:var(--surface);display:flex;align-items:center;border-right:1px solid var(--border)}
+.cp-platform span{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cp-items{padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:.35rem}
+.cp-item{font-family:var(--serif);font-size:.88rem;color:#666;display:flex;gap:.7rem;align-items:flex-start}
+.cp-item::before{content:'▸';color:var(--gold);flex-shrink:0;margin-top:.05rem}
+
+/* ── BRAINSTORM EXPANSION ── */
+.expand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.expand-cell{background:var(--cream);padding:2rem;cursor:pointer;transition:background .2s;position:relative}
+.expand-cell:hover{background:#fff}
+.expand-cell h4{font-family:var(--sans);font-weight:700;font-size:.95rem;margin-bottom:.4rem;line-height:1.25}
+.expand-cell p{font-family:var(--serif);font-size:.82rem;color:#888;line-height:1.5}
+.expand-cell .expand-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.expand-open{position:absolute;top:1.2rem;right:1.5rem;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.expand-detail{display:none;grid-column:1/-1;background:#fff;border-top:1px solid var(--border);padding:2.5rem}
+.expand-detail.open{display:block}
+.expand-detail h4{font-family:var(--sans);font-weight:700;font-size:1.1rem;margin-bottom:.8rem}
+.expand-detail p{font-family:var(--serif);font-size:.95rem;color:#555;line-height:1.7;margin-bottom:.8rem}
+.expand-detail ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem}
+.expand-detail li{font-family:var(--serif);font-size:.9rem;color:#666;padding-left:1.5rem;position:relative;line-height:1.6}
+.expand-detail li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+
+/* ── QUIZ ── */
+.quiz-bg{background:var(--dark)}
+.quiz-bg .sec-tag,.quiz-bg h2.sec-h,.quiz-bg .sec-sub{color:#F2EDE6}
+.quiz-bg .sec-sub{color:rgba(242,237,230,.45)}
+.quiz-wrap{background:#111;border:1px solid #1E1E1E;padding:3rem;margin-top:3rem}
+.q-progress{height:2px;background:#1E1E1E;margin-bottom:2rem}
+.q-fill{height:100%;background:var(--gold);transition:width .4s ease;width:0%}
+.q-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.5rem}
+.q-text{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:#F2EDE6;margin-bottom:1.8rem;line-height:1.5;min-height:56px}
+.q-opts{display:flex;flex-direction:column;gap:.6rem}
+.q-opt{background:var(--dark);border:1px solid #1E1E1E;padding:.9rem 1.2rem;cursor:pointer;font-family:var(--serif);font-size:.95rem;color:rgba(255,255,255,.45);text-align:left;transition:all .2s;display:flex;gap:1rem;align-items:flex-start}
+.q-opt:hover{border-color:#333;color:rgba(255,255,255,.8)}
+.q-opt.sel{border-color:var(--gold);color:#F2EDE6;background:rgba(200,150,12,.05)}
+.q-opt-key{font-family:var(--mono);font-size:.62rem;color:inherit;opacity:.5;flex-shrink:0;margin-top:.15rem}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem}
+.q-btn{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:rgba(255,255,255,.4);border:1px solid #222;padding:.6rem 1.5rem;cursor:pointer;transition:all .2s}
+.q-btn:hover{border-color:#444;color:rgba(255,255,255,.8)}
+.q-btn:disabled{opacity:.25;cursor:not-allowed}
+.q-btn.primary{background:var(--gold);color:#000;border-color:var(--gold)}
+.q-btn.primary:hover{background:#E0A80E}
+.q-hint{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+/* RESULT */
+.q-result{display:none;padding:1rem 0}
+.r-type{font-family:var(--serif);font-style:italic;font-size:2.5rem;color:#F2EDE6;margin:1rem 0}
+.r-bars{display:flex;gap:.8rem;margin:1.8rem 0}
+.r-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.r-bar-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
+.r-track{width:100%;height:100px;background:#1E1E1E;position:relative;overflow:hidden}
+.r-fill{position:absolute;bottom:0;width:100%;transition:height 1s ease}
+.r-pct{font-family:var(--mono);font-size:1.2rem;font-weight:500}
+.r-desc{font-family:var(--serif);font-size:1rem;color:rgba(242,237,230,.5);line-height:1.7;max-width:540px;margin-bottom:1.5rem}
+.r-plan{background:var(--dark);border:1px solid #1E1E1E;padding:1.5rem;margin-top:1rem}
+.r-plan-h{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.r-plan ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.r-plan li{font-family:var(--serif);font-size:.88rem;color:rgba(242,237,230,.4);padding-left:1.2rem;position:relative}
+.r-plan li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+
+/* ── CTA ── */
+.cta-sec{background:var(--ink);padding:8rem 3rem;text-align:center}
+.cta-sec h2{font-family:var(--serif);font-style:italic;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--bg);margin-bottom:1rem}
+.cta-sec p{font-family:var(--serif);font-size:1.1rem;color:rgba(242,237,230,.45);max-width:520px;margin:0 auto 2.5rem}
+.email-row{display:flex;max-width:480px;margin:0 auto}
+.email-row input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-right:none;padding:.9rem 1.2rem;font-family:var(--serif);font-size:1rem;color:var(--bg);outline:none}
+.email-row input::placeholder{color:rgba(242,237,230,.25)}
+.email-row button{background:var(--gold);color:#000;border:none;padding:.9rem 1.8rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.sub-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:.8rem}
+.domain-note{margin-top:2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.domain-note a{color:var(--gold);text-decoration:none}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);border-top:1px solid #1a1a1a;padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--sans);font-weight:800;font-size:1rem;color:#F2EDE6;letter-spacing:-.02em;text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none}
+.footer-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 2rem;z-index:9000;transition:transform .4s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.r.v{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem}
+  .hero-right{display:none}
+  nav{padding:.9rem 1.5rem}
+  .nav-center{display:none}
+  .wrap{padding:0 1.5rem}
+  .opp-matrix,.scan-grid,.threads-grid,.debates-layout .debate-row,.sci-apps,.plans,.society-layout,.expand-grid{grid-template-columns:1fr}
+  .debates-layout .debate-row{grid-template-columns:1fr}
+  .debate-topic{display:none}
+  .domain-content.active{grid-template-columns:1fr}
+  .scanner-form{grid-template-columns:1fr;padding:0}
+  .scanner-btn{padding:1.2rem}
+  .cp-row{grid-template-columns:1fr}
+  .opp-intro{grid-template-columns:1fr}
+  .reviews{grid-template-columns:1fr}
+  .cta-sec{padding:5rem 1.5rem}
+  .email-row{flex-direction:column;max-width:320px}
+  .email-row input{border-right:1px solid rgba(255,255,255,.1);border-bottom:none}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="index.html" class="logo">QUMNI</a>
+  <ul class="nav-center">
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#scanner">Scanner</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#quiz">Diagnosis</a></li>
+    <li><a href="#debates">Debates</a></li>
+  </ul>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="pcf.html" class="nav-pcf-btn" style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.55rem 1rem;text-decoration:none;transition:all .2s;white-space:nowrap">PCF →</a>
+    <a href="app.php" class="nav-cta btn">WSO App →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow r">The Human Action Framework — Scientifically Grounded</div>
+    <h1 class="main r">
+      You need <em>two</em> out<br>
+      of <span class="accent">three</span><br>
+      to do anything.
+    </h1>
+    <p class="hero-desc r">
+      <strong>Will. Skill. Opportunity.</strong> A framework for diagnosing why humans act — or fail to. Grounded in Self-Determination Theory, Bandura's self-efficacy research, and Giddens' Structuration Theory. Applied to individuals, organizations, and civilizations.
+    </p>
+    <div class="hero-btns r">
+      <a href="#quiz" class="btn btn-dark">Diagnose Yourself →</a>
+      <a href="#framework" class="btn btn-outline">Explore the Framework</a>
+    </div>
+    <div class="hero-pills r">
+      <span class="pill pill-w">Will · Volition · Drive</span>
+      <span class="pill pill-s">Skill · Knowledge · Mastery</span>
+      <span class="pill pill-o">Opportunity · Access · Structure</span>
+    </div>
+  </div>
+  <div class="hero-right r">
+    <div class="venn-hero">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="blur1"><feGaussianBlur stdDeviation="2"/></filter>
+        </defs>
+        <!-- glow rings -->
+        <circle cx="180" cy="130" r="95" fill="none" stroke="rgba(232,50,26,0.08)" stroke-width="40" filter="url(#blur1)"/>
+        <circle cx="130" cy="220" r="95" fill="none" stroke="rgba(0,102,255,0.08)" stroke-width="40" filter="url(#blur1)"/>
+        <circle cx="230" cy="220" r="95" fill="none" stroke="rgba(0,198,94,0.08)" stroke-width="40" filter="url(#blur1)"/>
+        <!-- main circles -->
+        <circle class="vc" cx="180" cy="130" r="95" fill="rgba(232,50,26,0.1)" stroke="#E8321A" stroke-width="1.2" id="v1"/>
+        <circle class="vc" cx="130" cy="220" r="95" fill="rgba(0,102,255,0.1)" stroke="#0066FF" stroke-width="1.2" id="v2"/>
+        <circle class="vc" cx="230" cy="220" r="95" fill="rgba(0,198,94,0.1)" stroke="#00C65E" stroke-width="1.2" id="v3"/>
+        <!-- labels -->
+        <text x="180" y="72" text-anchor="middle" font-family="Syne,sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#E8321A" opacity=".8" text-transform="uppercase">WILL</text>
+        <text x="70" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#0066FF" opacity=".8">SKILL</text>
+        <text x="290" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#00C65E" opacity=".8">OPP.</text>
+        <!-- center -->
+        <text x="180" y="198" text-anchor="middle" font-family="Instrument Serif,serif" font-style="italic" font-size="12" fill="rgba(26,26,26,0.6)">Full Agency</text>
+        <!-- 2/3 zones -->
+        <text x="140" y="162" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="rgba(26,26,26,0.4)" letter-spacing="0.5">W+S</text>
+        <text x="220" y="162" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="rgba(26,26,26,0.4)" letter-spacing="0.5">W+O</text>
+        <text x="180" y="242" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="rgba(26,26,26,0.4)" letter-spacing="0.5">S+O</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TICKERS ═══ -->
+<div class="ticker-outer">
+  <div class="ticker-inner">
+    <div class="t-item t-w"><span class="t-dot"></span>WILL</div><div class="t-item t-w"><span class="t-dot"></span>MOTIVATION</div><div class="t-item t-w"><span class="t-dot"></span>VOLITION</div><div class="t-item t-w"><span class="t-dot"></span>DESIRE</div>
+    <div class="t-item t-s"><span class="t-dot"></span>SKILL</div><div class="t-item t-s"><span class="t-dot"></span>KNOWLEDGE</div><div class="t-item t-s"><span class="t-dot"></span>COMPETENCE</div><div class="t-item t-s"><span class="t-dot"></span>MASTERY</div>
+    <div class="t-item t-o"><span class="t-dot"></span>OPPORTUNITY</div><div class="t-item t-o"><span class="t-dot"></span>ACCESS</div><div class="t-item t-o"><span class="t-dot"></span>STRUCTURE</div><div class="t-item t-o"><span class="t-dot"></span>POSSIBILITY</div>
+    <div class="t-item t-w"><span class="t-dot"></span>WILL</div><div class="t-item t-w"><span class="t-dot"></span>MOTIVATION</div><div class="t-item t-w"><span class="t-dot"></span>VOLITION</div><div class="t-item t-w"><span class="t-dot"></span>DESIRE</div>
+    <div class="t-item t-s"><span class="t-dot"></span>SKILL</div><div class="t-item t-s"><span class="t-dot"></span>KNOWLEDGE</div><div class="t-item t-s"><span class="t-dot"></span>COMPETENCE</div><div class="t-item t-s"><span class="t-dot"></span>MASTERY</div>
+    <div class="t-item t-o"><span class="t-dot"></span>OPPORTUNITY</div><div class="t-item t-o"><span class="t-dot"></span>ACCESS</div><div class="t-item t-o"><span class="t-dot"></span>STRUCTURE</div><div class="t-item t-o"><span class="t-dot"></span>POSSIBILITY</div>
+  </div>
+</div>
+<div class="ticker-outer" style="border-top:none">
+  <div class="ticker-inner ticker-inner2">
+    <div class="t-item"><span class="t-dot"></span>THE 2/3 RULE</div><div class="t-item"><span class="t-dot"></span>WSO FRAMEWORK</div><div class="t-item"><span class="t-dot"></span>50 YEARS OF SCIENCE</div><div class="t-item"><span class="t-dot"></span>INDIVIDUAL · SOCIETY · CIVILIZATION</div><div class="t-item"><span class="t-dot"></span>SELF-DETERMINATION THEORY</div><div class="t-item"><span class="t-dot"></span>BANDURA · DECI · RYAN · GIDDENS</div><div class="t-item"><span class="t-dot"></span>THE 2/3 RULE</div><div class="t-item"><span class="t-dot"></span>WSO FRAMEWORK</div><div class="t-item"><span class="t-dot"></span>50 YEARS OF SCIENCE</div><div class="t-item"><span class="t-dot"></span>INDIVIDUAL · SOCIETY · CIVILIZATION</div><div class="t-item"><span class="t-dot"></span>SELF-DETERMINATION THEORY</div><div class="t-item"><span class="t-dot"></span>BANDURA · DECI · RYAN · GIDDENS</div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ═══ FRAMEWORK / OPPORTUNITY MATRIX ═══ -->
+<section id="framework" style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">01 — The WSO Matrix</div>
+  <h2 class="sec-h r">What two out of three<br>actually looks like</h2>
+  <p class="sec-sub r">Every situation where humans act — or fail to — maps onto exactly one of seven positions in this matrix. Six involve partial agency. One is full. The framework makes every position visible and actionable.</p>
+  <div class="opp-matrix r">
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">🔥</span><span class="opp-wso opp-wso-w">WILL only</span></div>
+      <h4>The Dreamer</h4>
+      <p>Deep desire, no skill, no opening. Pure longing without agency. Historically the most common human state: wanting without the capacity or context to act.</p>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">⚙️</span><span class="opp-wso opp-wso-s">SKILL only</span></div>
+      <h4>The Idle Expert</h4>
+      <p>Competence without motivation or context. Encyclopedic knowledge with no drive and no stage. Tragic waste. The retired surgeon who refuses to operate.</p>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">🌐</span><span class="opp-wso opp-wso-o">OPP. only</span></div>
+      <h4>The Open Door</h4>
+      <p>Access exists, but no one wants to walk through it — or no one can. An unpicked opportunity is not an opportunity: it's just a gap waiting.</p>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">⚡</span><span class="opp-wso opp-wso-ws">WILL + SKILL</span></div>
+      <h4>The Competent Prisoner</h4>
+      <p>Burning desire + full capacity, but the structural door is locked. The researcher whose grant was denied. The woman in a society that won't let her lead. Nothing is internally broken. The fight must be external.</p>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">🚀</span><span class="opp-wso opp-wso-wo">WILL + OPP.</span></div>
+      <h4>The Dreaming Sprinter</h4>
+      <p>Blazing desire + wide open door, but missing the tools. Best position to learn: high motivation + structural access = the optimal learning environment. This is the most solvable state.</p>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-cell-header"><span class="opp-icon">😶</span><span class="opp-wso opp-wso-so">SKILL + OPP.</span></div>
+      <h4>The Capable Bystander</h4>
+      <p>Everything in place — except the fire. Aristotle's deepest question. Burnout, misalignment, anhedonia. No productivity hack solves a missing "why." The intervention must be meaning-based.</p>
+    </div>
+    <div class="opp-cell" style="background:rgba(200,150,12,0.04);border:1px solid rgba(200,150,12,0.15)">
+      <div class="opp-cell-header"><span class="opp-icon">✦</span><span class="opp-wso opp-wso-all">W + S + O</span></div>
+      <h4>Full Agency</h4>
+      <p>The convergence. Csikszentmihalyi's Flow. Aristotle's Eudaimonia. The positive feedback loop: Will sharpens Skill. Skill creates Opportunity. Opportunity fuels Will. The pillars don't add — they multiply.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ WSO SCANNER TOOL ═══ -->
+<section id="scanner" style="background:var(--surface)">
+<div class="wrap sec">
+  <div class="sec-tag r">02 — WSO Instant Scanner</div>
+  <h2 class="sec-h r">Rate any situation in<br>under 30 seconds</h2>
+  <p class="sec-sub r">Drop any goal, project, or problem into the WSO scanner. Rate your Will, Skill, and Opportunity from 1–10. Get your archetype and precision intervention instantly.</p>
+  <div class="scanner-tool r">
+    <div class="scanner-label">WSO Real-Time Diagnostic</div>
+    <div class="scanner-head">What are you trying to do?</div>
+    <div class="scanner-sub">Rate each dimension for your specific goal right now. Be ruthlessly honest. The insight only works if you are.</div>
+    <div class="scanner-form">
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:rgba(232,50,26,.6)">Will — How much do you want this?</span>
+        <div class="s-val" id="wVal" style="color:var(--W)">5</div>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-w" id="wSlider" oninput="document.getElementById('wVal').textContent=this.value">
+      </div>
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:rgba(0,102,255,.6)">Skill — How capable are you?</span>
+        <div class="s-val" id="sVal" style="color:var(--S)">5</div>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-s" id="sSlider" oninput="document.getElementById('sVal').textContent=this.value">
+      </div>
+      <div class="scanner-field">
+        <span class="s-field-label" style="color:rgba(0,198,94,.6)">Opportunity — Is the path open?</span>
+        <div class="s-val" id="oVal" style="color:var(--O)">5</div>
+        <input type="range" min="1" max="10" value="5" class="s-slider s-slider-o" id="oSlider" oninput="document.getElementById('oVal').textContent=this.value">
+      </div>
+      <button class="scanner-btn" onclick="runScanner()">Scan →</button>
+    </div>
+    <div class="scanner-result" id="scanResult">
+      <div class="scanner-label" id="scanLabel"></div>
+      <div class="sr-archetype" id="scanArchetype"></div>
+      <div class="sr-insight" id="scanInsight"></div>
+      <div class="sr-actions" id="scanActions"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SCIENCE ═══ -->
+<section id="science" class="scan-bg">
+<div class="wrap sec">
+  <div class="sec-tag r">03 — Scientific Foundations</div>
+  <h2 class="sec-h r">Four review threads.<br>All roads lead here.</h2>
+  <p class="sec-sub r">Running four independent critical reviews of the WSO framework against the scientific literature. Each review tested the model against a different body of evidence.</p>
+  <div class="scan-grid r">
+    <div class="scan-cell scan-w">
+      <div class="scan-label">Review Thread 1 — Psychology</div>
+      <h4>Self-Determination Theory Alignment</h4>
+      <p>Deci & Ryan's SDT independently arrived at the same triad: autonomy (Will), competence (Skill), and social context (Opportunity). Over 50,000 published studies validate the model. The 2/3 threshold holds: removing any one creates measurable performance deficits; retaining two is sufficient for sustained action. SDT confirms the pillars interact dynamically — they co-produce each other over time.</p>
+      <div class="scan-cite">Deci & Ryan 1985–2020 · 50,000+ studies · Validated cross-culturally</div>
+    </div>
+    <div class="scan-cell scan-s">
+      <div class="scan-label">Review Thread 2 — Cognitive Science</div>
+      <h4>Bandura's Agency Research</h4>
+      <p>Self-efficacy theory confirms: perceived Skill (not just actual Skill) determines whether people attempt action. Bandura's research on collective efficacy extends WSO to groups: teams pool Will, Skill, and Opportunity to produce outcomes impossible individually. Crucially, skill and will are not independent — competence creates motivation (intrinsic reward), validating the dynamic interdependence in WSO.</p>
+      <div class="scan-cite">Bandura 1977–2012 · 100,000+ citations · Applied across medicine, education, sport</div>
+    </div>
+    <div class="scan-cell scan-o">
+      <div class="scan-label">Review Thread 3 — Sociology</div>
+      <h4>Structure-Agency Research</h4>
+      <p>Giddens' Structuration Theory maps directly to the Opportunity axis. Structures (rules and resources) simultaneously enable and constrain action — validating that Opportunity is real, external, and decisive. Bourdieu's capital theory adds nuance: Opportunity isn't binary but comes in economic, social, and cultural forms. WSO's simplification is justified: three axes capture most variance while remaining actionable.</p>
+      <div class="scan-cite">Giddens 1984, Bourdieu 1986 · Foundational social theory · Applied in health, education, policy</div>
+    </div>
+    <div class="scan-cell scan-all">
+      <div class="scan-label">Review Thread 4 — Entrepreneurship Science</div>
+      <h4>Opportunity Recognition Research</h4>
+      <p>Entrepreneurship research independently converged on the same insight: Baron's pattern recognition model shows entrepreneurs succeed when prior knowledge (Skill) plus alertness (Will) meet market gaps (Opportunity). Kirzner's Austrian economics shows that information asymmetry — knowing where Opportunity exists that others don't — is itself the core entrepreneurial skill. WSO directly maps to the foundational structure of entrepreneurship science.</p>
+      <div class="scan-cite">Baron 2006, Kirzner 1985, Shane & Venkataraman 2000 · Validated in 107+ studies</div>
+    </div>
+  </div>
+
+  <!-- 4 Reviews: Verdict Cards -->
+  <div style="margin-top:1px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1a1a">
+    <div style="background:#0a0a0a;padding:1.5rem">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--W);margin-bottom:.4rem">Verdict 1</div>
+      <div style="font-family:var(--sans);font-weight:700;font-size:.9rem;color:#F2EDE6;margin-bottom:.4rem">Strongly Confirmed</div>
+      <div style="font-family:var(--serif);font-size:.8rem;color:rgba(242,237,230,.35)">SDT's three needs map precisely to W, S, O. The 2/3 threshold is empirically supported across decades of educational, health, and organizational research.</div>
+    </div>
+    <div style="background:#0a0a0a;padding:1.5rem">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--S);margin-bottom:.4rem">Verdict 2</div>
+      <div style="font-family:var(--sans);font-weight:700;font-size:.9rem;color:#F2EDE6;margin-bottom:.4rem">Confirmed with nuance</div>
+      <div style="font-family:var(--serif);font-size:.8rem;color:rgba(242,237,230,.35)">Bandura confirms dynamic Will-Skill interaction but suggests a fourth dimension (self-efficacy belief) may be required. Absorbed into the Skill pillar in WSO.</div>
+    </div>
+    <div style="background:#0a0a0a;padding:1.5rem">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--O);margin-bottom:.4rem">Verdict 3</div>
+      <div style="font-family:var(--sans);font-weight:700;font-size:.9rem;color:#F2EDE6;margin-bottom:.4rem">Confirmed — Opportunity underweighted</div>
+      <div style="font-family:var(--serif);font-size:.8rem;color:rgba(242,237,230,.35)">Structural sociology argues Opportunity may trump Will + Skill at sufficient extremes. WSO's equality assumption may need weighting in oppressive contexts.</div>
+    </div>
+    <div style="background:#0a0a0a;padding:1.5rem">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Verdict 4</div>
+      <div style="font-family:var(--sans);font-weight:700;font-size:.9rem;color:#F2EDE6;margin-bottom:.4rem">Novel Application Confirmed</div>
+      <div style="font-family:var(--serif);font-size:.8rem;color:rgba(242,237,230,.35)">Entrepreneurship science didn't name WSO explicitly — but its entire structure is WSO in disguise. This is the framework's most powerful novel domain.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ APPLICATIONS ACROSS DOMAINS ═══ -->
+<section id="applications" class="opp-engine">
+<div class="wrap sec">
+  <div class="sec-tag r">04 — Domain Applications</div>
+  <h2 class="sec-h r">WSO explains everything<br>across every field</h2>
+  <p class="sec-sub r">Four brainstorm threads ran in parallel on the framework's reach. Every domain maps to the same structure.</p>
+  <div class="domain-tabs r">
+    <button class="d-tab active" onclick="showDomain('personal')">Personal Growth</button>
+    <button class="d-tab" onclick="showDomain('science')">Science & Research</button>
+    <button class="d-tab" onclick="showDomain('business')">Business & Startups</button>
+    <button class="d-tab" onclick="showDomain('society')">Society & Politics</button>
+    <button class="d-tab" onclick="showDomain('health')">Health & Medicine</button>
+    <button class="d-tab" onclick="showDomain('creativity')">Art & Creativity</button>
+    <button class="d-tab" onclick="showDomain('tech')">Technology & AI</button>
+    <button class="d-tab" onclick="showDomain('relationships')">Relationships</button>
+  </div>
+  <div class="domain-content active" id="dom-personal">
+    <div class="d-panel"><div class="d-panel-head d-w">Will Dimension</div><h4>Where Motivation Lives</h4><p>The most studied axis. Values, identity, intrinsic motivation. Will is not fixed — it responds to environment, framing, and meaning. The question is always: does this goal connect to something you actually are, or just something you think you should want?</p><ul><li>Values audit: what would you pursue if outcome was guaranteed?</li><li>Anti-goal mapping: define what you refuse to become</li><li>Identity-based commitment: "I am the kind of person who..."</li><li>Reconnect to the origin story of your desire</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Skill Dimension</div><h4>What You're Actually Capable Of</h4><p>Most people overestimate their current skill and underestimate how fast they can acquire new skills with deliberate practice. The key insight: you don't need to be an expert to act. You need to be competent enough for the next step.</p><ul><li>Minimum viable skill: what's the threshold for the first action?</li><li>Deliberate practice at the edge of competence (Ericsson)</li><li>Tight feedback loops: learn something testable in 24 hours</li><li>Teach to consolidate: the protégé effect amplifies retention 90%</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Opportunity Dimension</div><h4>What the Context Allows</h4><p>The most neglected axis in personal development. Not everything is about mindset. Sometimes the barrier is genuinely external: financial, geographic, social, legal. Naming the barrier precisely is the first step to dismantling it.</p><ul><li>Exact barrier mapping: financial, social, temporal, legal?</li><li>Who has crossed this barrier? Study the path precisely</li><li>Find the smallest accessible version of your goal</li><li>Build resources: the 90-day opportunity creation map</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-science">
+    <div class="d-panel"><div class="d-panel-head d-w">Will Deficit</div><h4>Problems Nobody Wants to Solve</h4><p>Many solvable scientific problems go unaddressed because no one finds them interesting or prestigious enough. The question: where does Skill + Opportunity exist, but Will is absent? These are the highest-leverage targets for a motivated researcher.</p><ul><li>Neglected tropical diseases: tools exist, funders absent</li><li>Mathematics problems considered "unfashionable"</li><li>Replication of existing findings (vital but low-status)</li><li>Interdisciplinary problems that don't fit any department</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Skill Deficit</div><h4>Problems We Want Solved But Can't</h4><p>Turbulence, protein folding (partially solved by AlphaFold), consciousness — where motivation and opportunity abound but the intellectual tools don't yet exist. The WSO framework predicts: these unlock the moment someone develops the right conceptual approach.</p><ul><li>Consciousness: no agreed measurement framework</li><li>Navier-Stokes equations: mathematical tools insufficient</li><li>Social science replication: methodological skill gaps</li><li>Dark matter: observational skill/technology gap</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Opportunity Deficit</div><h4>Problems Structurally Blocked</h4><p>Will + Skill exist, but funding, institutional access, or peer-review gatekeeping prevents action. Human challenge studies, certain psychedelic research, longevity science — all were structurally blocked for decades despite having interested, competent researchers.</p><ul><li>Longevity research: stigmatized until ~2015 structural shift</li><li>Psychedelic therapy: researchers ready for 40 years</li><li>Certain physics experiments: too expensive to run</li><li>Cross-disciplinary work: institutional structures block it</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-business">
+    <div class="d-panel"><div class="d-panel-head d-w">Market Will Analysis</div><h4>Finding Real Demand</h4><p>In business, Will = customer demand. The key entrepreneurial question: where does unmet demand (Will) exist for something that skilled people could build (Skill) in a context that allows it (Opportunity)? This is the precise structure of every successful startup.</p><ul><li>Jobs-to-be-done theory: what are people trying to accomplish?</li><li>Underserved markets: high frustration, low incumbent interest</li><li>Timing: Will exists but precedent discouraged entry</li><li>Regulatory change: new Opportunity opens existing demand</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Competence Gap</div><h4>The Skills That Create Moats</h4><p>Business opportunity exists where most people have Will but lack the specific Skill to execute. This is the structure of every competitive advantage: doing what others want to do but cannot. Pattern recognition, regulatory expertise, niche domain mastery.</p><ul><li>Technical complexity as moat: others want it, can't build it</li><li>Regulatory knowledge: opportunity others see but can't navigate</li><li>Network effects: social Skill creates structural Opportunity</li><li>Domain expertise + new technology = rare, valuable combination</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Structural Windows</div><h4>When Context Changes Everything</h4><p>The most dramatic business opportunities arise from structural shifts: regulatory change, new technology, demographic shift, or cultural change. These create temporary or permanent new Opportunity windows. The question is: who has Will + Skill ready when the window opens?</p><ul><li>Platform shifts: mobile, cloud, AI — each opened new Opportunity</li><li>Regulatory change: legalization creates instant Opportunity</li><li>Demographic shift: aging population → new markets</li><li>Crisis windows: COVID created new Opportunity overnight</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-society">
+    <div class="d-panel"><div class="d-panel-head d-w">Collective Will</div><h4>When Populations Move</h4><p>Revolutions, social movements, and political change all require collective Will — shared grievance, shared identity, shared vision. The American civil rights movement, Arab Spring, and suffragette movement all show how collective Will can overcome both Skill deficits and Opportunity barriers when sufficiently intense.</p><ul><li>Grievance accumulation: Will builds over time to threshold</li><li>Identity alignment: movements need a shared "we"</li><li>Narrative power: framing the Will in terms that recruit</li><li>Critical mass: Will spreads when it reaches density</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Institutional Skill</div><h4>The Competence of Civilizations</h4><p>Nations and institutions have collective Skill: legal systems, bureaucratic capacity, scientific infrastructure, educational pipelines. The WSO framework predicts: societies with institutional Skill can seize Opportunities that equally-willing societies miss. This is why institutions matter.</p><ul><li>State capacity as collective Skill (Fukuyama)</li><li>Rule of law enables Opportunity that Skill can exploit</li><li>Educational systems are the Skill-building infrastructure</li><li>Why failing states can't seize economic Opportunity</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Structural Justice</div><h4>Opportunity as a Moral Imperative</h4><p>The WSO framework has a hidden ethical implication: systematically denying Opportunity while leaving Will and Skill intact is the most precise definition of oppression. Poverty, discrimination, and political repression are all fundamentally Opportunity collapses — not Will or Skill failures. This reframes the entire debate about inequality.</p><ul><li>Poverty trap = structural Opportunity collapse (Amartya Sen)</li><li>Discrimination = selective Opportunity denial</li><li>Policy implication: target Opportunity, not just motivation</li><li>The capability approach: flourishing requires all three</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-health">
+    <div class="d-panel"><div class="d-panel-head d-w">Patient Will</div><h4>Why Health Campaigns Fail</h4><p>Decades of public health interventions have targeted Will (information, fear appeals, motivational messaging) in populations that already have sufficient Will — but lack Skill (health literacy, cooking ability) or Opportunity (food deserts, no time, no access). WSO predicts exactly why "just try harder" health campaigns consistently fail.</p><ul><li>Obesity: the missing axis is Opportunity, not Will</li><li>Mental health: Will to recover often strong; access barriers</li><li>Chronic disease management: Skill gap is usually the blocker</li><li>Vaccination: Will + Skill ≠ enough when access is absent</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Clinical Skill</div><h4>The Knowledge That Changes Everything</h4><p>Medical skill is among the highest-stakes Skill in WSO. The gap between what is known in peer-reviewed literature and what is practiced in clinical settings creates massive, unnecessary harm. The "knowledge-to-practice gap" is a WSO failure: Opportunity and Will exist in patients; Skill exists in literature; the translation is missing.</p><ul><li>Evidence-based medicine: Skill exists, adoption is the gap</li><li>Surgical variation: same Opportunity, wildly different Skill</li><li>Digital health: new Opportunity with insufficient clinical Skill</li><li>Global health: solutions known, delivery systems absent</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Healthcare Access</div><h4>Structural Barriers to Healing</h4><p>The most powerful predictor of health outcomes is not individual behavior (Will) or patient knowledge (Skill) but structural Opportunity: geography, insurance, wealth, race. The social determinants of health are the Opportunity axis operating at civilizational scale.</p><ul><li>Rural health deserts: Will + Skill, no geographic access</li><li>Mental health waitlists: structural capacity gap</li><li>Drug pricing: effective Skill exists, Opportunity is priced out</li><li>Preventive care: Will present; Opportunity systematically absent</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-creativity">
+    <div class="d-panel"><div class="d-panel-head d-w">Creative Drive</div><h4>The Source of Artistic Will</h4><p>Creative Will is both the most personal and most fragile form of motivation. Unlike goal-oriented Will, creative Will is sustained by intrinsic curiosity — and can be extinguished by external control, commodification, or premature evaluation. The artist who "sells out" is experiencing a Will collapse induced by an Opportunity change.</p><ul><li>Intrinsic creative motivation vs. extrinsic reward (Amabile)</li><li>The Blank Page problem: Will present but inaccessible</li><li>Identity threat: "I am not a real artist" blocks Will</li><li>Protect creative Will: guard it from premature exposure</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Craft Mastery</div><h4>The 10,000-Hour Reframe</h4><p>Ericsson's deliberate practice research shows Skill in creative domains accumulates through specific, feedback-rich practice — not just time. The artist who practices 10,000 hours of performance without deliberate stretch and feedback gains little. The framework: find the edge of creative competence and practice precisely there.</p><ul><li>Deliberate practice in creativity: design feedback into process</li><li>Constraint as Skill-builder: limitation forces creative invention</li><li>Cross-domain Skill: the most creative work borrows from elsewhere</li><li>Technique vs. voice: Skill enables expression, doesn't replace it</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Creative Infrastructure</div><h4>Why Art Requires Conditions</h4><p>Virginia Woolf called it "a room of one's own." Creative work requires structural Opportunity: time, space, economic security, access to materials, audience infrastructure, and — crucially — cultural permission to explore. The history of lost art is the history of structural Opportunity denial.</p><ul><li>Economic precarity kills creative Opportunity before the first stroke</li><li>Patronage systems: externally-provided Opportunity</li><li>Internet: largest creative Opportunity expansion in history</li><li>Gatekeeping: publishers, galleries as structural Opportunity controllers</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-tech">
+    <div class="d-panel"><div class="d-panel-head d-w">Technological Will</div><h4>The Demand Side of Innovation</h4><p>Technology is pulled by Will (market demand) as much as pushed by Skill. The WSO framework predicts technology timelines: a technology will emerge when Will + Opportunity exist with sufficient Skill. Electric vehicles, gene therapy, and AI all had Will and Opportunity decades before Skill caught up.</p><ul><li>Technology pull: demand (Will) shapes what gets built</li><li>Frustrated Will = innovation pressure = entrepreneurial opportunity</li><li>AI is now providing Skill to domains previously blocked by it</li><li>The next breakthrough: find where Will + Opportunity exist without Skill</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">AI as Skill Amplifier</div><h4>The Most Radical Shift in the WSO Framework's History</h4><p>For the first time in human history, AI is providing Skill to people who lack it — at scale, at near-zero cost. This is an unprecedented expansion of the Skill axis. WSO predicts the consequences: vast numbers of people who previously had Will + Opportunity but no Skill now have access to all three. The action that was impossible becomes possible overnight.</p><ul><li>Code generation: engineers of previous zero Skill now act</li><li>Legal reasoning, medical diagnosis: Skill democratized</li><li>AI as Opportunity-creator: new domains emerge when Skill barrier falls</li><li>Counter-prediction: what happens when Skill is no longer scarce?</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Platform as Opportunity</div><h4>How Technology Creates Structural Access</h4><p>Platforms (App Store, YouTube, Shopify, GitHub) are the most powerful Opportunity-creation machines ever built. They transform the structural landscape so that Will + Skill now produces outcomes that were previously inaccessible. A WSO analysis of the last 20 years: every major platform is a permanent Opportunity infrastructure shift.</p><ul><li>YouTube: gave anyone with Will + Skill an audience Opportunity</li><li>Shopify: removed the Opportunity barrier to selling</li><li>GitHub: collaborative Skill + permanent Opportunity</li><li>Prediction: whoever controls Opportunity infrastructure controls outcomes</li></ul></div>
+  </div>
+  <div class="domain-content" id="dom-relationships">
+    <div class="d-panel"><div class="d-panel-head d-w">Relational Will</div><h4>The Desire to Connect</h4><p>In relationships, Will is the desire for connection, love, or understanding. But relational Will is often confused with attachment, projection, or fear — meaning the apparent Will is actually a different need wearing a relationship's clothes. WSO requires asking: is this Will authentic, or is it avoidance of something else?</p><ul><li>Attachment styles shape the quality of relational Will</li><li>Confusing loneliness (pain relief) with love (genuine Will)</li><li>Chemistry ≠ compatibility: Will without Skill or Opportunity</li><li>Will toward specific person vs. Will toward connection generally</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-s">Relational Skill</div><h4>The Competencies of Connection</h4><p>Communication, repair, conflict resolution, emotional regulation, empathy — these are genuine Skills that vary enormously across people and that can be deliberately developed. Most relationship failures are not Will failures but Skill failures: people who genuinely want connection but lack the tools to build and sustain it.</p><ul><li>Gottman's repair attempts: a specific, learnable Skill</li><li>Emotional regulation: reduces reactivity during conflict</li><li>Active listening: most underrated relational Skill</li><li>Vulnerability as Skill: strategic openness, not exposure</li></ul></div>
+    <div class="d-panel"><div class="d-panel-head d-o">Relational Opportunity</div><h4>The Context That Allows Love</h4><p>Structural Opportunity in relationships includes: proximity, shared contexts, freedom from economic stress, cultural permission, timing. Two people with Will + Skill can fail entirely because Opportunity is absent — wrong time, wrong geography, wrong circumstance. "Wrong time" is the most honest and most frequently dishonest reason relationships fail.</p><ul><li>Proximity: the most underrated determinant of relationship formation</li><li>Economic stress reduces relational Opportunity in measurable ways</li><li>Cultural permission: who is allowed to love whom</li><li>Timing as Opportunity: the same Will + Skill produces different outcomes at different ages/contexts</li></ul></div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SCIENCE OPPORTUNITY SCANNER ═══ -->
+<section style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">05 — The Opportunity Engine</div>
+  <h2 class="sec-h r">Finding 2/3 in science:<br>the unlocked doors</h2>
+  <p class="sec-sub r">The most powerful application of WSO for ambitious people: systematically scan domains where two pillars exist but one is missing. These are the highest-leverage targets — especially in science, business, and society.</p>
+  <div class="sci-apps r">
+    <div class="sci-app">
+      <span class="sci-app-badge badge-ripe">⚡ Ripe for Action</span>
+      <h4>Longevity Science</h4>
+      <p>Will (demand is enormous) + Skill (biology tools now exist) — but Opportunity was structurally blocked by medical conservatism for decades. Since ~2015, the Opportunity opened. Now: Will + Skill + Opportunity = research explosion.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✓</span><span class="sci-wso-badge s">S ✓</span><span class="sci-wso-badge o">O ↑ opening</span></div>
+    </div>
+    <div class="sci-app">
+      <span class="sci-app-badge badge-ripe">⚡ Ripe for Action</span>
+      <h4>Psychedelic Medicine</h4>
+      <p>Researchers had Will + Skill since the 1950s. The Opportunity was closed for 50 years by regulatory structure. FDA breakthrough designations since 2017 are Opportunity creation events — and WSO predicted the research explosion that followed.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✓</span><span class="sci-wso-badge s">S ✓</span><span class="sci-wso-badge o">O → unlocked</span></div>
+    </div>
+    <div class="sci-app">
+      <span class="sci-app-badge badge-unsolved">⚠ Skill Gap</span>
+      <h4>Consciousness Science</h4>
+      <p>Enormous Will (everyone wants to understand it) + massive Opportunity (no ethical barriers to study) — but the conceptual Skill framework doesn't yet exist. No agreed measurement, no predictive theory. This is a pure Skill deficit problem.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✓</span><span class="sci-wso-badge s">S ✗ gap</span><span class="sci-wso-badge o">O ✓</span></div>
+    </div>
+    <div class="sci-app">
+      <span class="sci-app-badge badge-ripe">⚡ AI-Unlocked</span>
+      <h4>Drug Discovery</h4>
+      <p>Will + Opportunity — but historically blocked by the Skill of molecular simulation. AlphaFold and AI molecular design are Skill injections. The entire pharmaceutical pipeline is being restructured by a sudden Skill increase. Classic WSO unlock event.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✓</span><span class="sci-wso-badge s">S → AI boost</span><span class="sci-wso-badge o">O ✓</span></div>
+    </div>
+    <div class="sci-app">
+      <span class="sci-app-badge badge-unsolved">⚠ Will Gap</span>
+      <h4>Scientific Replication</h4>
+      <p>The infrastructure (Opportunity) exists. The statistical and methodological tools (Skill) exist. But replication has low prestige, low funding, and low career incentive. This is a pure Will problem at the institutional level — and WSO predicts no one fixes it until incentives change.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✗ low</span><span class="sci-wso-badge s">S ✓</span><span class="sci-wso-badge o">O ✓</span></div>
+    </div>
+    <div class="sci-app">
+      <span class="sci-app-badge badge-ripe">⚡ Next Frontier</span>
+      <h4>Nuclear Fusion</h4>
+      <p>Will (civilization-scale energy demand) + Skill (plasma physics now mature enough) — the Opportunity is finally opening with NIF's ignition milestone and private investment. WSO predicts: the first commercial reactor appears when Opportunity infrastructure (capital, regulatory, engineering) catches up.</p>
+      <div class="sci-wso">Pattern: <span class="sci-wso-badge w">W ✓</span><span class="sci-wso-badge s">S ✓</span><span class="sci-wso-badge o">O → converging</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ 4 BRAINSTORM EXPANSIONS ═══ -->
+<section style="background:var(--surface)">
+<div class="wrap sec">
+  <div class="sec-tag r">06 — Four Brainstorm Threads</div>
+  <h2 class="sec-h r">Where the framework<br>expands into new territory</h2>
+  <p class="sec-sub r">Running four parallel brainstorms on what WSO could become. Click to expand each thread.</p>
+  <div class="expand-grid r" id="expandGrid">
+
+    <div class="expand-cell" onclick="toggleExpand(0)">
+      <div class="expand-num">Thread B1</div>
+      <h4>WSO as Investment Thesis</h4>
+      <p>Applying the framework to find underpriced assets where two pillars exist but the market hasn't recognized the third is arriving.</p>
+      <span class="expand-open" id="exp0">+</span>
+    </div>
+    <div class="expand-cell" onclick="toggleExpand(1)">
+      <div class="expand-num">Thread B2</div>
+      <h4>WSO for AI Alignment</h4>
+      <p>Using the framework to analyze AI risk: what happens when a system has unlimited Skill and Opportunity but misaligned Will?</p>
+      <span class="expand-open" id="exp1">+</span>
+    </div>
+    <div class="expand-cell" onclick="toggleExpand(2)">
+      <div class="expand-num">Thread B3</div>
+      <h4>The WSO Atlas: Civilization Scan</h4>
+      <p>Mapping every major civilization collapse and rise through the WSO lens. A new theory of history.</p>
+      <span class="expand-open" id="exp2">+</span>
+    </div>
+    <div class="expand-detail" id="ed0">
+      <h4>WSO as Investment Thesis</h4>
+      <p>The most powerful use of WSO in markets: find situations where Will (demand) + Skill (technology) exist, but Opportunity (market access, regulatory approval, infrastructure) hasn't opened yet. These are pre-breakout positions.</p>
+      <p>Every major technology investment thesis of the last 20 years follows this pattern: electric vehicles (Will + Skill for a decade; Opportunity opened when battery costs hit $100/kWh), legal cannabis (Will + Skill; Opportunity opened state by state), psychedelic medicine (Will + Skill for 50 years; Opportunity opening now), lab-grown meat (Will + advancing Skill; Opportunity cost curves converging).</p>
+      <ul>
+        <li>Screen for sectors where Will (demand) is proven but structure hasn't caught up</li>
+        <li>Look for Skill jumps (new technology, regulatory change) as Opportunity creation events</li>
+        <li>Track regulatory calendars as Opportunity unlocking timelines</li>
+        <li>Monitor talent migration: where are the best researchers going? That's Will + Skill pre-positioning</li>
+        <li>Short thesis: find markets where Opportunity is artificially maintained (incumbency) against emerging Will + Skill</li>
+      </ul>
+    </div>
+    <div class="expand-detail" id="ed1">
+      <h4>WSO for AI Alignment</h4>
+      <p>The AI safety problem maps perfectly onto WSO: we are building systems with rapidly increasing Skill, operating in expanding Opportunity (compute, data, deployment contexts) — and the critical unresolved question is whether their Will (objective function, optimization target) is correctly aligned with human values.</p>
+      <p>WSO predicts the danger with unusual precision: maximum Skill + maximum Opportunity + misaligned Will = maximum threat. The framework suggests that AI alignment is fundamentally a Will problem, not a Skill or Opportunity problem — and that adding more Skill or Opportunity to a misaligned AI is not progress but acceleration toward catastrophe.</p>
+      <ul>
+        <li>AI systems currently have Skill (rapidly increasing) + Opportunity (massive) + ambiguous Will (objective functions may not capture human values)</li>
+        <li>The alignment tax: deliberately limiting Skill and Opportunity as a compensating strategy for Will uncertainty</li>
+        <li>Constitutional AI (Anthropic) is a Will-specification attempt</li>
+        <li>The interpretability research agenda is a Skill-for-understanding-Will project</li>
+        <li>Prediction: AI systems that achieve Full Agency will be indistinguishable from autonomous agents — the Will question becomes existential</li>
+      </ul>
+    </div>
+    <div class="expand-detail" id="ed2">
+      <h4>The WSO Atlas: A New Theory of History</h4>
+      <p>Every major civilizational event maps cleanly onto the WSO framework. History is not a collection of accidents — it's a record of WSO alignment events and collapses.</p>
+      <p>The Renaissance: Will (humanist curiosity) had always existed. Skill (classical texts, printing press) was the unlocking event. Opportunity (merchant wealth creating patronage) provided the structural context. All three converged simultaneously — the result was the most explosive creative output in Western history.</p>
+      <ul>
+        <li>Industrial Revolution: Will (economic demand) + Opportunity (coal, empire, capital markets) + sudden Skill jump (steam engine). WSO alignment in England, not France or China despite similar Will.</li>
+        <li>Soviet collapse: Will (for change) was enormous after decades of suppression. Skill (civic organization) was absent — decades of political repression had destroyed it. Opportunity opened too fast for Skill to fill. Instability followed.</li>
+        <li>China's rise: Will (economic development) + Skill (manufacturing, engineering) + Opportunity (global trade opening after WTO accession). A textbook WSO alignment event of civilizational scale.</li>
+        <li>The Arab Spring: Will was real and enormous. Opportunity opened via social media. Skill (institutional building, governance capacity) was absent — and most transitions failed for exactly this reason.</li>
+        <li>Prediction: the next civilizational event will be the WSO alignment around AGI or climate — and the outcome depends on which pillar is weakest when the convergence arrives.</li>
+      </ul>
+    </div>
+
+    <div class="expand-cell" onclick="toggleExpand(3)">
+      <div class="expand-num">Thread B4</div>
+      <h4>The WSO Personality Typology</h4>
+      <p>A new personality framework based on which pillar is chronically strongest and weakest in an individual.</p>
+      <span class="expand-open" id="exp3">+</span>
+    </div>
+    <div class="expand-cell" onclick="toggleExpand(4)">
+      <div class="expand-num">Thread B5</div>
+      <h4>WSO for Education Reform</h4>
+      <p>Most education systems optimize for Skill while systematically destroying Will and ignoring Opportunity inequity. A radical reimagining.</p>
+      <span class="expand-open" id="exp4">+</span>
+    </div>
+    <div class="expand-cell" onclick="toggleExpand(5)">
+      <div class="expand-num">Thread B6</div>
+      <h4>WSO & the Future of Work</h4>
+      <p>AI is equalizing Skill at scale. What happens to WSO when Skill is democratized? The entire framework must be reinterpreted.</p>
+      <span class="expand-open" id="exp5">+</span>
+    </div>
+    <div class="expand-detail" id="ed3">
+      <h4>The WSO Personality Typology</h4>
+      <p>People have chronic patterns in which pillar is strongest and weakest. These aren't fixed traits — they're developmental tendencies that shape every domain of a person's life. WSO proposes six functional types based on the dominant-weak pair.</p>
+      <ul>
+        <li><strong>The Willful Incompetent</strong> (W high, S low): Passionate, bold, often chaotic. Starts many things, finishes few. The serial entrepreneur whose companies consistently collapse at the execution phase. Prescription: deliberate skill-building with external accountability.</li>
+        <li><strong>The Skilled Apathetic</strong> (S high, W low): The talented professional who "can't seem to care." Technically excellent, motivationally hollow. Often found in high-status careers they chose for social approval. Prescription: values excavation, not productivity optimization.</li>
+        <li><strong>The Structural Opportunist</strong> (O high, W low): Excellent at navigating systems, networks, and access — but lacks intrinsic direction. The consummate networker who can open any door but doesn't know what room they want to enter.</li>
+        <li><strong>The Trapped Visionary</strong> (W high, S high, O low): The pattern of many historical figures of oppressed groups. Enormous internal resources, external cage. The political intervention is necessary; personal development alone is insufficient.</li>
+        <li><strong>The Competent Adventurer</strong> (S high, O high, W diffuse): Highly capable, many options, scattered intention. The "too many interests" problem. Prescription: commitment — ruthless narrowing of Will to match available Skill + Opportunity.</li>
+        <li><strong>The Full Agent</strong> (all three aligned): The target state. Rare, achievable, self-sustaining once reached. The research on Flow, eudaimonia, and peak performance all describe this state.</li>
+      </ul>
+    </div>
+    <div class="expand-detail" id="ed4">
+      <h4>WSO for Education Reform</h4>
+      <p>Modern education has a systematic WSO failure: it optimizes almost entirely for Skill transmission while actively damaging Will and largely ignoring Opportunity inequity. The result is a system that produces credentialed but disengaged graduates who know things but don't act on them.</p>
+      <ul>
+        <li><strong>The Will destruction machine:</strong> Standardized testing, external grading, and competitive ranking systematically shift motivation from intrinsic (Will) to extrinsic (approval-seeking). SDT research shows this crowds out exactly the Will needed for lifelong learning.</li>
+        <li><strong>Skill without context:</strong> Teaching skills in isolation from meaningful application produces inert knowledge — Skill without the Will or Opportunity to deploy it. Project-based, problem-based learning reconnects the three pillars.</li>
+        <li><strong>Opportunity inequality:</strong> The WSO framework makes visible what educational research has proven: school quality, teacher quality, peer effects, and family resources are Opportunity variables. Trying to solve educational inequality through curriculum alone (a Skill intervention) while ignoring Opportunity is precisely the wrong lever.</li>
+        <li><strong>A reformed education system would:</strong> protect intrinsic motivation (Will) from premature extrinsic pressure, build metacognitive and self-regulatory Skills alongside domain knowledge, and actively address structural Opportunity gaps rather than treating them as a given.</li>
+      </ul>
+    </div>
+    <div class="expand-detail" id="ed5">
+      <h4>WSO & the Future of Work</h4>
+      <p>AI is doing something unprecedented in human history: commoditizing Skill at scale. For the first time, the Skill axis of WSO is becoming nearly free and infinitely available for vast domains of knowledge work. This changes everything the framework predicts.</p>
+      <ul>
+        <li><strong>When Skill is free, Will becomes the scarce resource:</strong> If anyone can produce legal documents, code, medical analysis, or financial models with AI assistance, the differentiator shifts entirely to Will — do you actually know what you want? Can you direct the tool with clarity and intention?</li>
+        <li><strong>Opportunity concentration:</strong> The removal of Skill barriers doesn't democratize Opportunity — it often concentrates it. The people who own the AI platforms control the new Opportunity infrastructure, just as platform owners did in the last wave.</li>
+        <li><strong>New Skill premium:</strong> When base skills are commoditized, rare skills command extreme premiums. The new Skill axis isn't "can you code" but "do you have domain judgment, relational depth, physical presence, creative originality, and moral authority?" These are precisely the Skills AI cannot replicate.</li>
+        <li><strong>WSO prediction:</strong> The next 20 years will sort people by Will quality, not Skill quantity. The person who knows exactly what they want and can direct powerful tools toward it will dramatically outperform the technically skilled person without clear intention.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ DEBATES ═══ -->
+<section id="debates" style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">07 — The Serious Debates</div>
+  <h2 class="sec-h r">Where rigorous thinkers<br>push back</h2>
+  <p class="sec-sub r">The WSO framework is powerful. It is not unchallenged. Here are the five most intellectually serious objections — and the best responses.</p>
+  <div class="debates-layout r">
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">01</div><h4>Are all three pillars truly equal?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Case for equality</div><p>The three pillars are functionally equivalent in determining whether action occurs. Each can compensate for partial deficits in the others (extraordinary Will can substitute for moderate Skill; extreme Skill can compensate for low Will through habit). The equality assumption is what makes the framework practically useful.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Case against equality</div><p>Structural sociology argues Opportunity has primacy: no amount of Will or Skill matters at sufficiently extreme structural constraint. Billions of people with both Will and Skill never acted because structural barriers were absolute. The framework risks victim-blaming if it presents the pillars as equally addressable.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">02</div><h4>Is "2/3" actually the threshold?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Threshold confirmed</div><p>The research on Self-Determination Theory consistently shows that meeting two of three basic needs (autonomy, competence, relatedness) is sufficient for action and well-being. Pintrich & De Groot explicitly confirmed that "skill and will" — two of three — predicts academic success. The threshold is empirically grounded.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Threshold is domain-dependent</div><p>The threshold may vary with the complexity and stakes of the action. Crossing the street requires almost no threshold in all three; founding a civilization requires very high levels in all three. A single 2/3 rule masks important variation in the θ (threshold) across different action types.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">03</div><h4>Is there a fourth pillar: Belief?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Belief is separate</div><p>Bandura's self-efficacy research shows you can have Will, Skill, and Opportunity and still not act because you don't believe it will work. Anxiety disorders create exactly this pattern. Aristotle recognized courage (andreia) as a prerequisite for action beyond desire and capacity. The fourth pillar has independent empirical support.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Belief is part of Will</div><p>Self-efficacy is best understood as a component of perceived Skill, not a separate pillar. Believing you can do something is part of the Skill axis — specifically metacognitive Skill. Adding a fourth pillar reduces parsimony without proportionate explanatory gain. The 2/3 rule's power comes from its simplicity.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">04</div><h4>Does WSO apply to collective action?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Scales cleanly</div><p>Bandura's collective efficacy research shows the framework scales perfectly. Organizations, movements, and nations pool Will (shared purpose), Skill (institutional capacity), and Opportunity (structural context). Every major historical movement — the Renaissance, Industrial Revolution, civil rights — can be analyzed as a collective WSO alignment event.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Collective action has unique dynamics</div><p>Group Will is not simply the sum of individual Wills — it requires coordination, trust, and shared narrative that individual WSO doesn't capture. Free rider problems, collective action failures, and coordination games mean that groups with high individual WSO scores can still fail collectively. The framework needs explicit extension for group dynamics.</p></div>
+    </div>
+    <div class="debate-row">
+      <div class="debate-topic"><div class="debate-num">05</div><h4>Can WSO be gamed or manufactured?</h4></div>
+      <div class="debate-side pro"><div class="debate-side-label">Yes, and this is useful</div><p>Environmental design can artificially supply Will (BJ Fogg's behavioral design), Skill (deliberate practice scaffolding), and Opportunity (creating access). This means a skilled practitioner can engineer the 2/3 condition even when it doesn't naturally exist. This is the basis for coaching, therapy, organizational design, and policy intervention.</p></div>
+      <div class="debate-side con"><div class="debate-side-label">Manufactured pillars collapse under pressure</div><p>SDT research shows externally-regulated behavior (manufactured Will) is less persistent, less creative, and less satisfying than intrinsic motivation. Manufactured agency is fragile — it works in stable conditions but collapses under adversity. The framework should distinguish authentic from manufactured pillar strength, and warn against over-reliance on manufactured versions.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ ACTION PLANS ═══ -->
+<section id="plans">
+<div class="wrap sec">
+  <div class="sec-tag r">08 — Precision Protocols</div>
+  <h2 class="sec-h r">Your 30-day recovery<br>based on your missing pillar</h2>
+  <div class="plans r">
+    <div class="plan pw">
+      <div class="plan-lbl">Missing Will</div>
+      <h3>The Reignition Plan</h3>
+      <em>"I could, but I don't want to"</em>
+      <div class="plan-week">Week 1 — Diagnosis</div>
+      <ul>
+        <li>Distinguish burnout (temporary) from values misalignment (permanent)</li>
+        <li>Write your anti-goals: what would you hate your life to look like?</li>
+        <li>Do a 2-hour curiosity audit: what did you read voluntarily last month?</li>
+      </ul>
+      <div class="plan-week">Week 2 — Reconnection</div>
+      <ul>
+        <li>Find the smallest version of the goal that still feels meaningful. Start only there.</li>
+        <li>Remove 3 obligations that drain Will without building Skill or Opportunity</li>
+        <li>Spend 1 hour with someone deeply motivated in your domain. Emotion is contagious.</li>
+      </ul>
+      <div class="plan-week">Weeks 3–4 — Anchor</div>
+      <ul>
+        <li>Make a public identity declaration: "I am the kind of person who..."</li>
+        <li>Build a "why wall" — visual anchors of deep motivation in your workspace</li>
+        <li>Design your environment to make the desired action the default, not the effort</li>
+      </ul>
+    </div>
+    <div class="plan ps">
+      <div class="plan-lbl">Missing Skill</div>
+      <h3>Rapid Acquisition Plan</h3>
+      <em>"I want to, but I don't know how"</em>
+      <div class="plan-week">Week 1 — Precision Targeting</div>
+      <ul>
+        <li>Name the exact Skill gap in specific terms — not "I can't code" but "I can't write a REST API"</li>
+        <li>Find one person with the Skill and do a 30-min "Skill autopsy"</li>
+        <li>Map the minimum viable Skill needed for the first action. Set the threshold low.</li>
+      </ul>
+      <div class="plan-week">Week 2 — Deliberate Practice</div>
+      <ul>
+        <li>Apply the Dreyfus model: you are a novice. Design for novice success, not expert outcomes.</li>
+        <li>Practice at the edge of competence (Ericsson): not too easy, not impossible</li>
+        <li>Tight feedback loops: every attempt generates signal within 24 hours</li>
+      </ul>
+      <div class="plan-week">Weeks 3–4 — Compound</div>
+      <ul>
+        <li>Teach what you've learned: the protégé effect accelerates retention by 90%</li>
+        <li>Create one "proof of Skill" — a tangible artifact proving competence to yourself</li>
+        <li>Use AI tools as Skill scaffolding: they make the gap smaller and the feedback tighter</li>
+      </ul>
+    </div>
+    <div class="plan po">
+      <div class="plan-lbl">Missing Opportunity</div>
+      <h3>Door-Opening Plan</h3>
+      <em>"I want to and could, but I can't"</em>
+      <div class="plan-week">Week 1 — Barrier Anatomy</div>
+      <ul>
+        <li>Name the exact barrier type: financial, social, geographic, legal, temporal, or psychological?</li>
+        <li>Is this barrier fixed or moveable? Most that feel permanent are actually moveable.</li>
+        <li>Identify who has already navigated this exact barrier. Study their path precisely.</li>
+      </ul>
+      <div class="plan-week">Week 2 — Structural Change</div>
+      <ul>
+        <li>Find the smallest version of your goal that IS accessible right now. Do it today.</li>
+        <li>Build one key relationship in the domain where the barrier blocks you. Access is social.</li>
+        <li>Challenge one assumption about why the barrier exists. Most are partially false.</li>
+      </ul>
+      <div class="plan-week">Weeks 3–4 — Expand</div>
+      <ul>
+        <li>Build a 90-day "Opportunity creation" roadmap with one concrete milestone per week</li>
+        <li>Redefine the goal to fit available Opportunity space — not as retreat but as strategic adaptation</li>
+        <li>Identify the resource that would eliminate the barrier: money, credential, relationship, geography?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ QUIZ ═══ -->
+<section id="quiz" class="quiz-bg">
+<div class="wrap sec">
+  <div class="sec-tag r" style="color:rgba(242,237,230,.3)">09 — Self-Diagnosis</div>
+  <h2 class="sec-h r" style="color:#F2EDE6">10 questions.<br>Your WSO profile.</h2>
+  <p class="sec-sub r">The most honest 3 minutes you'll spend. Find out precisely which pillar is sabotaging your most important goal right now.</p>
+  <div class="quiz-wrap r" id="qBox">
+    <div class="q-progress"><div class="q-fill" id="qFill"></div></div>
+    <div id="qContent">
+      <div class="q-num" id="qN">Question 1 of 10</div>
+      <div class="q-text" id="qT"></div>
+      <div class="q-opts" id="qO"></div>
+      <div class="q-nav">
+        <button class="q-btn" id="qBk" onclick="qBack()">← Back</button>
+        <span class="q-hint" id="qHt">Select an answer</span>
+        <button class="q-btn primary" id="qNx" onclick="qNext()" disabled>Next →</button>
+      </div>
+    </div>
+    <div class="q-result" id="qRes">
+      <div class="scanner-label" style="color:rgba(242,237,230,.3)">Your WSO Profile</div>
+      <div class="r-type" id="rType"></div>
+      <div class="r-bars" id="rBars"></div>
+      <p class="r-desc" id="rDesc"></p>
+      <div class="r-plan" id="rPlan"></div>
+      <button class="q-btn primary" style="margin-top:1.5rem" onclick="qReset()">Retake →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ CONTENT STRATEGY ═══ -->
+<section style="background:var(--cream)">
+<div class="wrap sec">
+  <div class="sec-tag r">10 — Content & Revenue Strategy</div>
+  <h2 class="sec-h r">Building an intellectual<br>movement at scale</h2>
+  <p class="sec-sub r">The WSO framework has Peterson-level intellectual depth and Robbins-level practical applicability. Here's the full distribution and monetization strategy.</p>
+  <div class="content-plan r">
+    <div class="cp-row">
+      <div class="cp-platform"><span>YouTube</span></div>
+      <div class="cp-items">
+        <div class="cp-item">Hero video: "Why You're Not Lazy — You're Missing One of Three Things" (viral hook, 10M+ target)</div>
+        <div class="cp-item">Series: "Diagnosing History" — WSO analysis of Tesla, Van Gogh, Einstein, Napoleon, Mandela</div>
+        <div class="cp-item">Weekly: "The Missing Pillar" — audience-submitted life situations analyzed live through WSO</div>
+        <div class="cp-item">Debate format: bring in researchers and philosophers to challenge the framework</div>
+        <div class="cp-item">Science series: "Unlocked Doors" — fields where two pillars exist and the third is arriving</div>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-platform"><span>The Book</span></div>
+      <div class="cp-items">
+        <div class="cp-item">"WSO: The Framework for Everything" — three-part structure: individual, society, civilization</div>
+        <div class="cp-item">Pitch: "A new lens for psychology, sociology, history, and self-development — in 300 pages"</div>
+        <div class="cp-item">Target: major nonfiction publishers; Peterson's publisher (Penguin Random House) is ideal</div>
+        <div class="cp-item">Built-in viral mechanism: the quiz and scanner drive readers to the website</div>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-platform"><span>Podcast</span></div>
+      <div class="cp-items">
+        <div class="cp-item">Weekly: "The WSO Session" — interview guests across domains, apply framework to their story</div>
+        <div class="cp-item">Format: 90 minutes, research-deep, no small talk — Peterson-style intellectual seriousness</div>
+        <div class="cp-item">Guest pipeline: scientists with Will + Skill stories; entrepreneurs who found Opportunity; activists who fought structural barriers</div>
+        <div class="cp-item">Crossover goal: Lex Fridman, Hidden Brain, Knowledge Project within 12 months</div>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-platform"><span>Courses</span></div>
+      <div class="cp-items">
+        <div class="cp-item">"WSO Foundations" — free 5-day email course, gateway product, 200K subscribers target</div>
+        <div class="cp-item">"The WSO Audit" — 6-week deep dive with personalized coaching (€497)</div>
+        <div class="cp-item">"WSO for Organizations" — corporate diagnostic workshop (€5,000–15,000)</div>
+        <div class="cp-item">"WSO Academy" — annual membership with monthly content, community, live sessions (€99/yr)</div>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-platform"><span>Newsletter</span></div>
+      <div class="cp-items">
+        <div class="cp-item">Weekly "WSO Letter" — one missing pillar analysis per week, 800 words, applied to current events</div>
+        <div class="cp-item">Monthly: deep-dive scientific paper translated for a general intelligent reader</div>
+        <div class="cp-item">Quarterly subscriber diagnostic: track how your WSO profile shifts over time</div>
+        <div class="cp-item">Target: 100K subscribers in 18 months; monetize via sponsorship + course upsell</div>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-platform"><span>Social</span></div>
+      <div class="cp-items">
+        <div class="cp-item">Instagram/TikTok: "Which one are YOU missing?" — designed for saves and shares, 60-second format</div>
+        <div class="cp-item">Twitter/X: daily WSO-lens commentary on news events — build intellectual brand</div>
+        <div class="cp-item">LinkedIn: WSO for organizational leaders — enterprise audience, high-value newsletter subscribers</div>
+        <div class="cp-item">The WSO scanner widget: embeddable in any website, viral distribution mechanism</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SUBSCRIBE / CTA ═══ -->
+<div class="cta-sec" id="subscribe">
+  <div class="sec-tag" style="justify-content:center;color:rgba(242,237,230,.3);margin-bottom:1rem">
+    <span style="background:none;width:2rem;height:1px;display:inline-block;background:rgba(242,237,230,.2)"></span>
+    Join the Movement
+  </div>
+  <h2 class="r">Know your missing pillar.<br>Change everything.</h2>
+  <p class="r">The weekly WSO Letter. Real cases, new science, the framework applied to current events. No noise. Only the signal that matters.</p>
+  <form class="email-row r" id="subForm" onsubmit="handleSub(event)">
+    <input type="email" name="email" placeholder="your@email.com" id="emailIn" required autocomplete="email">
+    <button type="submit" id="subBtn">Get the Letter →</button>
+  </form>
+  <p class="sub-note" id="subNote">Free forever. Unsubscribe anytime.</p>
+  <p class="domain-note r">Live at <a href="https://qumni.com" style="color:var(--gold);text-decoration:none;font-weight:700">qumni.com</a></p>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="index.html" class="footer-logo">QUMNI<span> / WSO</span></a>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="pcf.html">PCF Framework</a></li>
+    <li><a href="login.html">Sign In</a></li>
+    <li><a href="app.php">WSO App</a></li>
+  </ul>
+  <div class="footer-copy">Will · Skill · Opportunity · © 2026</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Check auth state to customize nav button text
+fetch('api.php?action=me')
+  .then(r => r.json())
+  .then(d => {
+    if (d.authenticated) {
+      const navCta = document.querySelector('.nav-cta');
+      if (navCta) {
+        navCta.textContent = 'Dashboard →';
+        navCta.style.background = 'var(--gold)';
+        navCta.style.color = '#000';
+      }
+    }
+  })
+  .catch(() => {});
+
+// ── CURSOR ──
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+document.querySelectorAll('a,button,.expand-cell,.q-opt,.opp-cell').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+// ── REVEALS ──
+const io = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');io.unobserve(x.target);}});},{threshold:0.06});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+
+// ── SUBSCRIBE ──
+async function handleSub(e){
+  e.preventDefault();
+  const btn=document.getElementById('subBtn');
+  const note=document.getElementById('subNote');
+  const email=document.getElementById('emailIn').value;
+  btn.textContent='…';btn.disabled=true;
+  try{
+    const res=await fetch('subscribe.php',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email})
+    });
+    if(res.ok){
+      document.getElementById('subForm').innerHTML='<p style="font-family:var(--serif);color:rgba(242,237,230,.8);font-size:1.05rem">You\'re in. First letter arrives Monday.</p>';
+      note.textContent='Check your inbox to confirm.';
+    }else{throw new Error();}
+  }catch{
+    btn.textContent='Get the Letter →';btn.disabled=false;
+    showToast('Something went wrong — try again shortly.');
+  }
+}
+
+// ── DOMAIN TABS ──
+function showDomain(id){
+  document.querySelectorAll('.domain-content').forEach(d=>{d.classList.remove('active');});
+  document.querySelectorAll('.d-tab').forEach(t=>{t.classList.remove('active');});
+  document.getElementById('dom-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── SCANNER ──
+const ARCHETYPES = {
+  W: {name:"The Competent Prisoner",color:"#E8321A",insight:"Your Will and Skill are aligned. The door is locked from the outside. The intervention must be structural: change context, build resources, challenge the barrier directly. Nothing internal is broken — the constraint is external.",actions:["Map the exact barrier type","Find 3 people who broke through it","Start with the smallest accessible version","Build a 90-day opportunity roadmap"]},
+  S: {name:"The Dreaming Sprinter",color:"#0066FF",insight:"The fire is there. The door is open. The tools aren't yet in your hands — but you're in the best possible position to acquire them. High motivation + structural access = the optimal learning environment. This gap closes fastest.",actions:["Name the exact skill gap precisely","Set up 24-hour feedback loops","Find a mentor with the skill","Practice at the edge of competence"]},
+  O: {name:"The Capable Bystander",color:"#00C65E",insight:"Everything is in place. The competence. The access. Only the fire is missing — and that's a signal, not a flaw. Something is misaligned. The intervention is meaning-based, not performance-based.",actions:["Values audit: what would you pursue if outcome was guaranteed?","Distinguish burnout from misalignment","Find the smallest version that still feels meaningful","Spend time with someone genuinely lit up by this domain"]},
+  ALL: {name:"The Developing Full Agent",color:"#C8960C",insight:"No single pillar is severely weak, but none is fully developed. Broad investment in all three simultaneously. In 90 days, one will emerge as the priority.",actions:["Weekly WSO self-scoring (1-10 each)","Apply the weakest-pillar plan","Establish one accountability structure","Retake this scan in 90 days"]}
+};
+function runScanner(){
+  const w=parseInt(document.getElementById('wSlider').value);
+  const s=parseInt(document.getElementById('sSlider').value);
+  const o=parseInt(document.getElementById('oSlider').value);
+  let key;
+  if(w<s&&w<o)key='W';
+  else if(s<w&&s<o)key='S';
+  else if(o<w&&o<s)key='O';
+  else key='ALL';
+  const a=ARCHETYPES[key];
+  const el=document.getElementById('scanResult');
+  el.classList.add('show');
+  document.getElementById('scanLabel').textContent=`WSO Scores: Will ${w}/10 · Skill ${s}/10 · Opportunity ${o}/10`;
+  document.getElementById('scanArchetype').style.color=a.color;
+  document.getElementById('scanArchetype').textContent=a.name;
+  document.getElementById('scanInsight').textContent=a.insight;
+  document.getElementById('scanActions').innerHTML=a.actions.map(x=>`<button class="sr-action-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">${x}</button>`).join('');
+  el.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── EXPAND GRID ──
+const EXPAND_DETAILS = ['ed0','ed1','ed2','ed3','ed4','ed5'];
+function toggleExpand(i){
+  const el=document.getElementById(EXPAND_DETAILS[i]);
+  const btn=document.getElementById('exp'+i);
+  const isOpen=el.classList.contains('open');
+  EXPAND_DETAILS.forEach((id,j)=>{document.getElementById(id).classList.remove('open');document.getElementById('exp'+j).textContent='+';});
+  if(!isOpen){el.classList.add('open');btn.textContent='−';}
+}
+
+// ── QUIZ ──
+const Qs=[
+  {q:"When you think about your most important unfinished goal — what's the most honest reason you haven't acted on it?",opts:["I've lost motivation or it stopped mattering","I don't know how to do what it requires","I genuinely lack the access, time, or resources","I want it intensely but I'm afraid it won't work"],w:[3,1,2,3]},
+  {q:"You have a completely free Saturday. No obligations. What do you most naturally gravitate toward?",opts:["Activities connected to your goal — you feel energized","Learning new skills — courses, reading, deliberate practice","Building connections and finding opportunities","Procrastinating — even free time doesn't unlock motivation"],w:[3,1,2,1]},
+  {q:"How would you honestly rate your current competence in the domain where you most want to grow?",opts:["High — I'm among the most capable people I know","Moderate — solid foundation but real gaps remain","Low — I'm genuinely at the beginning","Unclear — I've never properly tested myself"],w:[2,2,1,1]},
+  {q:"If every external barrier was suddenly removed — imagine a magic door opened — what would happen?",opts:["I'd run through immediately — I know exactly what to do","I'd hesitate — I'm not sure I have the tools yet","I'd run through but struggle — learning as I go","Honestly? I'm not certain I'd even want to"],w:[2,1,2,3]},
+  {q:"The last time you didn't follow through on something genuinely important to you — what was actually happening?",opts:["I lost interest or it stopped feeling meaningful","I got stuck — didn't know the next concrete step","Something external blocked me: money, time, systems, people","A complex mix — hard to separate the causes"],w:[3,1,2,2]},
+  {q:"How frequently do you find yourself saying 'I would, but I can't because...'?",opts:["Rarely — I find ways through or around obstacles","Often — external barriers genuinely stop me regularly","Sometimes — usually about not knowing how","More often it's: 'I could, but I won't'"],w:[2,2,1,3]},
+  {q:"Imagine you're five years from now, having not achieved your most important goal. What's the most likely story?",opts:["I gave up — lost interest or chased easier things","I couldn't figure out how — skill gaps I never closed","Life kept blocking me — real structural obstacles","I tried, but I never really believed I could do it"],w:[3,1,2,3]},
+  {q:"When you encounter a difficult skill or technique your goal requires — what typically happens?",opts:["I dive in — difficulty is interesting, not threatening","I work through it but sometimes plateau or stall","I often can't access the learning resources or practice contexts","I frequently stop — the gap feels too large to close"],w:[2,2,2,1]},
+  {q:"How connected do you genuinely feel to the 'why' behind your biggest goal right now?",opts:["Deeply — it connects to who I fundamentally am","Moderately — I understand the why but it's not vivid","Weakly — I know it's important but it doesn't feel urgent","I've lost the thread honestly — I no longer know why I wanted this"],w:[3,2,3,3]},
+  {q:"If you were being ruthlessly honest with yourself right now, which of these fits?",opts:["I burn with desire but walls keep stopping me","I have access and motivation but I'm not skilled enough","I have skills and access but can't generate the drive","All three feel roughly equal — I'm broadly stuck"],w:[2,1,3,2]}
+];
+let qi=0,qans=[],qsc={W:0,S:0,O:0};
+const QAT=[
+  {name:"The Competent Prisoner",color:"#E8321A",desc:"Your Will and Skill are your assets. The barrier is structural — external, not internal. Nothing about you is broken. The fight must be against the constraint, not against yourself.",plan:["Map the exact barrier with precision","Study 3 people who navigated the same constraint","Act on the smallest accessible version today","Build the 90-day structural change roadmap"]},
+  {name:"The Dreaming Sprinter",color:"#0066FF",desc:"The fire burns. The door is open. The tools are the gap — and you're in the ideal position to close it. High motivation + structural access = the fastest learning environment possible.",plan:["Define the skill gap with surgical precision","Set up feedback loops: learn something testable in 24 hours","Find a mentor with the exact skill you need","Practice at the edge of your current competence"]},
+  {name:"The Capable Bystander",color:"#00C65E",desc:"Everything is in place except the fire. This isn't laziness — it's signal. Something is misaligned between the goal and who you actually are. The intervention is meaning-based.",plan:["Values audit: what would you pursue if success was guaranteed?","Distinguish burnout (temporary) from misalignment (permanent)","Find the smallest version of the task that still feels meaningful","Spend time with people who are genuinely lit up by this domain"]},
+  {name:"The Developing Full Agent",color:"#C8960C",desc:"No single pillar is catastrophically weak — but none is fully activated. Broad development in all three, with one becoming the focus as you scan deeper.",plan:["Score yourself 1-10 on W, S, O weekly","Identify the weakest and apply its specific protocol","Build one accountability structure across all three","Retake this assessment in 90 days to track shift"]}
+];
+function qRender(){
+  const q=Qs[qi];
+  document.getElementById('qN').textContent=`Question ${qi+1} of ${Qs.length}`;
+  document.getElementById('qFill').style.width=`${(qi/Qs.length)*100}%`;
+  document.getElementById('qT').textContent=q.q;
+  document.getElementById('qBk').disabled=qi===0;
+  document.getElementById('qNx').disabled=qans[qi]===undefined;
+  document.getElementById('qNx').textContent=qi===Qs.length-1?'See Results →':'Next →';
+  document.getElementById('qHt').textContent=qans[qi]!==undefined?'':' Select an answer';
+  const oEl=document.getElementById('qO');
+  oEl.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='q-opt'+(qans[qi]===i?' sel':'');
+    b.innerHTML=`<span class="q-opt-key">${['A','B','C','D'][i]}</span>${o}`;
+    b.onclick=()=>{qans[qi]=i;qRender();};
+    oEl.appendChild(b);
+  });
+}
+function qNext(){if(qans[qi]===undefined)return;if(qi<Qs.length-1){qi++;qRender();}else qShowResults();}
+function qBack(){if(qi>0){qi--;qRender();}}
+function qShowResults(){
+  qsc={W:0,S:0,O:0};
+  Qs.forEach((q,i)=>{
+    const c=qans[i];if(c===undefined)return;
+    const w=q.w[c];
+    if(c===0){if(q.w[0]===3)qsc.W+=w;else qsc.S+=w;}
+    else if(c===1)qsc.S+=w;
+    else if(c===2)qsc.O+=w;
+    else qsc.W+=w;
+  });
+  const tot=qsc.W+qsc.S+qsc.O||1;
+  const wP=Math.round((qsc.W/tot)*100);
+  const sP=Math.round((qsc.S/tot)*100);
+  const oP=Math.round((qsc.O/tot)*100);
+  const minK=Object.keys(qsc).reduce((a,b)=>qsc[a]<qsc[b]?a:b);
+  let arch;
+  if(minK==='O')arch=QAT[0];
+  else if(minK==='S')arch=QAT[1];
+  else if(minK==='W')arch=QAT[2];
+  else arch=QAT[3];
+  document.getElementById('qContent').style.display='none';
+  const res=document.getElementById('qRes');
+  res.style.display='block';
+  document.getElementById('rType').textContent=arch.name;
+  document.getElementById('rType').style.color=arch.color;
+  document.getElementById('rDesc').textContent=arch.desc;
+  document.getElementById('rBars').innerHTML=[
+    {l:'WILL',p:wP,c:'#E8321A'},{l:'SKILL',p:sP,c:'#0066FF'},{l:'OPP.',p:oP,c:'#00C65E'}
+  ].map(b=>`<div class="r-bar-wrap"><span class="r-bar-lbl" style="color:${b.c}">${b.l}</span><div class="r-track"><div class="r-fill" style="height:${b.p}%;background:${b.c}"></div></div><span class="r-pct" style="color:${b.c}">${b.p}%</span></div>`).join('');
+  document.getElementById('rPlan').innerHTML=`<div class="r-plan-h">Your Precision Protocol</div><ul>${arch.plan.map(a=>`<li>${a}</li>`).join('')}</ul>`;
+  document.getElementById('qFill').style.width='100%';
+}
+function qReset(){qi=0;qans=[];qsc={W:0,S:0,O:0};document.getElementById('qContent').style.display='block';document.getElementById('qRes').style.display='none';qRender();}
+qRender();
+
+// ── VENN PULSE ──
+const vcs=document.querySelectorAll('.vc');
+let t=0;
+(function pulse(){t+=0.012;vcs.forEach((c,i)=>{const ph=(i/3)*Math.PI*2;c.style.fillOpacity=(0.1+Math.sin(t+ph)*0.04).toFixed(3);});requestAnimationFrame(pulse);})();
+</script>
+</body>
+</html>

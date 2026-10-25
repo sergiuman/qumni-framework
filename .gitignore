@@ -1,0 +1,26 @@
+# Secrets
+config.php
+.env
+.env.*
+!.env.example
+
+# Runtime data
+Data/*.db
+Data/*.db-*
+subscribers.txt
+
+# Deployment archives (contain config.php)
+*.zip
+
+# Dependencies & builds
+node_modules/
+dist/
+build/
+.turbo/
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log

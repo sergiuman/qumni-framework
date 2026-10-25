@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8F5F0">
+  <title>Sign In — Momentum · QUMNI</title>
+  <meta name="description" content="Access QUMNI Momentum: Daily voice log, WSO agency diagnostics, goal gap scanners, and habit tracking.">
+  <link rel="canonical" href="https://qumni.com/login.html">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="QUMNI Momentum">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='5' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='%23C8960C'>Q</text></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=8.0">
+</head>
+<body class="auth-body">
+  <nav class="app-nav">
+    <div class="nav-container">
+      <a href="index.html" class="app-logo">
+        <span class="logo-mark">QUMNI</span>
+        <span class="logo-badge">MOMENTUM</span>
+      </a>
+      <div class="nav-right">
+        <a href="index.html" class="nav-back-link">← Library & Frameworks</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-eyebrow">Operating System · Human Action</div>
+        <h1 class="auth-title">Momentum</h1>
+        <p class="auth-subtitle">Daily Reflection · WSO Diagnostics · Goal Calibration</p>
+      </div>
+
+      <div class="auth-quote">
+        <p>"You do not rise to the level of your goals. You fall to the level of your systems."</p>
+        <span>— James Clear, Atomic Habits</span>
+      </div>
+
+      <!-- Auth Mode Switcher -->
+      <div class="auth-tabs">
+        <button id="tabLogin" class="auth-tab active" type="button">Sign In</button>
+        <button id="tabRegister" class="auth-tab" type="button">Create Account</button>
+      </div>
+
+      <div id="error" class="auth-feedback error" style="display:none"></div>
+      <div id="success" class="auth-feedback success" style="display:none"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="field-group">
+          <label for="loginUser">Username</label>
+          <input type="text" id="loginUser" placeholder="e.g. alexandra" required minlength="3" autocomplete="username">
+        </div>
+        <div class="field-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" required minlength="6" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-dark btn-full">Sign In to Dashboard →</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form" style="display:none">
+        <div class="field-group">
+          <label for="regUser">Choose Username</label>
+          <input type="text" id="regUser" placeholder="Min 3 characters" required minlength="3" autocomplete="username">
+        </div>
+        <div class="field-group">
+          <label for="regPass">Choose Password</label>
+          <input type="password" id="regPass" placeholder="Min 6 characters" required minlength="6" autocomplete="new-password">
+        </div>
+        <div class="field-group">
+          <label for="regConfirm">Confirm Password</label>
+          <input type="password" id="regConfirm" placeholder="Repeat password" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-dark btn-full">Create Account & Start →</button>
+      </form>
+
+      <div class="auth-footer">
+        <div class="auth-pillars-preview">
+          <span class="pill pill-w">Will</span>
+          <span class="pill pill-s">Skill</span>
+          <span class="pill pill-o">Opportunity</span>
+        </div>
+        <p class="auth-footnote">Ground your daily action in empirical agency science.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+
+    const $ = id => document.getElementById(id);
+    const showError = msg => { 
+      $('error').textContent = msg; 
+      $('error').style.display = msg ? 'block' : 'none'; 
+      if (msg) $('success').style.display = 'none';
+    };
+    const showSuccess = msg => {
+      $('success').textContent = msg;
+      $('success').style.display = msg ? 'block' : 'none';
+      if (msg) $('error').style.display = 'none';
+    };
+
+    // Check if user is already authenticated
+    fetch('api.php?action=me')
+      .then(r => r.json())
+      .then(d => { if (d.authenticated) window.location.href = 'app.php'; })
+      .catch(() => {});
+
+    // Tab switching
+    $('tabLogin').onclick = () => {
+      $('tabLogin').classList.add('active');
+      $('tabRegister').classList.remove('active');
+      $('loginForm').style.display = 'block';
+      $('registerForm').style.display = 'none';
+      showError('');
+      showSuccess('');
+    };
+
+    $('tabRegister').onclick = () => {
+      $('tabRegister').classList.add('active');
+      $('tabLogin').classList.remove('active');
+      $('registerForm').style.display = 'block';
+      $('loginForm').style.display = 'none';
+      showError('');
+      showSuccess('');
+    };
+
+    // Login Submission
+    $('loginForm').onsubmit = async e => {
+      e.preventDefault();
+      showError('');
+      const submitBtn = $('loginForm').querySelector('button[type="submit"]');
+      const origText = submitBtn.textContent;
+      submitBtn.textContent = 'Authenticating...';
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('api.php?action=login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: $('loginUser').value.trim(),
+            password: $('loginPass').value
+          })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          showSuccess('Authenticated. Redirecting...');
+          window.location.href = 'app.php';
+        } else {
+          showError(data.error || 'Invalid username or password.');
+          submitBtn.textContent = origText;
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        showError('Network connection issue. Please check connection and try again.');
+        submitBtn.textContent = origText;
+        submitBtn.disabled = false;
+      }
+    };
+
+    // Registration Submission
+    $('registerForm').onsubmit = async e => {
+      e.preventDefault();
+      showError('');
+
+      if ($('regPass').value !== $('regConfirm').value) {
+        return showError('Passwords do not match. Please verify.');
+      }
+
+      const submitBtn = $('registerForm').querySelector('button[type="submit"]');
+      const origText = submitBtn.textContent;
+      submitBtn.textContent = 'Creating Account...';
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('api.php?action=register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: $('regUser').value.trim(),
+            password: $('regPass').value
+          })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showSuccess('Account initialized! Entering Momentum...');
+          window.location.href = 'app.php';
+        } else {
+          showError(data.error || 'Account creation failed.');
+          submitBtn.textContent = origText;
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        showError('Network connection issue. Please check connection and try again.');
+        submitBtn.textContent = origText;
+        submitBtn.disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>

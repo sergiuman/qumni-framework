@@ -1,0 +1,87 @@
+# ── QUMNI · Apache & LiteSpeed configuration ────────────────────────────────
+
+# Default document
+DirectoryIndex index.html index.php
+
+# Disable directory listing
+Options -Indexes
+
+# ── Permissions & File Access ────────────────────────────────────────────────
+<FilesMatch "\.(html|php|css|js|png|jpg|jpeg|gif|svg|ico|json|xml|txt|webmanifest|woff|woff2|ttf|eot)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+</FilesMatch>
+
+# Protect sensitive database, config & subscriber files
+<FilesMatch "(\.(db|sqlite|sqlite3|env|ini|log|git.*)|subscribers\.txt)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ── Security headers ──────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(self), camera=()"
+</IfModule>
+
+# ── Clean URL rewrites & Redirects ───────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block direct web access to sensitive storage directories
+    RewriteRule ^(Data|data|\.git) - [F,L,NC]
+
+    # Redirect www → non-www (HTTPS)
+    RewriteCond %{HTTP_HOST} ^www\.qumni\.com$ [NC]
+    RewriteRule ^ https://qumni.com%{REQUEST_URI} [R=301,L]
+
+    # Explicit routes for core pages (works reliably on Apache & LiteSpeed)
+    RewriteRule ^pcf/?$ pcf.html [NC,L]
+    RewriteRule ^wso/?$ wso.html [NC,L]
+    RewriteRule ^app/?$ app.php [NC,L]
+    RewriteRule ^dashboard/?$ app.php [NC,L]
+    RewriteRule ^login/?$ login.html [NC,L]
+    RewriteRule ^wso-app/?$ wso-app.html [NC,L]
+
+    # General extensionless rewrites
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.html [NC,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{DOCUMENT_ROOT}/$1.php -f [OR]
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [NC,L]
+</IfModule>
+
+# ── Gzip compression ──────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain
+</IfModule>
+
+# ── Cache control ─────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+</IfModule>
